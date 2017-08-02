@@ -1,0 +1,42 @@
+@import 'typefaces';
+@import 'colors';
+
+/*
+ * css styles go here
+ */
+
+body {
+  font-family: $font-family;
+  color: $text-color;
+}
+
+a, a:visited {
+  color: $link-color;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+#header {
+  padding: 4px;
+}
+
+#header .big {
+  font-size:   140%;
+  font-weight: bold;
+}
+
+#header .small {
+  font-size:    90%;
+  color:        grey;
+  padding-left: 15px;
+}
+
+#nav {
+  padding: 6px;
+}
