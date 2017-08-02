@@ -1,1 +1,27 @@
-theme: jekyll-theme-minimal
+###########
+# site.title
+
+title:    'IBM Blockchain'
+subtitle: 'Kubernetes Starter Guide'
+
+
+nav:
+- { title: 'Welcome',              href: '/' }
+- { title: 'Page Two',             href: '/two.html' }
+- { title: 'Page Three',           href: '/three.html' }
+- { title: 'Questions? Comments?', href: 'http://groups.google.com/group/wwwmake' }
+- { title: 'About',                href: 'https://github.com/henrythemes/jekyll-starter-theme-v2' }
+
+
+#########################
+# more settings
+
+markdown: kramdown
+
+# sass:
+#   sass_dir: css
+#   style:    expanded
+
+exclude:
+- README.md
+- LICENSE.md
