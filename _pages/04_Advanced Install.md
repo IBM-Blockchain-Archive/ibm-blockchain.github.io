@@ -1,7 +1,8 @@
 ---
 layout: default
 title:  Advanced Install
-permalink: "/advanced/" 
+permalink: "/advanced/"
+category: advanced
 ---
 
 # Advanced Install

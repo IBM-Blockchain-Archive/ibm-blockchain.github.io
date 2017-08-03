@@ -1,57 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Overview - IBM Blockchain</title>
+---
+layout: indexbase
+title: Overview
+---
 
-  <link rel="stylesheet" href="/css/style.min.css">
-</head>
+<div class="page-container">
 
-
-<body class="">
-
-  
-
-  <div class="SiteWrapper">
-    
-      <div class="page-container">
-
-<div class="nav">
-        <p>IBM <b>Blockchain</b></p>
-        <hr>
-      <ul>
-        
-        
-        <li><a href="/setup/">1. Prepare & Setup</a></li>
-        
-        
-        
-        <li><a href="/simple/">2. Simple Install</a></li>
-        
-        
-        
-        <li><a href="/interacting/">3. Interacting with your Blockchain</a></li>
-        
-        
-        
-        <li><a href="/advanced/">Advanced Install</a></li>
-        
-        
-        
-        <li><a href="/reference/">Script Reference Docs</a></li>
-        
-        
-        
-        <li><a href="/404/"></a></li>
-        
-        
-        
-        <li><a href="/">Overview</a></li>
-        
-        
-      </ul>
-</div>
-
+{% include header.html %}
 
 <div class="page-content index">
   <div class="left-panel">
@@ -89,7 +43,9 @@
 
 <div class="next-page">
   <div class="PageNavigation">
-  
+  {% if page.next.url %}
+    <a class="next" href="{{page.next.url}}">{{page.next.title}}</a>
+  {% endif %}
 </div>
 </div>
 
@@ -122,10 +78,3 @@
 </div>
 
 </div>
-
-    
-
-    
-  </div>
-</body>
-</html>
