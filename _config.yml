@@ -1,0 +1,14 @@
+###########
+# site.title
+
+title:    'IBM Blockchain'
+subtitle: 'Kubernetes Starter Guide'
+
+include: ["_pages"]
+permalink: /:title/ 
+
+markdown: kramdown
+
+exclude:
+- README.md
+- LICENSE.md

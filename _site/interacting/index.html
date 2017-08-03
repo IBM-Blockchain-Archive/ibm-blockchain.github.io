@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>3. Interacting with your Blockchain - IBM Blockchain</title>
+
+  <link rel="stylesheet" href="/css/style.min.css">
+</head>
+
+
+<body>
+<div class="page-container">
+
+<div class="nav">
+        <p>IBM <b>Blockchain</b></p>
+        <hr>
+      <ul>
+        
+        
+        <li><a href="/setup/">1. Prepare & Setup</a></li>
+        
+        
+        
+        <li><a href="/simple/">2. Simple Install</a></li>
+        
+        
+        
+        <li><a href="/interacting/">3. Interacting with your Blockchain</a></li>
+        
+        
+        
+        <li><a href="/advanced/">Advanced Install</a></li>
+        
+        
+        
+        <li><a href="/reference/">Script Reference Docs</a></li>
+        
+        
+        
+        <li><a href="/404/"></a></li>
+        
+        
+        
+        <li><a href="/">Overview</a></li>
+        
+        
+      </ul>
+</div>
+
+
+<div class="page-content post">
+  <h1 id="interacting-with-your-blockchain">Interacting with your Blockchain</h1>
+
+<h2 id="before-you-start">Before you start</h2>
+<p>Make sure you have installed the IBM Blockchain Platform for Developers on IBM Container Service.  The easiest way to achieve this is by following the <strong>Simple Install</strong> instructions.  Note that if you followed the Advanced Install instructions or ran through command-by-command using the Script Reference Docs, you may not have everything set up fully - if you have any trouble with these steps, try setting up an environment using the Simple Install.</p>
+
+<h3 id="1-get-the-ip-address-of-your-cluster">1. Get the IP Address of your cluster</h3>
+
+<p>Determine the public IP address of your cluster by running the following command:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>bx cs workers blockchain
+</code></pre>
+</div>
+
+<p>The output should be similiar to the following:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>Listing cluster workers...
+OK
+ID                                                 Public IP      Private IP       Machine Type   State    Status
+kube-dal10-pabdda14edc4394b57bb08d53c149930d7-w1   169.48.140.99   10.171.239.186   free           normal   Ready
+</code></pre>
+</div>
+
+<p>The value you need is <code class="highlighter-rouge">Public IP</code> (in this example 169.48.140.99).</p>
+
+<h3 id="2-access-composer-playground">2. Access Composer Playground</h3>
+
+<p>Using your cluster’s <code class="highlighter-rouge">Public IP</code> you can now access the Hyperledger Composer Playground:</p>
+
+<p><strong>Composer Playground</strong> is a UI that can be used to create and deploy business networks to your blockchain runtime.  To access it, go to:</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>http://YOUR_PUBLIC_IP_HERE:31080
+</code></pre>
+</div>
+
+<h3 id="3-develop-your-business-network">3. Develop Your Business Network</h3>
+
+<p>Hyperledger Composer provides a tutorial for using Playground to create a basic Business Network.</p>
+
+<p>LINK TO THE PLAYGROUND TUTORIAL ON THE COMPOSER DOC</p>
+
+<h3 id="4-start-or-access-the-composer-rest-server">4. Start (or access?) the Composer REST Server</h3>
+
+<p>I get fuzzy on the detail here ;)  Need to figure out how this bit works, and when/how you need to re-start your REST Server because of changes to your business network.  TBC.</p>
+
+</div>
+
+<div class="next-page">
+  <div class="PageNavigation">
+  
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Overview - IBM Blockchain</title>
+
+  <link rel="stylesheet" href="/css/style.min.css">
+</head>
+
+
+<body class="">
+
+  
+
+  <div class="SiteWrapper">
+    
+      <div class="page-container">
+
+<div class="nav">
+        <p>IBM <b>Blockchain</b></p>
+        <hr>
+      <ul>
+        
+        
+        <li><a href="/setup/">1. Prepare & Setup</a></li>
+        
+        
+        
+        <li><a href="/simple/">2. Simple Install</a></li>
+        
+        
+        
+        <li><a href="/interacting/">3. Interacting with your Blockchain</a></li>
+        
+        
+        
+        <li><a href="/advanced/">Advanced Install</a></li>
+        
+        
+        
+        <li><a href="/reference/">Script Reference Docs</a></li>
+        
+        
+        
+        <li><a href="/404/"></a></li>
+        
+        
+        
+        <li><a href="/">Overview</a></li>
+        
+        
+      </ul>
+</div>
+
+
+<div class="page-content index">
+  <div class="left-panel">
+    <h2>IBM Blockchain Platform for Developers on IBM Container Service</h2>
+    <p>Follow these instructions to launch a basic IBM Blockchain network on the IBM Container Service's free plan.
+
+    Most users will want to follow the <b>Prepare & Setup</b> instructions, to prepare a cluster on the IBM Container Service ready for IBM Blockchain to deploy to, and then the <b>Simple Install</b> instructions to deploy the default Developer Environment in a single script.</p>
+    <h3>What do I get?</h3>
+    <p>The <b>Simple Install</b> will bring up the following components:
+
+    <ul>
+      <li>A pre-configured Fabric (blockchain runtime):</li>
+        <ul>3 Fabric CAs (one apiece for the orderer org and two peer orgs)</ul>
+        <ul>Orderer node (running "solo")</ul>
+        <ul>2 Fabric peer nodes (one apiece for each peer org - <code>org1</code> & <code>org2</code>)</ul>
+        <ul>Some example installed and instantiated chaincode</ul>
+      <li>Composer Playground (UI for creating and deploying Business Networks to Fabric)</li>
+      <li>The basic-sample-network deployed</li>
+    </ul>
+    <p>
+    It also creates services to expose the components.
+
+    At the end of the install, you will be able to obtain a public URL to access your instance of Composer Playground, and should use this to create and deploy your Business Networks.  For more on how to use IBM Blockchain Platform for Developers on IBM Container Service after installing it, see the <b>Interacting with your Blockchain</b> topic.  This is also where you will learn how to expose your deployed network as a REST API for further application development.</p>
+    <h3>Ready to get started?</h3>
+    <p>The first step is to run through the <b>Prepare & Setup</b> instructions:</p>
+      <button class="button">Get Started</button>
+  </div>
+
+  <div class="right-panel">
+    <p> <b>Warning</b> these instructions will stand up a publicly accessible development environment for IBM Blockchain.  We recommend you only use it for experimentation, and it is <b>not suitable and not supported</b> for any sort of "real" deployment.  If that's what you need, you should instead take a look at the IBM Blockchain Platform service, which provides a fully managed Fabric runtime on IBM Cloud (you could also install the local Dev Tools to build your business networks, then push them to the managed service in a secure way).</p>
+    <h3>Is this right for me?</h3>
+    <p>You <i>could</i> choose to run these images locally with Minikube.  However, if you're looking for a local Blockchain development environment, we recommend the Local Dev Environment install offered on the <a>Hyperledger Composer website</a>: this uses Docker and Docker Compose to run Fabric and Composer on your local machine, and comes with other useful tools like a VSCode extension and CLI tools to deploy the Business Networks you create elsewhere (e.g. Faric running on IBM Cloud) later on.</p>
+  </div>
+</div>
+
+<div class="next-page">
+  <div class="PageNavigation">
+  
+</div>
+</div>
+
+<div class="page-callout">
+  <h2>Join an established developer community</h2>
+  <p>IBM Blockchain leverages projects from Hyperledger: Fabric and Composer..</p>
+  <p>Join other Blockchain Developers on StackOverflow, GitHub and Rocket.Chat, and benefit from a wealth of existing resources.</p>
+  <a>Find out more about Hyperledger Blockchain</a>
+</div>
+
+<div class="page-next prepare">
+  <h2>1. Prepare and Setup</h2>
+  <p>Get the IBM prerequisites and setup your Blockchain cloud deployment on IBM Bluemix.</p>
+  <p><b>15 minutes</b></p>
+  <button class="button">Get Started</button>
+</div>
+
+<div class="page-next script">
+  <h2>2. One Script Install</h2>
+  <p>Run our simple setup script to get everything you need to deploy your business network to a running Hyperledger Fabric on Bluemix.</p>
+  <p><b>5 minutes</b></p>
+  <button class="button">Get Started</button>
+</div>
+
+<div class="page-next interact">
+  <h2>3. Interact with your Blockchain</h2>
+  <p>Learn how to deploy a business network to your running Hyperledger Fabric Blockchain and get a Composer REST API setup alongside it.</p>
+  <p><b>30 minutes</b></p>
+  <button class="button">Get Started</button>
+</div>
+
+</div>
+
+    
+
+    
+  </div>
+</body>
+</html>

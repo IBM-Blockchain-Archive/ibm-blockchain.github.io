@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Script Reference Docs - IBM Blockchain</title>
+
+  <link rel="stylesheet" href="/css/style.min.css">
+</head>
+
+
+<body>
+<div class="page-container">
+
+<div class="nav">
+        <p>IBM <b>Blockchain</b></p>
+        <hr>
+      <ul>
+        
+        
+        <li><a href="/setup/">1. Prepare & Setup</a></li>
+        
+        
+        
+        <li><a href="/simple/">2. Simple Install</a></li>
+        
+        
+        
+        <li><a href="/interacting/">3. Interacting with your Blockchain</a></li>
+        
+        
+        
+        <li><a href="/advanced/">Advanced Install</a></li>
+        
+        
+        
+        <li><a href="/reference/">Script Reference Docs</a></li>
+        
+        
+        
+        <li><a href="/404/"></a></li>
+        
+        
+        
+        <li><a href="/">Overview</a></li>
+        
+        
+      </ul>
+</div>
+
+
+<div class="page-content post">
+  <h1 id="advanced-install">Advanced Install</h1>
+
+<h2 id="before-you-start">Before you start</h2>
+<p>Make sure you have followed the instructions in <strong>Prepare &amp; Setup</strong> - they are a prerequisite to any of the install instructions.</p>
+
+<h2 id="install-with-a-collection-of-scripts">Install with a collection of scripts</h2>
+
+<p>The Advanced Install method covers the same ground as the Simple Install, but rather than using the all in one script - <code class="highlighter-rouge">create_all.sh</code> - we will instead individually call a series of scripts to ultimately bootstrap a blockchain network, join peers to a channel and launch the Composer playground.  You can then use Composer Playground to create and deploy Business Networks to your blockchain network.</p>
+
+<p><strong>Why choose Advanced Install?</strong>  The Simple Install is the best option for most users - if you’ve already successfully followed those instructions, you don’t need to follow these!  You may wish to follow these instructions if you want to stop part way through the install process e.g. not set up Composer Playground.</p>
+
+<h3 id="1-clone-this-repository">1. Clone this repository</h3>
+<p>You’ll be using the config files and scripts from this repository, so start by cloning it to a directory of your choice on your local machine.</p>
+
+<h3 id="2-set-up-the-blockchain-network">2. Set up the Blockchain Network</h3>
+
+<ol>
+  <li>Create blockchain network
+    <div class="highlighter-rouge"><pre class="highlight"><code>./create/create_blockchain.sh
+</code></pre>
+    </div>
+  </li>
+  <li>Create channel named <code class="highlighter-rouge">channel1</code>
+    <div class="highlighter-rouge"><pre class="highlight"><code>CHANNEL_NAME="channel1" create/create_channel.sh
+</code></pre>
+    </div>
+  </li>
+  <li>Join Org1 peer to <code class="highlighter-rouge">channel1</code>
+    <div class="highlighter-rouge"><pre class="highlight"><code>CHANNEL_NAME="channel1" PEER_ADDRESS="blockchain-org1peer1:5010" MSP_CONFIGPATH="/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp" create/join_channel.sh
+</code></pre>
+    </div>
+  </li>
+  <li>Join Org2 peer to <code class="highlighter-rouge">channel1</code>
+    <div class="highlighter-rouge"><pre class="highlight"><code>CHANNEL_NAME="channel1" PEER_ADDRESS="blockchain-org2peer1:5010" MSP_CONFIGPATH="/shared/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp" create/join_channel.sh
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h3 id="3-set-up-composer-playground">3. Set up Composer Playground</h3>
+
+<ol>
+  <li>Launch the Playground - this is a UI for creating and deploying Business Networks to your Blockchain runtime.
+    <div class="highlighter-rouge"><pre class="highlight"><code>./create/create_composer-playground.sh
+</code></pre>
+    </div>
+  </li>
+  <li>Create and start the REST server
+    <div class="highlighter-rouge"><pre class="highlight"><code>./create/create_composer-rest-server.sh
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+</div>
+
+<div class="next-page">
+  <div class="PageNavigation">
+  
+</div>
+</div>
+</div>
+</body>
+</html>
