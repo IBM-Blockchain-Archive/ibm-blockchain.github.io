@@ -1,3 +1,9 @@
+---
+layout: default
+title:  2. Simple Install
+permalink: "/simple/" 
+---
+
 # Simple Install
 
 ## Before you start

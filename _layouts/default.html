@@ -4,14 +4,21 @@
 {% include head.html %}
 
 <body>
+<div class="page-container">
 
 {% include header.html %}
 
-<div id="content">
+<div class="page-content">
   {{ content }}
 </div>
 
-{% include footer.html %}
-
+<div class="next-page">
+  <div class="PageNavigation">
+  {% if page.next.url %}
+    <a class="next" href="{{page.next.url}}">{{page.next.title}}</a>
+  {% endif %}
+</div>
+</div>
+</div>
 </body>
 </html>

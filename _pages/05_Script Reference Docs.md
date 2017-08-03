@@ -1,3 +1,9 @@
+---
+layout: default
+title:  Script Reference Docs
+permalink: "/reference/" 
+---
+
 # Advanced Install
 
 ## Before you start

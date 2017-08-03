@@ -1,3 +1,9 @@
+---
+layout: default
+title:  1. Prepare & Setup
+permalink: "/setup/" 
+---
+
 # Prepare & Setup
 
 Before deploying the IBM Blockchain Developer Environment, you must first prepare a basic cluster on the IBM Container Service.

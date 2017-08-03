@@ -1,3 +1,9 @@
+---
+layout: default
+title:  3. Interacting with your Blockchain
+permalink: "/interacting/" 
+---
+
 # Interacting with your Blockchain
 
 ## Before you start

@@ -1,3 +1,9 @@
+---
+layout: default
+title:  Advanced Install
+permalink: "/advanced/" 
+---
+
 # Advanced Install
 
 ## Before you start
