@@ -1,14 +1,51 @@
 @import 'typefaces';
 @import 'colors';
 
-/*
- * css styles go here
- */
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 body {
   font-family: $font-family;
   color: $text-color;
+  margin: 0;
+  background-color: $background-1;
 }
+
+h1 {
+  font-family: $font-family;
+  font-size: 3rem;
+  color: $text-color;
+  line-height: 65px;
+  font-weight: 300;
+}
+
+h2 {
+  font-family: $font-family;
+  font-size: 2rem;
+  // letter-spacing: 0.4px;
+  line-height: 130%;
+  color: $text-color;
+  font-weight: 300;
+}
+
+h3 {
+  font-family: $font-family;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: $text-color;
+  margin-top: 3rem;
+}
+
+p {
+  font-family: $font-family;
+  color: $text-color;
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
 
 a, a:visited {
   color: $link-color;
@@ -19,24 +56,91 @@ a:hover {
   text-decoration: underline;
 }
 
+pre {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  background-color: $text-color;
+  padding: 1rem;
+  overflow-x: auto;
 
-
-
-#header {
-  padding: 4px;
+  code {
+      color: white;
+  }
 }
 
-#header .big {
-  font-size:   140%;
-  font-weight: bold;
+
+.page-container {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 20% 20% 20% 20% 20%;
+  grid-auto-flow: row;
+
+.nav {
+  // grid-column: 1 / 2;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  // grid-row: 1 / 3;
+  background-color: $black-1;
+  padding: 2rem;
+
+  hr {
+    border-color: $keyline-color;
+    margin-top: 2rem;
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+
+  p {
+    color: white;
+  }
+
+  ul {
+    padding: 0;
+    padding-bottom: 1rem;
+    padding-top: 2rem;
+    margin: 0;
+    font-size: 0.9rem;
+    li {
+      list-style: none;
+      // border-bottom: 1px solid $grey-1;
+      padding-bottom: 1rem;
+      a {
+        text-decoration: none;
+        color: white;
+        // transition: 0.4s;
+        pointer: cursor;
+
+        &:hover {
+          font-weight: 700;
+          border-left: 2px solid $first-highlight;
+          padding-left: 2rem;
+          margin-left: -2rem;
+        }
+      }
+
+      }
+  }
 }
 
-#header .small {
-  font-size:    90%;
-  color:        grey;
-  padding-left: 15px;
+.page-content {
+  // grid-column: 2 / 7;
+  // grid-row-start: 3;
+  grid-column-start: 2;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 7;
+  background-color: white;
+  padding: 3rem;
 }
 
-#nav {
-  padding: 6px;
+.page-callout {
+  background-color: blue;
+}
+
+.page-footer {
+  background-color: blue;
+}
+
 }

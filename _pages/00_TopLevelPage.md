@@ -1,7 +1,8 @@
----
+<!-- ---
 layout: default
 title:  Overview
----
+permalink: "/overview/"
+--- -->
 
 # IBM Blockchain Platform for Developers on IBM Container Service
 
@@ -34,3 +35,5 @@ At the end of the install, you will be able to obtain a public URL to access you
 ## Ready to get started?
 
 The first step is to run through the **Prepare & Setup** instructions:
+
+ADD A BUTTON LINKING TO THOSE INSTRUCTIONS
