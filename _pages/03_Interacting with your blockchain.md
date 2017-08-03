@@ -1,7 +1,8 @@
 ---
 layout: default
 title:  3. Interacting with your Blockchain
-permalink: "/interacting/" 
+permalink: "/interacting/"
+category: tutorial
 ---
 
 # Interacting with your Blockchain

@@ -1,7 +1,8 @@
 ---
 layout: default
 title:  1. Prepare & Setup
-permalink: "/setup/" 
+permalink: "/setup/"
+category: tutorial
 ---
 
 # Prepare & Setup

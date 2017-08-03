@@ -1,7 +1,8 @@
 ---
 layout: default
 title:  2. Simple Install
-permalink: "/simple/" 
+permalink: "/simple/"
+category: tutorial 
 ---
 
 # Simple Install

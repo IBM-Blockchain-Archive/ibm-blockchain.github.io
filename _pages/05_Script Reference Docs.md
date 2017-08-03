@@ -1,7 +1,8 @@
 ---
 layout: default
 title:  Script Reference Docs
-permalink: "/reference/" 
+permalink: "/reference/"
+category: advanced
 ---
 
 # Advanced Install

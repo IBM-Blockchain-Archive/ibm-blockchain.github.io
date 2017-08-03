@@ -44,7 +44,66 @@ p {
   color: $text-color;
   font-weight: 400;
   font-size: 0.9rem;
+  max-width: 50em;
+
+  code {
+      background-color: white;
+      border: 1px solid $background-1;
+      padding-top: 1px;
+      padding-bottom: 2px;
+      padding-left: 4px;
+      padding-right: 4px;
+      color: $text-color;
+      font-size: 1rem;
+  }
+
 }
+
+ul {
+  font-family: $font-family;
+  color: $text-color;
+  font-weight: 400;
+  font-size: 0.9rem;
+  max-width: 50em;
+
+  code {
+      background-color: white;
+      border: 1px solid $background-1;
+      padding-top: 1px;
+      padding-bottom: 2px;
+      padding-left: 4px;
+      padding-right: 4px;
+      color: $text-color;
+      font-size: 1rem;
+  }
+}
+
+.button {
+    position: relative;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    margin: 0;
+    box-shadow: none;
+    line-height: 40px;
+    cursor: pointer;
+    background-color: $black-1;
+    color: white;
+    flex-basis: auto;
+    width: auto;
+    padding-right: 30px;
+    padding-left: 30px;
+    font-family: $font-family;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: 0.4s cubic-bezier(0.075, 0.820, 0.165, 1.000);
+    min-width: 140px;
+  }
 
 
 a, a:visited {
@@ -71,7 +130,7 @@ pre {
 
 .page-container {
   display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-columns: repeat(5, 20%);
   grid-template-rows: 20% 20% 20% 20% 20%;
   grid-auto-flow: row;
 
@@ -132,15 +191,133 @@ pre {
   grid-row-start: 3;
   grid-row-end: 7;
   background-color: white;
-  padding: 3rem;
+  // padding: 3rem;
+  padding-top: 1rem;
+
+  ul {
+    margin-left: 0;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+
+    li {
+      padding-bottom: 1rem;
+
+      ul {
+
+      }
+    }
+  }
+
+  &.post {
+    padding: 3rem;
+
+    hr {
+      margin-top: 3rem;
+      max-width: 3rem;
+      text-align: left;
+      margin-left: 0;
+      border: 3px solid $second-highlight;
+    }
+  }
+
+  &.index {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: 3rem;
+
+    .button {
+      margin-top: 1rem;
+    }
+
+    .left-panel {
+      flex-basis: 500px;
+      flex-shrink: 1;
+      flex-grow: 2;
+      padding-left: 3rem;
+      padding-right: 3rem;
+      // background-color: red;
+    }
+    .right-panel {
+      flex-shrink: 0;
+      flex-grow: 1;
+      flex-basis: 250px;
+      padding-right: 3rem;
+      padding-left: 3rem;
+      padding-top: 2rem;
+      box-sizing: border-box;
+      // background-color: blue;
+    }
+  }
 }
 
 .page-callout {
-  background-color: blue;
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 4;
+  grid-row-end: 6;
+  background-color: $first-highlight;
+  box-shadow: 0 0 47px 0 rgba(0,0,0,0.30);
+  padding: 2rem;
+  // margin-bottom: 2rem;
+  padding-bottom: 5rem;
+  height: 400px;
+
+  h2 {
+    color: white;
+    margin-top: 0;
+  }
+
+  p {
+    color: white;
+  }
+
+  a {
+    color: white;
+    border-bottom: 1px solid white;
+    font-size: 0.9rem;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
 }
 
 .page-footer {
   background-color: blue;
+}
+
+.page-next {
+  background-color: white;
+  grid-row-start: 7;
+  grid-row-end: 8;
+  height: 275px;
+  margin-top: 2px;
+  padding: 2rem;
+  // margin-bottom: 2rem;
+  margin-right: 2px;
+
+  &.prepare {
+    grid-column-start: 2;
+    grid-column-end: 3;
+  }
+
+  &.script {
+    grid-column-start: 3;
+    grid-column-end: 4;
+  }
+
+  &.interact {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 8;
+    margin-bottom: 4rem;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
 }
 
 }

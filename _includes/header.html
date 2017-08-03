@@ -1,10 +1,11 @@
-
 <div class="nav">
         <p>IBM <b>Blockchain</b></p>
         <hr>
       <ul>
         {% for page in site.pages %}
+        {% if category == tutorial %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endif %}
         {% endfor %}
       </ul>
 </div>
