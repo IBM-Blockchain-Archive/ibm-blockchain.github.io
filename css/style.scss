@@ -130,7 +130,7 @@ pre {
 
 .page-container {
   display: grid;
-  grid-template-columns: repeat(5, 20%);
+  grid-template-columns: 310px 20% 20% 20% 20%;
   grid-template-rows: 20% 20% 20% 20% 20%;
   grid-auto-flow: row;
 
