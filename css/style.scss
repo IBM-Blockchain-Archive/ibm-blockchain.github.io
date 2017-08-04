@@ -496,6 +496,12 @@ pre {
       grid-column-start: 1;
       grid-column-end: 2;
       grid-row-start: 3;
+
+      &.post {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 3;
+      }
     }
 
     .page-callout {
