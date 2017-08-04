@@ -68,13 +68,13 @@
 
 <h3 id="3-add-the-bluemix-plugins-repo">3. Add the bluemix plugins repo</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>bx plugin repo-add bluemix https://plugins.ng.bluemix.net
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx plugin repo-add bluemix https://plugins.ng.bluemix.net
 </code></pre>
 </div>
 
 <h3 id="4-add-the-container-service-plugin">4. Add the container service plugin</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>bx plugin install container-service -r bluemix
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx plugin install container-service -r bluemix
 </code></pre>
 </div>
 
@@ -84,37 +84,37 @@
 
 <h3 id="5-point-bluemix-cli-to-production-api">5. Point Bluemix CLI to production API</h3>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>bx api api.ng.bluemix.net
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx api api.ng.bluemix.net
 </code></pre>
 </div>
 
 <h3 id="6-login-to-bluemix">6. Login to bluemix</h3>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>bx login
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx login
 </code></pre>
 </div>
 
 <p>If your id is federated in an SSO, you will have to run the following command to login:</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>bx login -sso
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx login -sso
 </code></pre>
 </div>
 
 <h3 id="7-create-a-cluster-on-ibm-container-service">7. Create a cluster on IBM Container Service</h3>
 
 <p>This will create a <strong>free cluster</strong> named <em>blockchain</em> on the IBM Container Service.</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>bx cs cluster-create --name blockchain
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx cs cluster-create --name blockchain
 </code></pre>
 </div>
 
 <h3 id="8-wait-for-the-cluster-to-be-ready">8. Wait for the cluster to be ready</h3>
 
 <p>Issue the following command to ascertain the status of your cluster:</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>bx cs clusters
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx cs clusters
 </code></pre>
 </div>
 
 <p>The process goes through the following lifecycle - <code class="highlighter-rouge">requesting</code> –&gt; <code class="highlighter-rouge">pending</code> –&gt; <code class="highlighter-rouge">deploying</code> –&gt; <code class="highlighter-rouge">normal</code>.  Initially you will see something similar to the following:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>Name         ID                                 State       Created                    Workers
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>Name         ID                                 State       Created                    Workers
 blockchain   7fb45431d9a54d2293bae421988b0080   deploying   2017-05-09T14:55:09+0000   0
 </code></pre>
 </div>
@@ -122,7 +122,7 @@ blockchain   7fb45431d9a54d2293bae421988b0080   deploying   2017-05-09T14:55:09+
 <p>Wait for the State to change to <em>normal</em>. Note that this can take upwards of 15-30 minutes. If it takes more than 30 minutes, there is an inner issue on the IBM Container Service.</p>
 
 <p>You should see the following output when the cluster is ready:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ bx cs clusters
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx cs clusters
 Listing clusters...
 OK
 Name         ID                                 State    Created                    Workers
@@ -133,17 +133,17 @@ blockchain   0783c15e421749a59e2f5b7efdd351d1   normal   2017-05-09T16:13:11+000
 
 <p>Use the following syntax to inspect on the status of the workers:
 Command:</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>bx cs workers &lt;cluster-name&gt;
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx cs workers &lt;cluster-name&gt;
 </code></pre>
 </div>
 
 <p>For example:</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>bx cs workers blockchain
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx cs workers blockchain
 </code></pre>
 </div>
 
 <p>The expected response is as follows:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ bx cs workers blockchain
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx cs workers blockchain
 Listing cluster workers...
 OK
 ID                                                 Public IP       Private IP       Machine Type   State    Status
@@ -154,25 +154,26 @@ kube-dal10-pa0783c15e421749a59e2f5b7efdd351d1-w1   169.48.140.48   10.176.190.17
 <h3 id="9-configure-kubectl-to-use-the-cluster">9. Configure kubectl to use the cluster</h3>
 
 <p>Issue the following command to download the configuration for your cluster:</p>
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>bx cs cluster-config blockchain
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>bx cs cluster-config blockchain
 </code></pre>
 </div>
 
 <p>Expected output:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Downloading cluster config for blockchain
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>Downloading cluster config <span class="k">for </span>blockchain
 OK
-The configuration for blockchain was downloaded successfully. Export environment variables to start using Kubernetes.
+The configuration <span class="k">for </span>blockchain was downloaded successfully. Export environment variables to start using Kubernetes.
 
-export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
+<span class="nb">export </span><span class="nv">KUBECONFIG</span><span class="o">=</span>/home/<span class="k">*****</span>/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
 </code></pre>
 </div>
 
-<h3 id="10-configure-kubectl-to-use-the-cluster">10. Configure kubectl to use the cluster</h3>
+<p>Use the export command printed as output above to point your kubectl cli to the cluster.  For example:</p>
 
-<p>Use the export command printed as output in <a href="./create-cluster.md#5">step 5</a> to point your kubectl cli to the cluster.</p>
-
-<p><em>Note</em>: If you are on windows, you should use <code class="highlighter-rouge">set</code> in place of <code class="highlighter-rouge">export</code>. If the scripts run in a different terminal or git bash, you should start git-bash and use the export command.</p>
+<p>(Replace this example with the output from the step above!)</p>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nb">export </span><span class="nv">KUBECONFIG</span><span class="o">=</span>/home/<span class="k">*****</span>/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
+</code></pre>
+</div>
 
 <hr />
 
