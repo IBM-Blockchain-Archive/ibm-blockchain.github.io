@@ -139,7 +139,7 @@ $ export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/bloc
 ## Congratulations!
 You have successfully created the blockchain cluster on IBM Container Service.  Next, you will deploy the Developer Environment.  Most users will want to follow the **Simple Install** instructions (Advanced and Reference are there for those who want to e.g. only set up part of the environment).
 
-ADD BUTTON LINKING TO SIMPLE INSTALL INSTRUCTIONS
+<a href="/simple" class="button">Next: Install</a>
 
 * * *
 
