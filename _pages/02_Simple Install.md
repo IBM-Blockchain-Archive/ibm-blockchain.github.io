@@ -2,10 +2,11 @@
 layout: default
 title:  2. Simple Install
 permalink: "/simple/"
-category: tutorial 
+category: tutorial
 ---
 
 # Simple Install
+* * *
 
 ## Before you start
 Make sure you have followed the instructions in **Prepare & Setup** - they are a prerequisite to any of the install instructions.
