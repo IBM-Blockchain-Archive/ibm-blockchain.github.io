@@ -135,7 +135,7 @@ pre {
 
 .page-container {
   display: grid;
-  grid-template-columns: 310px 20% 20% 20% 350px;
+  grid-template-columns: 290px 20% 20% 20% 1fr 1fr;
   // grid-template-rows: 20% 20% 20% 20% 20%;
   grid-template-rows: repeat(auto-fill, 250px);
   grid-auto-flow: row;
@@ -347,6 +347,16 @@ pre {
 
 // Media Queries
 
+
+@media only screen and (max-width: 1280px) {
+
+  .page-container {
+    display: grid;
+    grid-template-columns: 290px 20% 20% 20% 1fr;
+  }
+
+}
+
 @media only screen and (max-width: 1024px) {
 
   .page-container {
@@ -356,6 +366,15 @@ pre {
     .page-content {
       grid-column-start: 1;
       grid-column-end: 3;
+
+      &.post {
+        grid-row-start: 1;
+        grid-column-start: 2;
+        grid-column-end: 4;
+        margin-bottom: 0;
+
+      }
+
     }
 
     .page-callout {
