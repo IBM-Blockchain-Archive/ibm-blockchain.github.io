@@ -1,0 +1,5 @@
+FROM ibmblockchain/fabric-tools:TAG
+
+ADD sampleconfig /utils
+ENV FABRIC_CFG_PATH=/utils
+WORKDIR /utils
