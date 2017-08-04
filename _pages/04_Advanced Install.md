@@ -3,6 +3,7 @@ layout: default
 title:  Advanced Install
 permalink: "/advanced/"
 category: advanced
+order: 1
 ---
 
 # Advanced Install

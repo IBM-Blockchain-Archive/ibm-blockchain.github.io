@@ -3,6 +3,7 @@ layout: default
 title:  3. Interacting with your Blockchain
 permalink: "/interacting/"
 category: tutorial
+order: 4
 ---
 
 # Interacting with your Blockchain

@@ -2,10 +2,21 @@
         <p>IBM <b>Blockchain</b></p>
         <hr>
       <ul>
+        <li><a href="/">Overview</a></li>
         {% for page in site.pages %}
-        {% if category == tutorial %}
+        {% if page.category == "tutorial" | sort:"order" %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
         {% endif %}
         {% endfor %}
       </ul>
+      <hr>
+    <ul>
+      {% for page in site.pages %}
+      {% if page.category == "advanced" | sort: "order" %}
+      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+
+
 </div>
