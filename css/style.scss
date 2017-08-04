@@ -487,7 +487,7 @@ pre {
 
   }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 375px) {
   .page-container {
     grid-template-columns: 320px;
     grid-auto-flow: column;
