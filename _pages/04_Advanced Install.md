@@ -7,6 +7,7 @@ order: 1
 ---
 
 # Advanced Install
+* * *
 
 ## Before you start
 Make sure you have followed the instructions in **Prepare & Setup** - they are a prerequisite to any of the install instructions.

@@ -7,6 +7,7 @@ order: 4
 ---
 
 # Interacting with your Blockchain
+* * *
 
 ## Before you start
 Make sure you have installed the IBM Blockchain Platform for Developers on IBM Container Service.  The easiest way to achieve this is by following the **Simple Install** instructions.  Note that if you followed the Advanced Install instructions or ran through command-by-command using the Script Reference Docs, you may not have everything set up fully - if you have any trouble with these steps, try setting up an environment using the Simple Install.
