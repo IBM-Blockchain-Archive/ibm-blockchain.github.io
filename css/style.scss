@@ -56,7 +56,6 @@ p {
       color: $text-color;
       font-size: 1rem;
   }
-
 }
 
 ul {
@@ -90,7 +89,7 @@ ul {
     border: 1px solid transparent;
     margin: 0;
     box-shadow: none;
-    line-height: 40px;
+    line-height: 90px;
     cursor: pointer;
     background-color: $text-color;
     color: white;
@@ -103,20 +102,24 @@ ul {
     font-weight: 400;
     transition: 0.4s cubic-bezier(0.075, 0.820, 0.165, 1.000);
     min-width: 140px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-top: 1rem;
 
     &:hover {
       background-color: $black-1;
+      text-decoration: none;
     }
   }
 
 
-a, a:visited {
+a {
   color: $link-color;
   text-decoration: none;
-}
 
-a:hover {
-  text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 pre {
