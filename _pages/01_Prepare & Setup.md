@@ -137,3 +137,24 @@ $ export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/bloc
 You have successfully created the blockchain cluster on IBM Container Service.  Next, you will deploy the Developer Environment.  Most users will want to follow the **Simple Install** instructions (Advanced and Reference are there for those who want to e.g. only set up part of the environment).
 
 ADD BUTTON LINKING TO SIMPLE INSTALL INSTRUCTIONS
+
+* * *
+
+### Helpful commands for kubectl
+
+```
+# To get the logs of a component, use -f to follow the logs
+kubectl logs $(kubectl get pods | grep <component> | awk '{print $1}')
+# Example
+kubectl logs $(kubectl get pods | grep org1peer1 | awk '{print $1}')
+
+# To get into a running container
+kubectl exec -ti $(kubectl get pods | grep <component> | awk '{print $1}') bash
+# Example
+kubectl exec -ti $(kubectl get pods | grep ordererca | awk '{print $1}') bash
+
+# To get kubernetes UI
+kubectl proxy
+
+# On the browser go to 127.0.0.1:8001/ui
+```

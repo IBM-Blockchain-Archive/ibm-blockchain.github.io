@@ -38,11 +38,71 @@
         
         
         
+        <li><a href="/configreference/">Config Reference Docs</a></li>
+        
+        
+        
         <li><a href="/404/"></a></li>
         
         
         
+        <li><a href="/cs-offerings/free/kube-configs/blockchain-services.yaml"></a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/kube-configs/blockchain.yaml"></a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/kube-configs/chaincode_install.yaml.base"></a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/kube-configs/chaincode_instantiate.yaml.base"></a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/kube-configs/composer-identity-import.yaml"></a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/kube-configs/composer-playground-services.yaml"></a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/kube-configs/composer-playground.yaml"></a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/kube-configs/composer-rest-server-services.yaml"></a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/kube-configs/composer-rest-server.yaml"></a></li>
+        
+        
+        
+        <li><a href="/images/utils_image/sampleconfig/configtx.yaml"></a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/docs/sampleconfig/configtx.yaml"></a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/kube-configs/create_channel.yaml.base"></a></li>
+        
+        
+        
         <li><a href="/">Overview</a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/kube-configs/join_channel.yaml.base"></a></li>
+        
+        
+        
+        <li><a href="/cs-offerings/free/kube-configs/wipe_shared.yaml"></a></li>
         
         
       </ul>
@@ -181,6 +241,27 @@ The configuration <span class="k">for </span>blockchain was downloaded successfu
 <p>You have successfully created the blockchain cluster on IBM Container Service.  Next, you will deploy the Developer Environment.  Most users will want to follow the <strong>Simple Install</strong> instructions (Advanced and Reference are there for those who want to e.g. only set up part of the environment).</p>
 
 <p>ADD BUTTON LINKING TO SIMPLE INSTALL INSTRUCTIONS</p>
+
+<hr />
+
+<h3 id="helpful-commands-for-kubectl">Helpful commands for kubectl</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># To get the logs of a component, use -f to follow the logs
+kubectl logs $(kubectl get pods | grep &lt;component&gt; | awk '{print $1}')
+# Example
+kubectl logs $(kubectl get pods | grep org1peer1 | awk '{print $1}')
+
+# To get into a running container
+kubectl exec -ti $(kubectl get pods | grep &lt;component&gt; | awk '{print $1}') bash
+# Example
+kubectl exec -ti $(kubectl get pods | grep ordererca | awk '{print $1}') bash
+
+# To get kubernetes UI
+kubectl proxy
+
+# On the browser go to 127.0.0.1:8001/ui
+</code></pre>
+</div>
 
 </div>
 
