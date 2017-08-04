@@ -3,6 +3,7 @@ layout: default
 title:  Script Reference Docs
 permalink: "/reference/"
 category: advanced
+order: 2
 ---
 
 # Script Reference Docs

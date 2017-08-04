@@ -3,6 +3,7 @@ layout: default
 title:  2. Simple Install
 permalink: "/simple/"
 category: tutorial
+order: 3
 ---
 
 # Simple Install

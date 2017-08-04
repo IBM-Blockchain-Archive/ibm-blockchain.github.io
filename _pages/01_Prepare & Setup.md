@@ -3,6 +3,7 @@ layout: default
 title:  1. Prepare & Setup
 permalink: "/setup/"
 category: tutorial
+order: 2
 ---
 
 # Prepare & Setup
