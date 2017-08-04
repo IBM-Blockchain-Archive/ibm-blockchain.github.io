@@ -36,17 +36,17 @@ Finally, you have the option of passing in each configuration file to manually a
 
 ### 2. Understand the configurations
 
-Click on the following links for descriptions of each config file:
+Below are the config files used during this install process, to learn more about these see the [config reference.](/configreference)
 
-* [blockchain.yaml](./descriptions/blockchain-yaml.md)
-* [blockchain-services.yaml](./descriptions/blockchain-services-yaml.md)
-* [create_channel.yaml](./descriptions/create_channel-yaml.md)
-* [join_channel.yaml](./descriptions/join_channel-yaml.md)
-* [composer-playground.yaml](./descriptions/composer-playground-yaml.md)
-* [composer-playground-services.yaml](./descriptions/composer-playground-services-yaml.md)
-* [composer-rest-server.yaml](./descriptions/composer-rest-server-yaml.md)
-* [composer-rest-server-services.yaml](./descriptions/composer-rest-server-services-yaml.md)
-* [wipe_shared.yaml](./description/wipe_shared.yaml)
+* blockchain.yaml
+* blockchain-services.yaml
+* create_channel.yaml
+* join_channel.yaml
+* composer-playground.yaml
+* composer-playground-services.yaml
+* composer-rest-server.yaml
+* composer-rest-server-services.yaml
+* wipe_shared.yaml
 
 Now that you are familiar with the configurations above, use the following instructions to stand up a network with an orderer, two peer nodes (one per org), hyperledger-composer and a proxy that allows for network accessibility from the internet.  Once the network is properly bootstrapped, you will create a channel - ``channel1`` - and join both peers to the channel.  
 
@@ -187,11 +187,12 @@ The `joinchannel2` container fetches the channel genesis block from the orderer 
 
 ### 7. Understand the configurations
 
-Click on the following links for descriptions:
-* [composer-playground.yaml](./descriptions/composer-playground-yaml.md)
-* [composer-playground-services.yaml](./descriptions/composer-playground-services-yaml.md)
-* [composer-rest-server.yaml](./descriptions/composer-rest-server-yaml.md)
-* [composer-rest-server-services.yaml](./descriptions/composer-rest-server-services-yaml.md)
+Below are the config files used during this install process, to learn more about these see the [config reference.](/configreference)
+
+* composer-playground.yaml
+* composer-playground-services.yaml
+* composer-rest-server.yaml
+* composer-rest-server-services.yaml
 
 Now that you are familiar with the configurations above, use the following instructions to stand up a Hyperledger Composer playground and REST server.
 

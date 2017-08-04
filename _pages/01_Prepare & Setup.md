@@ -18,11 +18,11 @@ First, we will download and add the CLIs and plugins that we need to interact wi
 
 ### 1. Download and install kubectl CLI
 
-https://kubernetes.io/docs/tasks/kubectl/install/
+[https://kubernetes.io/docs/tasks/kubectl/install/](https://kubernetes.io/docs/tasks/kubectl/install/)
 
 ### 2. Download and install the Bluemix CLI
 
-http://clis.ng.bluemix.net/ui/home.html
+[http://clis.ng.bluemix.net/ui/home.html](http://clis.ng.bluemix.net/ui/home.html)
 
 ### 3. Add the bluemix plugins repo
 
@@ -136,16 +136,9 @@ $ export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/bloc
 
 * * *
 
-## Congratulations!
-You have successfully created the blockchain cluster on IBM Container Service.  Next, you will deploy the Developer Environment.  Most users will want to follow the **Simple Install** instructions (Advanced and Reference are there for those who want to e.g. only set up part of the environment).
-
-<a href="/simple" class="button">Next: Install</a>
-
-* * *
-
 ### Helpful commands for kubectl
 
-```
+```bash
 # To get the logs of a component, use -f to follow the logs
 kubectl logs $(kubectl get pods | grep <component> | awk '{print $1}')
 # Example
@@ -161,3 +154,10 @@ kubectl proxy
 
 # On the browser go to 127.0.0.1:8001/ui
 ```
+
+* * *
+
+## Congratulations!
+You have successfully created the blockchain cluster on IBM Container Service.  Next, you will deploy the Developer Environment.  Most users will want to follow the **Simple Install** instructions (Advanced and Reference are there for those who want to e.g. only set up part of the environment).
+
+<a href="/simple" class="button" >Next: Install</a>
