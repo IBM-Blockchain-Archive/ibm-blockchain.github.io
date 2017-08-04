@@ -92,7 +92,7 @@ ul {
     box-shadow: none;
     line-height: 40px;
     cursor: pointer;
-    background-color: $black-1;
+    background-color: $text-color;
     color: white;
     flex-basis: auto;
     width: auto;
@@ -103,6 +103,10 @@ ul {
     font-weight: 400;
     transition: 0.4s cubic-bezier(0.075, 0.820, 0.165, 1.000);
     min-width: 140px;
+
+    &:hover {
+      background-color: $black-1;
+    }
   }
 
 
@@ -121,6 +125,7 @@ pre {
   background-color: $text-color;
   padding: 1rem;
   overflow-x: auto;
+  max-width: 60em;
 
   code {
       color: white;
@@ -210,6 +215,7 @@ pre {
 
   &.post {
     padding: 3rem;
+    margin-bottom: 5rem;
 
     hr {
       margin-top: 3rem;
