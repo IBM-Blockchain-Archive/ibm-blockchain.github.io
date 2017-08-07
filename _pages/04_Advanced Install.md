@@ -21,6 +21,17 @@ The Advanced Install method covers the same ground as the Simple Install, but ra
 ### 1. Clone this repository
 You'll be using the config files and scripts from this repository, so start by cloning it to a directory of your choice on your local machine.
 
+```bash
+# if you are using ssh keys
+git clone git@github.com:IBM-Blockchain/ibm-blockchain.github.io.git
+
+# if you are using Personal Access Tokens
+git clone https://github.com/IBM-Blockchain/ibm-blockchain.github.io.git
+
+# change dir to use the scripts in the following sections
+cd ibm-container-service/cs-offerings/free/scripts/
+```
+
 ### 2. Set up the Blockchain Network
 
 1. Create blockchain network
