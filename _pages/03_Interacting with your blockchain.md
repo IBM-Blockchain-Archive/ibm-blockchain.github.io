@@ -46,7 +46,7 @@ Hyperledger Composer provides a tutorial for using Playground to create a basic 
 
 ### 4. Start and Access the Composer REST Server
 
-You can also deploy a Hyperledger Composer REST server after you have deployed a business network definition.
+You can also deploy a Hyperledger Composer REST server after you have deployed a business network definition. For more getting started information on this see the [Composer REST server documentation](https://hyperledger.github.io/composer/integrating/integrating-index.html)
 
 The file `kube-configs/composer-rest-server.yaml` is already set up to reflect the business network that you have deployed.
 
