@@ -22,11 +22,7 @@ The Advanced Install method covers the same ground as the Simple Install, but ra
 You'll be using the config files and scripts from this repository, so start by cloning it to a directory of your choice on your local machine.
 
 ```bash
-# if you are using ssh keys
-git clone git@github.com:IBM-Blockchain/ibm-blockchain.github.io.git
-
-# if you are using Personal Access Tokens
-git clone https://github.com/IBM-Blockchain/ibm-blockchain.github.io.git
+git clone https://github.com/IBM-Blockchain/ibm-blockchain.github.io.git ibm-container-service
 
 # change dir to use the scripts in the following sections
 cd ibm-container-service/cs-offerings/free/scripts/
@@ -64,4 +60,21 @@ CHANNEL_NAME="channel1" PEER_ADDRESS="blockchain-org2peer1:5010" MSP_CONFIGPATH=
 2. Create and start the REST server
 ```
 ./create/create_composer-rest-server.sh
+```
+
+### 4. Install and Instantiate Chaincode
+
+1. Install `example02` chaincode on Org1 peer
+```bash
+CHAINCODE_NAME="example02" CHAINCODE_VERSION="v1" MSP_CONFIGPATH="/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp"  PEER_MSPID="Org1MSP" PEER_ADDRESS="blockchain-org1peer1:5010" create/chaincode_install.sh
+```
+
+2. Install `example02` chaincode on Org2 peer
+```bash
+CHAINCODE_NAME="example02" CHAINCODE_VERSION="v1" MSP_CONFIGPATH="/shared/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp"  PEER_MSPID="Org2MSP" PEER_ADDRESS="blockchain-org2peer1:5010" create/chaincode_install.sh
+```
+
+3. Instantiate `example02` chaincode on `channel1`
+```bash
+CHANNEL_NAME="channel1" CHAINCODE_NAME="example02" CHAINCODE_VERSION="v1" MSP_CONFIGPATH="/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp"  PEER_MSPID="Org1MSP" PEER_ADDRESS="blockchain-org1peer1:5010" create/chaincode_instantiate.sh
 ```
