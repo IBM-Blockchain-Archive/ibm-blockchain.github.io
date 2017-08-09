@@ -19,7 +19,7 @@ For bootstrapping the blockchain network, we need to first generate crypto mater
 * two peer-orgs each with two peers
 * one admin user and two other users for each peer-org
 
-See the yaml file that is being used [crypto-config.yaml](./crypto-config.yaml) which can also be found in tools image at `/sampleconfig/crypto-config.yaml`. Following is the command used to generate the crypto-material.
+See the yaml file that is being used [crypto-config.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/sampleconfig/crypto-config.yaml) which can also be found in tools image at `/sampleconfig/crypto-config.yaml`. Following is the command used to generate the crypto-material.
 
 ```bash
 cryptogen generate --config /sampleconfig/crypto-config.yaml
@@ -28,7 +28,7 @@ cryptogen generate --config /sampleconfig/crypto-config.yaml
 `cryptogen` is the tool that Hyperledger Fabric provides to generate crypto-material in a particular directory format that the components expect, for ease of setting up a basic network. More details can be found on [Hyperledger Fabric docs for crypto-gen](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html?highlight=cryptogen#crypto-generator).
 
 
-From kubernetes point of view, in the utils pod, a container named `cryptogen` is defined which uses the same command as described above to generate crypto-material. Here is the block from [blockchain.yaml](../../kube-configs/blockchain.yaml)
+From kubernetes point of view, in the utils pod, a container named `cryptogen` is defined which uses the same command as described above to generate crypto-material. Here is the block from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/free/kube-configs/blockchain.yaml)
 
 ```bash
 name: cryptogen
@@ -43,14 +43,14 @@ name: cryptogen
 * * *
 ### Generating Orderer Genesis Block (configtx.yaml)
 
-After generating the crypto-material the next step in the process is to generate orderer genesis block. A `genesis block` is the configuration block that initializes a blockchain network or channel, and also serves as the first block on a chain. This can be done using the `configtxgen` tool which is also available in the tools image. The configtxgen tool takes [configtx.yaml](./configtx.yaml) as input. The yaml has comments and is self explanatory.
+After generating the crypto-material the next step in the process is to generate orderer genesis block. A `genesis block` is the configuration block that initializes a blockchain network or channel, and also serves as the first block on a chain. This can be done using the `configtxgen` tool which is also available in the tools image. The configtxgen tool takes [configtx.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/sampleconfig/configtx.yaml) as input. The yaml has comments and is self explanatory.
 
 To get the genesis block for orderer we run the following command
 ```bash
 configtxgen -profile TwoOrgsOrdererGenesis -outputBlock orderer.block
 ```
 
-From kubernetes point of view, in the utils pods, a container named `configtxgen` is defined which uses the same command as described above to generate orderer genesis block. Here is the block from [blockchain.yaml](../../kube-configs/blockchain.yaml)
+From kubernetes point of view, in the utils pods, a container named `configtxgen` is defined which uses the same command as described above to generate orderer genesis block. Here is the block from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/free/kube-configs/blockchain.yaml)
 
 ```bash
 name: configtxgen
@@ -81,9 +81,9 @@ name: configtxgen
 ### Fabric CA configs (ca.yaml's)
 
 The fabric-ca now has capability to run more than one instances of the ca-server in the same process. This means that we need to pass all those yamls to start multiple ca-servers inside the same kubernetes container. These yamls can be found in the tools images in `/sampleconfig/cas`, there are 3 yamls one for orderer-org CA and one each for two peer-org's CA.
-* [Orderer-org CA](./cas/ca.yaml)
-* [Peer-org1 CA](./cas/org1/ca.yaml)
-* [Peer-org2 CA](./cas/org2/ca.yaml)
+* [Orderer-org CA](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/sampleconfig/cas/ca.yaml)
+* [Peer-org1 CA](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/sampleconfig/cas/org1/ca.yaml)
+* [Peer-org2 CA](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/sampleconfig/cas/org2/ca.yaml)
 
 * * *
 ### Kubernetes config to bootsrtap and start the network (blockchain.yaml)
@@ -100,7 +100,7 @@ For bootstrapping purposes, we need to first generate crypto material for all th
 * two Peer Orgs (``Org1`` & ``Org2``) with two peer nodes for each
 * one admin user and two standard users for each Peer Org
 
-The [crypto-config.yaml](../sampleconfig/crypto-config.yaml) file used to generate the crypto material is already added to fabric-tools image at `/sampleconfig/crypto-config.yaml`.
+The [crypto-config.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/sampleconfig/crypto-config.yaml) file used to generate the crypto material is already added to fabric-tools image at `/sampleconfig/crypto-config.yaml`.
 
 The following is the command used to generate the crypto-material:
 
@@ -108,7 +108,7 @@ The following is the command used to generate the crypto-material:
 cryptogen generate --config /sampleconfig/crypto-config.yaml
 ```
 
-Within the kubernetes config, in the utils pod, a container defined as `cryptogen` exercises the above command to generate the requisite crypto material.  The following snippet from [blockchain.yaml](../../kube-configs/blockchain.yaml), shows the codeblock where the cryptogen container is defined and the `generate` command is passed:
+Within the kubernetes config, in the utils pod, a container defined as `cryptogen` exercises the above command to generate the requisite crypto material.  The following snippet from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/free/kube-configs/blockchain.yaml), shows the codeblock where the cryptogen container is defined and the `generate` command is passed:
 
 ```bash
   - name: cryptogen
@@ -143,7 +143,7 @@ Apart from generating the crypto material, the container also performs the follo
 
 After generating the crypto-material the next step generating orderer genesis block.
 
-A `genesis block` is the configuration block that initializes a blockchain network or channel, and also serves as the first block on a chain. This can be done using the `configtxgen` tool which is also available in the tools image. The configtxgen tool takes [configtx.yaml](../sampleconfig/configtx.yaml) as input. The yaml has comments and is self explanatory. See the [Hyperledger Fabric docs](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html?highlight=cryptogen#configuration-transaction-generator)
+A `genesis block` is the configuration block that initializes a blockchain network or channel, and also serves as the first block on a chain. This can be done using the `configtxgen` tool which is also available in the tools image. The configtxgen tool takes [configtx.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/sampleconfig/configtx.yaml) as input. The yaml has comments and is self explanatory. See the [Hyperledger Fabric docs](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html?highlight=cryptogen#configuration-transaction-generator)
 for more details on the implementation and underlying mechanics of `configtxgen`.
 
 To get the genesis block for orderer we run the following command
@@ -153,7 +153,7 @@ configtxgen -profile TwoOrgsOrdererGenesis -outputBlock orderer.block
 
 Within the kubernetes config, in the utils pod, a container defined as `configtxgen`
 exercises the above command to generate the orderer genesis block.  The following
-snippet from [blockchain.yaml](../../kube-configs/blockchain.yaml), shows the
+snippet from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/free/kube-configs/blockchain.yaml), shows the
 codeblock:
 
 ```bash
