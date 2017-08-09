@@ -10,7 +10,7 @@ order: 4
 * * *
 
 ## Before you start
-Make sure you have installed the IBM Blockchain Platform for Developers on IBM Container Service.  The easiest way to achieve this is by following the **Simple Install** instructions.  Note that if you followed the Advanced Install instructions or ran through command-by-command using the Script Reference Docs, you may not have everything set up fully - if you have any trouble with these steps, try setting up an environment using the Simple Install.
+Make sure you have installed the IBM Blockchain Platform for Developers on IBM Container Service.  The easiest way to achieve this is by following the  **Prepare & Setup** steps, and then followed the **Simple Install** instructions.  Note that if you followed the Advanced Install instructions or ran through command-by-command using the Script Reference Docs, you may not have everything set up fully - if you have any trouble with these steps, try setting up an environment using the Simple Install.
 
 ### 1. Get the IP Address of your cluster
 
@@ -19,7 +19,7 @@ Determine the public IP address of your cluster by running the following command
 bx cs workers blockchain
 ```
 
-The output should be similiar to the following:
+The output should be similar to the following:
 ```
 Listing cluster workers...
 OK
@@ -40,15 +40,21 @@ http://YOUR_PUBLIC_IP_HERE:31080
 
 ### 3. Develop Your Business Network
 
-Hyperledger Composer provides a tutorial for using Playground to create a basic Business Network.
+Hyperledger Composer provides a tutorial for using Playground to create a basic Business Network.  We recommend you follow this to get to grips with the programming model:
 
 [Hyperledger Composer playground guide](https://hyperledger.github.io/composer/tutorials/playground-guide.html)
 
+**Note:** If you'd prefer to develop your applications locally, we recommend spending some more time on the Hyperledger Composer documentation, and exploring the Development Environment install instructions.  You can install a VSCode Extension for Composer, and use CLI commands to package up what you create into a .BNA file (Business Network Archive file).  These files can be imported into Playground to easily deploy them to your cloud environment.
+
+Once you've deployed a Business Network Definition that you're happy to start writing some applications against, you can expose it as a REST API...
+
 ### 4. Start and Access the Composer REST Server
 
-You can also deploy a Hyperledger Composer REST server after you have deployed a business network definition. For more getting started information on this see the [Composer REST server documentation](https://hyperledger.github.io/composer/integrating/integrating-index.html)
+You can deploy a Hyperledger Composer REST Server after you have deployed a Business Network Definition.  Whilst you _could_ do this as soon as you've accessed Playground (as the Basic Sample Network will be deployed by default), we recommend you start by developing your Business Network Definition and only stand up the REST Server when you've got something you want to develop applications against.
 
-The file `kube-configs/composer-rest-server.yaml` is already set up to reflect the business network that you have deployed.
+For more getting started information on this see the [Composer REST server documentation](https://hyperledger.github.io/composer/integrating/integrating-index.html)
+
+Unless you've done something outside the scope of these instructions, the file `kube-configs/composer-rest-server.yaml` is already set up to work with the Business Network that you have deployed.
 
 Create the Composer REST server services:
 ```
@@ -77,4 +83,4 @@ http://YOUR_PUBLIC_IP_HERE:31090/explorer/
 ```
 
 ## Congratulations!
-You have successfully created the Hyperledger Composer playground and Hyperledger Composer REST server.
+You've got a full development environment up and running!  Go create something exciting with IBM Blockchain!
