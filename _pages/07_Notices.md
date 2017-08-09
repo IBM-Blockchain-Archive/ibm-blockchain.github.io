@@ -1,7 +1,7 @@
 ---
 layout: default
-title:  IBM Container service disclaimer
-permalink: "/disclaimer/"
+title:  IBM Container service notices
+permalink: "/notices/"
 category: advanced
 ---
 
