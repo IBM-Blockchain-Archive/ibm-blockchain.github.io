@@ -22,11 +22,7 @@ This page covers the same ground as the Simple Install and Advanced Install, but
 You'll be using the config files and scripts from this repository, so start by cloning it to a directory of your choice on your local machine.
 
 ```bash
-# if you are using ssh keys
-git clone git@github.com:IBM-Blockchain/ibm-blockchain.github.io.git
-
-# if you are using Personal Access Tokens
-git clone https://github.com/IBM-Blockchain/ibm-blockchain.github.io.git
+git clone https://github.com/IBM-Blockchain/ibm-blockchain.github.io.git ibm-container-service
 
 # change dir to use the scripts in the following sections
 cd ibm-container-service/cs-offerings/free/scripts/
@@ -86,17 +82,17 @@ kubectl delete -f kube-configs/create_channel.yaml
 ```
 
 Next, run the `createchannel` pod to create the channel.
-```
+```bash
 kubectl create -f kube-configs/create_channel.yaml
 ```
 
 You can check if the container completed successfully by looking at the status of the container:
-```
+```bash
 kubectl get pod createchannel
 ```
 
 You can check if the channel creation was successful by following the logs:
-```
+```bash
 kubectl logs -f createchannel
 ```
 
@@ -112,26 +108,26 @@ Use an editor to open the ``join_channel.yaml.base`` file (located in the ``kube
 * Under the `joinchannel1` container remove the `%CHANNEL_NAME%` placeholder values for the `CHANNEL_NAME` variable and replace them with `channel1`.
 * Ensure that the `PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org1peer1:5010`).
 * Ensure that the `CORE_PEER_LOCALMSPID` is properly set with `Org1MSP`
-* Ensure that `MSP_CONFIGPATH` is properly set to MSP folder of the admin user for Org1 as `/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp`
+* Ensure that `MSP_CONFIGPATH` is properly set to MSP folder of the admin user for Org1 as `/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp` 
 Save the file as `join_channel.yaml` in the same sub-directory .  **Note**: you are removing the `base` suffix with this renaming.
 
 First, make sure any old `joinchannel` containers are removed:
-```
+```bash
 kubectl delete -f kube-configs/join_channel.yaml
 ```
 
 Next, run the `joinchannel` pod to join the Org1 peer to the channel.
-```
+```bash
 kubectl create -f kube-configs/join_channel.yaml
 ```
 
 You can check if the container completed successfully by looking at the status of the container:
-```
+```bash
 kubectl get pod joinchannel
 ```
 
 You can check if the peer successfully joined the channel by following the logs:
-```
+```bash
 kubectl logs -f joinchannel
 ```
 
@@ -155,22 +151,22 @@ Use an editor to open the ``join_channel.yaml.base`` file (located in the ``kube
 Save the file as `join_channel.yaml` in the same sub-directory .  **Note**: you are removing the `base` suffix with this renaming.
 
 First, make sure any old `joinchannel` containers are removed:
-```
+```bash
 kubectl delete -f kube-configs/join_channel.yaml
 ```
 
 Next, run the `joinchannel` pod to join the Org2 peer to the channel.
-```
+```bash
 kubectl create -f kube-configs/join_channel.yaml
 ```
 
 You can check if the container completed successfully by looking at the status of the container:
-```
+```bash
 kubectl get pod joinchannel
 ```
 
 You can check if the peer successfully joined the channel by following the logs:
-```
+```bash
 kubectl logs -f joinchannel
 ```
 
@@ -201,26 +197,26 @@ Now that you are familiar with the configurations above, use the following instr
 Ensure you are in the `cs-offerings/free` sub-directory when executing the following commands.
 
 First, create the Composer playground services. This provides the containers with the relevant DNS setup info, in turn allowing them to communicate amongst one another:
-```
+```bash
 kubectl create -f kube-configs/composer-playground-services.yaml
 ```
 
 ### 9. Create Hyperledger Composer playground
 
 Now create the Composer playground.
-```
+```bash
 kubectl create -f kube-configs/composer-playground.yaml
 ```
 
 ### 10. Access the playground
 
 Determine the public IP address of the cluster by running the following command:
-```
+```bash
 bx cs workers blockchain
 ```
 
 The output should be similiar to the following:
-```
+```bash
 Listing cluster workers...
 OK
 ID                                                 Public IP      Private IP       Machine Type   State    Status
@@ -228,7 +224,7 @@ kube-dal10-pabdda14edc4394b57bb08d53c149930d7-w1   169.48.140.99   10.171.239.18
 ```
 
 Using the value of the `Public IP` (in this example 169.48.140.99) you can now access the Hyperledger Composer Playground at:
-```
+```bash
 http://YOUR_PUBLIC_IP_HERE:31080
 ```
 
@@ -239,23 +235,23 @@ You can also deploy a Hyperledger Composer REST server after you have deployed a
 The file `kube-configs/composer-rest-server.yaml` is already set up to reflect the business network that you have deployed.
 
 Create the Composer REST server services:
-```
+```bash
 kubectl create -f kube-configs/composer-rest-server-services.yaml
 ```
 
 Create the Composer REST server:
-```
+```bash
 kubectl create -f kube-configs/composer-rest-server.yaml
 ```
 
 ### 12. Access Hyperledger Composer REST Server
 
 Determine the public IP address of the cluster by running the following command:
-```
+```bash
 bx cs workers blockchain
 ```
 The output should be similiar to the following:
-```
+```bash
 Listing cluster workers...
 OK
 ID                                                 Public IP      Private IP       Machine Type   State    Status
@@ -268,3 +264,133 @@ http://YOUR_PUBLIC_IP_HERE:31090/explorer/
 
 ## Congratulations!
 You have successfully created the Hyperledger Composer playground and Hyperledger Composer REST server.
+
+## Install and Instantiate Chaincode example02
+
+### 13. Install `example02` chaincode on Org1 peer
+
+Use an editor to open the ``chaincode_install.yaml.base`` file (located in the ``kube-configs`` sub-directory).
+* Under the `chaincodeinstall` container remove the `%CHAINCODE_NAME%` placeholder values for the `CHAINCODE_NAME` variable and replace them with `example02`.
+* Under the `chaincodeinstall` container remove the `%CHAINCODE_VERSION%` placeholder values for the `CHAINCODE_VERSION` variable and replace them with `v1`.
+* Ensure that the `CORE_PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org1peer1:5010`).
+* Ensure that the `CORE_PEER_LOCALMSPID` is properly set with `Org1MSP`
+* Ensure that `CORE_PEER_MSPCONFIGPATH` is properly set to MSP folder of the admin user for Org1 as `/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp`
+
+Save the file as `chaincode_install.yaml` in the same sub-directory .  **Note**: you are removing the `base` suffix with this renaming.
+
+First, make sure any old `chaincodeinstall` containers are removed:
+```bash
+kubectl delete -f kube-configs/chaincode_install.yaml
+```
+
+Next, run the `chaincodeinstall` pod to install chaincode on Org1 peer
+```bash
+kubectl create -f kube-configs/chaincode_install.yaml
+```
+
+You can check if the container completed successfully by looking at the status of the container:
+```bash
+kubectl get pod chaincodeinstall
+```
+
+You can check if the peer successfully joined the channel by following the logs:
+```bash
+kubectl logs -f chaincodeinstall
+```
+
+The following output in the logs indicates a successful install:
+```
+[chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
+[chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
+[main] main -> INFO 003 Exiting.....
+```
+
+### What's happening here?
+
+The `chaincodeinstall` container clones the example02 chaincode from the fabric repo, it then uses the admin user creds for Org1's peer and installs the chaincode on Org1 peer. In the same way by just changing the `git clone` command and the path, you can install some other chaincode as well.
+
+### 14. Install `example02` chaincode on Org2 peer
+
+Use an editor to open the ``chaincode_install.yaml.base`` file (located in the ``kube-configs`` sub-directory).
+* Under the `chaincodeinstall` container remove the `%CHAINCODE_NAME%` placeholder values for the `CHAINCODE_NAME` variable and replace them with `example02`.
+* Under the `chaincodeinstall` container remove the `%CHAINCODE_VERSION%` placeholder values for the `CHAINCODE_VERSION` variable and replace them with `v1`.
+* Ensure that the `CORE_PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org2peer1:5010`).
+* Ensure that the `CORE_PEER_LOCALMSPID` is properly set with `Org2MSP`
+* Ensure that `CORE_PEER_MSPCONFIGPATH` is properly set to MSP folder of the admin user for Org2 as `/shared/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp`
+
+Save the file as `chaincode_install.yaml` in the same sub-directory .  **Note**: you are removing the `base` suffix with this renaming.
+
+First, make sure any old `chaincodeinstall` containers are removed:
+```bash
+kubectl delete -f kube-configs/chaincode_install.yaml
+```
+
+Next, run the `chaincodeinstall` pod to install chaincode on Org1 peer
+```bash
+kubectl create -f kube-configs/chaincode_install.yaml
+```
+
+You can check if the container completed successfully by looking at the status of the container:
+```bash
+kubectl get pod chaincodeinstall
+```
+
+You can check if the peer successfully joined the channel by following the logs:
+```bash
+kubectl logs -f chaincodeinstall
+```
+
+The following output in the logs indicates a successful install:
+```
+[chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
+[chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
+[main] main -> INFO 003 Exiting.....
+```
+
+### What's happening here?
+
+The `chaincodeinstall` container clones the example02 chaincode from the fabric repo, it then uses the admin user creds for Org1's peer and installs the chaincode on Org1 peer. In the same way by just changing the `git clone` command and the path, you can install some other chaincode as well.
+
+### 15. Instantiate `example02` chaincode on `channel1`
+
+Use an editor to open the ``chaincode_instantiate.yaml.base`` file (located in the ``kube-configs`` sub-directory).
+* Under the `chaincodeinstantiate` container remove the `%CHANNEL_NAME%` placeholder values for the `CHANNEL_NAME` variable and replace them with `channel1`.
+* Under the `chaincodeinstantiate` container remove the `%CHAINCODE_NAME%` placeholder values for the `CHAINCODE_NAME` variable and replace them with `example02`.
+* Under the `chaincodeinstantiate` container remove the `%CHAINCODE_VERSION%` placeholder values for the `CHAINCODE_VERSION` variable and replace them with `v1`.
+* Ensure that the `CORE_PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org1peer1:5010`).
+* Ensure that the `CORE_PEER_LOCALMSPID` is properly set with `Org1MSP`
+* Ensure that `CORE_PEER_MSPCONFIGPATH` is properly set to MSP folder of the admin user for Org1 as `/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp`
+
+Save the file as `chaincode_instantiate.yaml` in the same sub-directory .  **Note**: you are removing the `base` suffix with this renaming.
+
+First, make sure any old `chaincodeinstantiate` containers are removed:
+```bash
+kubectl delete -f kube-configs/chaincode_instantiate.yaml
+```
+
+Next, run the `chaincodeinstantiate` pod to instantiate example02 chaincode on channel1
+```bash
+kubectl create -f kube-configs/chaincode_instantiate.yaml
+```
+
+You can check if the container completed successfully by looking at the status of the container:
+```bash
+kubectl get pod chaincodeinstantiate
+```
+
+You can check if the peer successfully joined the channel by following the logs:
+```bash
+kubectl logs -f chaincodeinstantiate
+```
+
+The following output in the logs indicates a successful install:
+```
+[chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
+[chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
+[main] main -> INFO 003 Exiting.....
+```
+
+### What's happening here?
+
+The `chaincodeinstantiate` container instantiates the example02 chaincode, it then uses the admin user creds for Org1's peer. Instainate transaction happens on the channel and all the peers that have joined the channel now will get a block that has the instantiate transacation from the orderer.
+

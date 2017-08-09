@@ -20,14 +20,7 @@ The Simple Install method is to use the all in one script - ``create_all.sh`` - 
 You'll be using the config files and scripts from this repository, so start by cloning it to a directory of your choice on your local machine.
 
 ```bash
-# if you are using ssh keys
-git clone git@github.com:IBM-Blockchain/ibm-blockchain.github.io.git
-
-# if you are using Personal Access Tokens
-git clone https://github.com/IBM-Blockchain/ibm-blockchain.github.io.git
-
-# change dir to use the scripts in the following sections
-cd ibm-container-service/cs-offerings/free/scripts/
+git clone https://github.com/IBM-Blockchain/ibm-blockchain.github.io.git ibm-container-service
 ```
 
 ### 2. Run the script
