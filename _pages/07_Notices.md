@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  IBM Container service notices
+title:  IBM Notices
 permalink: "/notices/"
 category: advanced
 ---
