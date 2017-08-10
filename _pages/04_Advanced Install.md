@@ -18,14 +18,14 @@ The Advanced Install method covers the same ground as the Simple Install, but ra
 
 **Why choose Advanced Install?**  The Simple Install is the best option for most users - if you've already successfully followed those instructions, you don't need to follow these!  You may wish to follow these instructions if you want to stop part way through the install process e.g. not set up Composer Playground.
 
-### 1. Clone this repository
+### 1. Clone ibm-container-service repository
 You'll be using the config files and scripts from this repository, so start by cloning it to a directory of your choice on your local machine.
 
 ```bash
-git clone https://github.com/IBM-Blockchain/ibm-blockchain.github.io.git ibm-container-service
+git clone https://github.com/IBM-Blockchain/ibm-container-service
 
 # change dir to use the scripts in the following sections
-cd ibm-container-service/cs-offerings/free/scripts/
+cd cs-offerings/free/scripts/
 ```
 
 ### 2. Set up the Blockchain Network
