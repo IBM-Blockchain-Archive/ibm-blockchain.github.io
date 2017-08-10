@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  IBM Notices
+title:  Legal Notices
 permalink: "/notices/"
 category: advanced
 ---
@@ -10,7 +10,7 @@ category: advanced
 ## The following packages are distributed under the Apache 2.0 license.  
 
 docker/go-units, docker/pkg/symlink,google/gofuzz, klauspost/crc32, looplab/fsm, docker/docker, docker/engine-api, fabric-ca-server
-google/certificate-transparency, google/certificate-transparency/go, gopkg.in/yaml.v2, hyperledger/fabric, inconshreveable/mousetrap
+google/certificate-transparency, google/certificate-transparency/go, gopkg.in/yaml.v2, hyperledger/fabric, hyperledger/composer, inconshreveable/mousetrap
 opencontainers/runc, spf13/afero, spf13/cobra, yaml.v2
 
 Apache License
