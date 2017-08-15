@@ -18,14 +18,14 @@ This page covers the same ground as the Simple Install and Advanced Install, but
 
 **Why choose this method?**  The Simple Install is the best option for most users - if you've already successfully followed those instructions, you don't need to follow these!  You may wish to follow these instructions if you want to stop part way through the install process e.g. not set up Composer Playground, or fully understand what the scripts are doing,
 
-### 1. Clone this repository
+### 1. Clone ibm-container-service repository
 You'll be using the config files and scripts from this repository, so start by cloning it to a directory of your choice on your local machine.
 
 ```bash
-git clone https://github.com/IBM-Blockchain/ibm-blockchain.github.io.git ibm-container-service
+git clone https://github.com/IBM-Blockchain/ibm-container-service
 
 # change dir to use the scripts in the following sections
-cd ibm-container-service/cs-offerings/free/scripts/
+cd cs-offerings/free/scripts/
 ```
 
 Finally, you have the option of passing in each configuration file to manually accomplish each step.  If you choose to go this route, you should familiarize yourself with each individual yaml file.  Use the the subsequent section to explore the configs.
@@ -267,7 +267,7 @@ You have successfully created the Hyperledger Composer playground and Hyperledge
 
 ## Install and Instantiate Chaincode example02
 
-### 13. Install `example02` chaincode on Org1 peer
+### 13. Install `example02` chaincode on `Org1 peer`
 
 Use an editor to open the ``chaincode_install.yaml.base`` file (located in the ``kube-configs`` sub-directory).
 * Under the `chaincodeinstall` container remove the `%CHAINCODE_NAME%` placeholder values for the `CHAINCODE_NAME` variable and replace them with `example02`.
@@ -309,7 +309,7 @@ The following output in the logs indicates a successful install:
 
 The `chaincodeinstall` container clones the example02 chaincode from the fabric repo, it then uses the admin user creds for Org1's peer and installs the chaincode on Org1 peer. In the same way by just changing the `git clone` command and the path, you can install some other chaincode as well.
 
-### 14. Install `example02` chaincode on Org2 peer
+### 14. Install `example02` chaincode on `Org2 peer`
 
 Use an editor to open the ``chaincode_install.yaml.base`` file (located in the ``kube-configs`` sub-directory).
 * Under the `chaincodeinstall` container remove the `%CHAINCODE_NAME%` placeholder values for the `CHAINCODE_NAME` variable and replace them with `example02`.

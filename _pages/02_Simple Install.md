@@ -16,11 +16,11 @@ Make sure you have followed the instructions in **Prepare & Setup** - they are a
 
 The Simple Install method is to use the all in one script - ``create_all.sh`` - which will call a series of scripts to ultimately bootstrap a blockchain network, join peers to a channel and launch the Composer playground.  You can then use Composer Playground to create and deploy Business Networks to your blockchain network.
 
-### 1. Clone this repository
+### 1. Clone ibm-container-service repository
 You'll be using the config files and scripts from this repository, so start by cloning it to a directory of your choice on your local machine.
 
 ```bash
-git clone https://github.com/IBM-Blockchain/ibm-blockchain.github.io.git ibm-container-service
+git clone https://github.com/IBM-Blockchain/ibm-container-service
 ```
 
 ### 2. Run the script
