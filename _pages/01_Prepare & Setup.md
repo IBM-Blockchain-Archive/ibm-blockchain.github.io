@@ -30,6 +30,10 @@ First, we will download and add the CLIs and plugins that we need to interact wi
 $ bx plugin repo-add bluemix https://plugins.ng.bluemix.net
 ```
 
+Note: If you get the following error, it means that the repository bluemix already exists on your computer. Thus, you can ignore the error and move to the next step.
+
+`Plug-in repo named ‘bluemix’ already exists. Try a different name.`
+
 ### 4. Add the container service plugin
 
 ```bash
