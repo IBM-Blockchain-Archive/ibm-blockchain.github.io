@@ -6,25 +6,29 @@ category: hsbn
 order: 1
 ---
 
-# Deploying Hyperledger Composer Business Network to HSBN v1 Beta on Bluemix
-This guide will help you deploy your Hyperledger Composer Business Network to an HSBN v1 Beta. It will show you how you can deploy your business network archive (.bna) file to the HSBN v1 Beta.
+# Deploying Hyperledger Composer Business Network to IBM Blockchain Platform Enterprise Plan on IBM Cloud
+
+IBM Blockchain Platform's developer tools help you create a **Business Network Definition**, which can then be packaged up into a **.bna** file (Business Network Archive).  The developer environments allow you to deploy .bna files to a local or cloud blockchain for development and sharing.
+This guide deals with the next step in a pilot or production use case: activating your business network by deploying the .bna to a production environment - the IBM Blockchain Platform Service on IBM Cloud.
 
 > ### Note
 > These directions are applicable for the current version of Hyperledger Fabric (v1.0.1) supported by HSBN v1 and that this is subject to change.
-> To develop your business network archive please refer to the [Developing Business Networks](https://hyperledger.github.io/composer/business-network/business-network-index.html) documentation.
+> When you start this guide, you should already have your .bna file ready: for a guide to  developing your business network archive please refer to the [Developing Business Networks](https://hyperledger.github.io/composer/business-network/business-network-index.html) documentation provided for Hyperledger Composer.
 
-## Requirements
-You will need to install the Composer Development Environment or work with Composer Playground to create the required business network archive (.bna) file. You can read about installation here: [Installing Hyperledger Composer](https://hyperledger.github.io/composer/installing/installing-index.html).
-You will also need access to a Bluemix HSBN V1 Service. You can register for an account at Bluemix.net and you can create a service via the [Bluemix Blockchain Service](https://console.ng.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south).
+## Before You Start
+1. You will need to install the Composer Development Environment to create the required business network archive (.bna) file. You can read about installation here: [Installing Hyperledger Composer](https://hyperledger.github.io/composer/installing/development-tools.html).  Guidance on writing your business network is also available in the Hyperledger documentation.
+2. You will also need access to an Enterprise Service instance on IBM Cloud. You can register for an account at Bluemix.net and you can create a service via the [IBM Blockchain Service](https://console.ng.bluemix.net/catalog/services/blockchain).
 You will need to create a channel and at least one peer.
-Note:  If you have been working with a local instance of HLFV1, then you may have existing credentials for users like admin or PeerAdmin in your ``homedir/.composer-credentials`` directory. I highly recommend pointing to a different directory for your Bluemix HSBN credentials to avoid confusion (e.g. ``.composer-credentials-hsbn-mychannel``) to ensure that you are using the Bluemix HLFV1 credentials versus your local credentials later.
 
 ---
 
-## Creating a connection.json file for Bluemix HSBN v1
-If you have been working with Composer and fabric locally, you have likely run the steps documented as [Installing a development environment](https://hyperledger.github.io/composer/installing/development-tools.html) in Step 2 of those instructions you should have created a ``fabric-tools`` directory and created a composer connection profile. For example if you are developing on a Mac, you will likely find the directory under
- ``/Users/myUserId/.composer-connection-profiles/hlfv1.``
-Each connection profile should contain a ``connection.json`` file. For Bluemix, create a new directory under the ``.composer-connection-profiles``, e.g. (bmx-hlfv1). This will be the name of the profile that you will use when working with Hyperledger composer and your HSBN service.
+## Creating a connection.json file for your IBM Cloud Blockchain Service instance
+Create a directory to store your Bluemix connection details e.g. ``/Users/myUserId/.composer-connection-profiles/bmx-hlfv1``
+
+> When you set up the Local Development Environment (see [Installing a development environment](https://hyperledger.github.io/composer/installing/development-tools.html) if you have yet to do this)  you should already have created part of this directory structure.  If you are developing on a Mac, for example, you will already have a directory structure like
+ ``/Users/myUserId/.composer-connection-profiles/hlfv1``.
+
+Each connection profile should contain a ``connection.json`` file. For the IBM Cloud Service instance, create a new directory under the ``.composer-connection-profiles``, e.g. (bmx-hlfv1). This will be the name of the profile that you will use when working with Hyperledger composer and your HSBN service.
 ```bash
 mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
 cd ~/.composer-connection-profiles/bmx-hlfv1
@@ -32,6 +36,7 @@ cd ~/.composer-connection-profiles/bmx-hlfv1
 You should now have a directory structure which looks like ``/Users/myUserId/.composer-connection-profiles/bmx-hlfv1``
 Create a file in the newly created directory using your favorite editor and name it connection.json.
 You can use the following as a code template for your ``connection.json`` file:
+
 ```json
 {
     "name": "bmx-hlfv1",
@@ -104,6 +109,8 @@ Currently HSBN uses a common tls certificate for the orderers and peers. For eac
 
 > ### Important
 > You **must** perform this step first before creating your channel. Failure to do so will mean you won’t be able to start the business network.
+>
+> If you have been working with a local instance of HLFV1, then you may have existing credentials for users like admin or PeerAdmin in your ``homedir/.composer-credentials`` directory. It is highly recommend to point to a different directory for your Bluemix HSBN credentials (e.g. ``.composer-credentials-hsbn-mychannel``) to ensure that you are using the Bluemix HLFV1 credentials versus your local credentials later.
 
 1. The first step is to request certificates for an identity that is a member of your Membership Service Provider (msp). in your service credentials document under **certificateAuthorities** should be an attribute **registrar** containing attributes for **enrollId** and **enrollSecret**. For example:
 ```
@@ -129,7 +136,7 @@ This will download 3 files into the **.identityCredentials** directory under you
 
 ## Creating your channel.
 
-1. Select **Channels** from the navigation menu on the left panel and click the ***New Channel*** button
+1. Select **Channels** from the navigation menu on the left panel and click the **New Channel** button
 2. Enter a Channel Name (Ensure it matches the name you have specified in your connection profile for the channel attribute) and optional description and press **Next**.
 3. Give permissions as required and press **Next**.
 4. Select the policy of the number of Operators that need to accept Channel updates and submit Request.
@@ -140,10 +147,12 @@ This will download 3 files into the **.identityCredentials** directory under you
 
 ---
 
-## Importing in a new identity to Administer your Business Network Archive
+## Importing a new identity to administer your Business Network Archive
 
-Now we are going to create an identity in composer using the certificates requested previously. This identity not only has authority now to install chaincode onto the peers you have uploaded the public certificate to but will also have issuer authority for the certificate authorities.
+Next we are going to create an identity in Composer using the certificates requested previously. This new identity will have the authority to install chaincode onto the peers that have your uploaded public certificate and will be an issuer for the certificate authorities.
+
 To create the new id, run the following command:
+
 ```bash
 composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
 ```
@@ -153,7 +162,13 @@ Where ``bmx-hlfv1`` is the name of the composer connection profile that you prev
 
 ## Deploying the Business Network Archive
 
-Now you can deploy your .bna file to your Bluemix HSBN instance. Simply point to the appropriate connection profile using the newly created admin id (e.g. testAdmin)
+Now you can deploy your .bna file to your Bluemix HSBN instance. Simply point to the appropriate connection profile using the newly created admin ID (e.g. ``testAdmin``)
 ```bash
 composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString -p bmx-hlfv1
 ```
+
+---
+
+## Congratulations!
+
+You should now have the ability to deploy Business Network Archive (.bna) files to your HSBN v1 Beta deployment. If you would like to

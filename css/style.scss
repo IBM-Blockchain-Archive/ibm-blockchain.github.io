@@ -47,6 +47,7 @@ p {
   font-weight: 400;
   font-size: 0.9rem;
   max-width: 50em;
+  line-height: 1.4rem;
 
   code {
       background-color: white;
@@ -297,6 +298,12 @@ pre {
       text-align: left;
       margin-left: 0;
       border: 3px solid $second-highlight;
+    }
+
+    ol {
+      li {
+        margin-bottom: 0.8rem;
+      }
     }
   }
 
