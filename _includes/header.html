@@ -1,10 +1,18 @@
 <div class="nav">
-        <p>IBM <b>Blockchain</b></p>
+        <a class="top-link" href="/overview">IBM <b>Blockchain</b></a>
         <hr>
       <ul>
         <li><a href="/">Overview</a></li>
         {% for page in site.pages %}
         {% if page.category == "tutorial" | sort:"order" %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+      <hr>
+      <ul>
+        {% for page in site.pages %}
+        {% if page.category == "hsbn" | sort:"order" %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
         {% endif %}
         {% endfor %}

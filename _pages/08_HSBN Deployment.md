@@ -1,9 +1,9 @@
 ---
 layout: default
-title:  4. HSBN Deployment
+title:  HSBN Production Deployment
 permalink: "/hsbn-deployment/"
-category: tutorial
-order: 4
+category: hsbn
+order: 1
 ---
 
 # Deploying Hyperledger Composer Business Network to HSBN v1 Beta on Bluemix

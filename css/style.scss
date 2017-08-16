@@ -169,6 +169,19 @@ pre {
   }
 }
 
+.top-link {
+  font-family: $font-family;
+  color: white;
+  font-weight: 400;
+  font-size: 0.9rem;
+  max-width: 50em;
+  padding-bottom: 1rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 
 .page-container {
   display: grid;
@@ -194,6 +207,9 @@ pre {
     // margin-top: 2rem;
     margin-left: -2rem;
     margin-right: -1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
   }
 
   p {
@@ -203,8 +219,8 @@ pre {
 
   ul {
     padding: 0;
-    padding-bottom: 1rem;
-    padding-top: 2rem;
+    // padding-bottom: 1rem;
+    // padding-top: 2rem;
     margin: 0;
     font-size: 0.9rem;
     li {
@@ -224,6 +240,10 @@ pre {
           padding-left: 2rem;
           margin-left: -2rem;
         }
+      }
+
+      &:last-of-type {
+        padding-bottom: 0;
       }
 
       }
