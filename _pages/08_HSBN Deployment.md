@@ -129,7 +129,7 @@ This will download 3 files into the **.identityCredentials** directory under you
 
 ## Creating your channel.
 
-1. Select **Channels** from the navigation menu on the left panel and click the ***New Channel*** button
+1. Select **Channels** from the navigation menu on the left panel and click the **New Channel** button
 2. Enter a Channel Name (Ensure it matches the name you have specified in your connection profile for the channel attribute) and optional description and press **Next**.
 3. Give permissions as required and press **Next**.
 4. Select the policy of the number of Operators that need to accept Channel updates and submit Request.
@@ -140,10 +140,12 @@ This will download 3 files into the **.identityCredentials** directory under you
 
 ---
 
-## Importing in a new identity to Administer your Business Network Archive
+## Importing a new identity to administer your Business Network Archive
 
-Now we are going to create an identity in composer using the certificates requested previously. This identity not only has authority now to install chaincode onto the peers you have uploaded the public certificate to but will also have issuer authority for the certificate authorities.
+Next we are going to create an identity in Composer using the certificates requested previously. This new identity will have the authority to install chaincode onto the peers that have your uploaded public certificate and will be an issuer for the certificate authorities.
+
 To create the new id, run the following command:
+
 ```bash
 composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
 ```
@@ -153,7 +155,13 @@ Where ``bmx-hlfv1`` is the name of the composer connection profile that you prev
 
 ## Deploying the Business Network Archive
 
-Now you can deploy your .bna file to your Bluemix HSBN instance. Simply point to the appropriate connection profile using the newly created admin id (e.g. testAdmin)
+Now you can deploy your .bna file to your Bluemix HSBN instance. Simply point to the appropriate connection profile using the newly created admin ID (e.g. ``testAdmin``)
 ```bash
 composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString -p bmx-hlfv1
 ```
+
+---
+
+## Congratulations!
+
+You should now have the ability to deploy Business Network Archive (.bna) files to your HSBN v1 Beta deployment. If you would like to

@@ -298,6 +298,12 @@ pre {
       margin-left: 0;
       border: 3px solid $second-highlight;
     }
+
+    ol {
+      li {
+        margin-bottom: 0.8rem;
+      }
+    }
   }
 
   &.index {
