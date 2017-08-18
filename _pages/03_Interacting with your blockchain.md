@@ -82,5 +82,136 @@ Using the value of the `Public IP` (in this example 169.48.140.99) you can now a
 http://YOUR_PUBLIC_IP_HERE:31090/explorer/
 ```
 
+### Connections Profile for external apps to talk to your blockchain network
+
+For the external apps to connect to your blockchain network, just replace `INSERT_PUBLIC_IP` with your public IP from the previous step.  
+```
+{
+	"name": "ibm-cs",
+	"x-networkId": "not-important",
+	"x-type": "hlfv1",
+	"description": "Connection Profile for an IBM Blockchain Network on IBM CS",
+	"version": "1.0.0",
+	"client": {
+		"organization": "PeerOrg1"
+	},
+	"channels": {
+		"mychannel": {
+			"orderers": [
+				"blockchain-orderer"
+			],
+			"peers": {
+				"org1peer1": {
+					"endorsingPeer": true,
+					"chaincodeQuery": true,
+					"ledgerQuery": true,
+					"eventSource": true
+				},
+				"org2peer1": {
+					"endorsingPeer": true,
+					"chaincodeQuery": true,
+					"ledgerQuery": true,
+					"eventSource": true
+				}
+			},
+			"chaincodes": {
+			},
+			"x-blockDelay": 1000
+		}
+	},
+	"organizations": {
+		"PeerOrg1": {
+			"mspid": "Org1MSP",
+			"peers": [
+				"org1peer1"
+			],
+			"certificateAuthorities": [
+				"blockchain-ca-org1"
+			]
+		},
+		"PeerOrg2": {
+			"mspid": "Org2MSP",
+			"peers": [
+				"org2peer1"
+			],
+			"certificateAuthorities": [
+				"blockchain-ca-org2"
+			]
+		}
+	},
+	"orderers": {
+		"blockchain-orderer": {
+			"url": "grpc://INSERT_PUBLIC_IP:31010",
+			"grpcOptions": {
+				"ssl-target-name-override": null,
+				"grpc.http2.keepalive_time": 15
+			},
+			"tlsCACerts": {
+				"pem": null
+			}
+		},
+	},
+	"peers": {
+		"org1peer1": {
+			"url": "grpc://INSERT_PUBLIC_IP:30110",
+			"eventUrl": "grpc://INSERT_PUBLIC_IP:30111",
+			"grpcOptions": {
+				"ssl-target-name-override": null,
+				"grpc.http2.keepalive_time": 15
+			},
+			"tlsCACerts": {
+				"pem": null
+			}
+		},
+		"org2peer1": {
+			"url": "grpc://INSERT_PUBLIC_IP:30210",
+			"eventUrl": "grpc://INSERT_PUBLIC_IP:30211",
+			"grpcOptions": {
+				"ssl-target-name-override": null,
+				"grpc.http2.keepalive_time": 15
+			},
+			"tlsCACerts": {
+				"pem": null
+			}
+		}
+	},
+	"certificateAuthorities": {
+		"blockchain-ca-org1": {
+			"url": "http://INSERT_PUBLIC_IP:30000",
+			"httpOptions": {
+				"verify": true
+			},
+			"tlsCACerts": {
+				"pem": null
+			},
+			"registrar": [
+				{
+					"affiliation": ""
+					"enrollId": "admin",
+					"enrollSecret": "adminpw"
+				}
+			],
+			"caName": "CA1"
+		},
+		"blockchain-ca-org2": {
+			"url": "http://INSERT_PUBLIC_IP:30000",
+			"httpOptions": {
+				"verify": true
+			},
+			"tlsCACerts": {
+				"pem": null
+			},
+			"registrar": [
+				{
+					"affiliation": "",
+					"enrollId": "admin",
+					"enrollSecret": "adminpw"
+				}
+			],
+			"caName": "CA2"
+		}
+	}
+}
+```
 ## Congratulations!
 You've got a full development environment up and running!  Go create something exciting with IBM Blockchain!
