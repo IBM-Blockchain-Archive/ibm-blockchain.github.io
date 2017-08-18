@@ -20,6 +20,7 @@ h1 {
   color: $text-color;
   line-height: 65px;
   font-weight: 300;
+  max-width: 20em;
 }
 
 h2 {
@@ -29,6 +30,7 @@ h2 {
   line-height: 130%;
   color: $text-color;
   font-weight: 300;
+  max-width: 30em;
 }
 
 h3 {
@@ -45,6 +47,7 @@ p {
   font-weight: 400;
   font-size: 0.9rem;
   max-width: 50em;
+  line-height: 1.4rem;
 
   code {
       background-color: white;
@@ -55,6 +58,22 @@ p {
       padding-right: 4px;
       color: $text-color;
       font-size: 0.9rem;
+  }
+}
+
+blockquote {
+  background: $background-1;
+  max-width: 47em;
+  margin-left: 0;
+  border-left: 4px solid $second-highlight;
+  padding-left: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+
+  h3 {
+    margin-top: 1rem;
   }
 }
 
@@ -74,6 +93,15 @@ ul {
       padding-right: 4px;
       color: $text-color;
       font-size: 0.9rem;
+  }
+
+  li {
+    pre {
+      code {
+        background-color: transparent;
+        border: none;
+      }
+    }
   }
 }
 
@@ -142,6 +170,19 @@ pre {
   }
 }
 
+.top-link {
+  font-family: $font-family;
+  color: white;
+  font-weight: 400;
+  font-size: 0.9rem;
+  max-width: 50em;
+  padding-bottom: 1rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
 
 .page-container {
   display: grid;
@@ -159,7 +200,7 @@ pre {
   // grid-row: 1 / 3;
   background-color: $black-1;
   padding: 2rem;
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   padding-right: 1rem;
 
   hr {
@@ -167,6 +208,9 @@ pre {
     // margin-top: 2rem;
     margin-left: -2rem;
     margin-right: -1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
   }
 
   p {
@@ -176,8 +220,8 @@ pre {
 
   ul {
     padding: 0;
-    padding-bottom: 1rem;
-    padding-top: 2rem;
+    // padding-bottom: 1rem;
+    // padding-top: 2rem;
     margin: 0;
     font-size: 0.9rem;
     li {
@@ -197,6 +241,10 @@ pre {
           padding-left: 2rem;
           margin-left: -2rem;
         }
+      }
+
+      &:last-of-type {
+        padding-bottom: 0;
       }
 
       }
@@ -250,6 +298,12 @@ pre {
       text-align: left;
       margin-left: 0;
       border: 3px solid $second-highlight;
+    }
+
+    ol {
+      li {
+        margin-bottom: 0.8rem;
+      }
     }
   }
 
