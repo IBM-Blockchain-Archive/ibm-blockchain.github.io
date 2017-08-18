@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  IBM Blockchain Production Deployment
-permalink: "/hsbn-deployment/"
+permalink: "/platform-deployment/"
 category: hsbn
 order: 1
 ---
