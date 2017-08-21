@@ -1,11 +1,7 @@
 ---
 layout: default
 title:  IBM Blockchain Production Deployment
-<<<<<<< HEAD
-permalink: "/hsbn-deployment/"
-=======
 permalink: "/platform-deployment/"
->>>>>>> c47d8f33c447887b232a0d0eb8dfe01643f75a87
 category: hsbn
 order: 1
 ---
@@ -15,9 +11,9 @@ order: 1
 IBM Blockchain Platform's developer tools help you create a **Business Network Definition**, which can then be packaged up into a **.bna** file (Business Network Archive).  The developer environments allow you to deploy .bna files to a local or cloud blockchain for development and sharing.
 This guide deals with the next step in a pilot or production use case: activating your business network by deploying the .bna to a production environment - the IBM Blockchain Platform Service on IBM Cloud.
 
-> ### Note
-> These directions are applicable for the current version of Hyperledger Fabric (v1.0.1) supported by the IBM Blockchain Platform Enterprise Plan and that this is subject to change.
-> When you start this guide, you should already have your .bna file ready: for a guide to  developing your business network archive please refer to the [Developing Business Networks](https://hyperledger.github.io/composer/business-network/business-network-index.html) documentation provided for Hyperledger Composer.
+> ### Warning
+> These directions are applicable for the current version the IBM Blockchain Platform Enterprise Plan and Hyperledger Composer. This guide uses a pre-release version of Hyperledger Composer which could be updated, without notice, to include breaking changes. The guide should be treated as guidance only.
+> When you start this guide, you should already have your .bna file ready. For a guide to  developing your business network archive please refer to the [Developing Business Networks](https://hyperledger.github.io/composer/business-network/business-network-index.html) documentation provided for Hyperledger Composer.
 
 ## Before You Start
 1. You will need to install the Composer Development Environment to create the required business network archive (.bna) file. You can read about installation here: [Installing Hyperledger Composer](https://hyperledger.github.io/composer/installing/development-tools.html).  Guidance on writing your business network is also available in the Hyperledger documentation.
@@ -131,8 +127,9 @@ composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
 This will download 3 files into the ``.identityCredentials`` directory under your home directory. The 2 files of interest are based on the enrollId. So in the above example there will be 2 files called **admin-pub.pem** and **admin-priv.pem**
 3. Select **Members** from the navigation menu on the left panel, then select the **Certificates** menu option and click on the **Add Certificate** button.
 4. Enter a unique name for this certificate (don’t use dashes in the name) in the **Name** field.
-5. Open the file ``admin-pub.pem`` created earlier in your favourite editor and copy the contents of this file into the **Key** field and press the **Submit** button.
-6. Once created it should appear in the list of certificates. Note that there is a arrow symbol. If you add more peers you should press this button to apply the certificates to newly added peers.
+5. Open the file ``admin-pub.pem`` created earlier in your favourite editor and copy the contents of this file into the **Key** field and press the **Submit** button (note: you may have to move the cursor in order for the dialogue to recognise the certificate you have pasted in).
+6. Please restart your peers using the next modal.
+7. Once created it should appear in the list of certificates. Note that there is a arrow symbol. If you add more peers you should press this button to apply the certificates to newly added peers.
 
 ---
 
@@ -166,7 +163,7 @@ Where ``bmx-hlfv1`` is the name of the composer connection profile that you prev
 
 Now you can deploy your .bna file to your IBM Blockchain Platform instance. Simply point to the appropriate connection profile using the newly created admin ID (e.g. ``testAdmin``)
 ```bash
-composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString -p bmx-hlfv1
+composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
 ```
 
 ---
