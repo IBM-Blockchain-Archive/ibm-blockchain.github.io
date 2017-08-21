@@ -1,7 +1,11 @@
 ---
 layout: default
 title:  IBM Blockchain Production Deployment
+<<<<<<< HEAD
 permalink: "/hsbn-deployment/"
+=======
+permalink: "/platform-deployment/"
+>>>>>>> c47d8f33c447887b232a0d0eb8dfe01643f75a87
 category: hsbn
 order: 1
 ---
