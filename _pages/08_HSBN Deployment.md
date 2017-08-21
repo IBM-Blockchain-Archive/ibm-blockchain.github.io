@@ -11,8 +11,8 @@ order: 1
 IBM Blockchain Platform's developer tools help you create a **Business Network Definition**, which can then be packaged up into a **.bna** file (Business Network Archive).  The developer environments allow you to deploy .bna files to a local or cloud blockchain for development and sharing.
 This guide deals with the next step in a pilot or production use case: activating your business network by deploying the .bna to a production environment - the IBM Blockchain Platform Service on IBM Cloud.
 
-> ### Warning
-> These directions are applicable for the current version the IBM Blockchain Platform Enterprise Plan and Hyperledger Composer. This guide uses a pre-release version of Hyperledger Composer which could be updated, without notice, to include breaking changes. The guide should be treated as guidance only.
+> ### Warning!
+> These directions are applicable for the current version the IBM Blockchain Platform Enterprise Plan and Hyperledger Composer. This guide uses a pre-release version of Hyperledger Composer which could be updated, without notice, to include breaking changes. The guide should be treated as guidance only.<br><br>
 > When you start this guide, you should already have your .bna file ready. For a guide to  developing your business network archive please refer to the [Developing Business Networks](https://hyperledger.github.io/composer/business-network/business-network-index.html) documentation provided for Hyperledger Composer.
 
 ## Before You Start
