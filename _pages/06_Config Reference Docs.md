@@ -32,7 +32,7 @@ From kubernetes point of view, in the utils pod, a container named `cryptogen` i
 
 ```bash
 name: cryptogen
-	image: ibmblockchain/fabric-tools:1.0.0
+	image: ibmblockchain/fabric-tools:1.0.1
 	imagePullPolicy: Always
 	command: ["sh", "-c", "cryptogen generate --config /sampleconfig/crypto-config.yaml && cp -r crypto-config /shared/ && for file in $(find /shared/ -iname *_sk); do dir=$(dirname $file); mv ${dir /*_sk ${dir}/key.pem; done && find /shared -type d | xargs chmod a+rx &&  find /shared -type f | xargs chmod a+r && touch /shared/status_cryptogen_complete "]
 	volumeMounts:
@@ -54,7 +54,7 @@ From kubernetes point of view, in the utils pods, a container named `configtxgen
 
 ```bash
 name: configtxgen
-	image: ibmblockchain/fabric-tools:1.0.0
+	image: ibmblockchain/fabric-tools:1.0.1
 	imagePullPolicy: Always
 	command: ["sh", "-c", "sleep 1 && while [ ! -f /shared/status_cryptogen_complete ]; do echo Waiting for cryptogen; sleep 1; done; cp /sampleconfig/configtx.yaml 	/shared/configtx.yaml; cd /shared/; configtxgen -profile TwoOrgsOrdererGenesis -outputBlock orderer.block && find /shared -type d | xargs chmod a+rx && find /shared -type f | xargs chmod a+r && touch /shared/status_configtxgen_complete && rm /shared/status_cryptogen_complete"]
 	env:
@@ -112,7 +112,7 @@ Within the kubernetes config, in the utils pod, a container defined as `cryptoge
 
 ```bash
   - name: cryptogen
-    image: ibmblockchain/fabric-tools:1.0.0
+    image: ibmblockchain/fabric-tools:1.0.1
     imagePullPolicy: Always
     command: ["sh", "-c", "cryptogen generate --config /sampleconfig/crypto-config.yaml && cp -r crypto-config /shared/ && for file in $(find /shared/ -iname *_sk); do dir=$(dirname $file); mv ${dir}/*_sk ${dir}/key.pem; done && find /shared -type d | xargs chmod a+rx && find /shared -type f | xargs chmod a+r && touch /shared/status_cryptogen_complete "]
     volumeMounts:
@@ -158,7 +158,7 @@ codeblock:
 
 ```bash
   - name: configtxgen
-    image: ibmblockchain/fabric-tools:1.0.0
+    image: ibmblockchain/fabric-tools:1.0.1
     imagePullPolicy: Always
     command: ["sh", "-c", "sleep 1 && while [ ! -f /shared/status_cryptogen_complete ]; do echo Waiting for cryptogen; sleep 1; done; cp /sampleconfig/configtx.yaml /shared/configtx.yaml; cd /shared/; configtxgen -profile TwoOrgsOrdererGenesis -outputBlock orderer.block && find /shared -type d | xargs chmod a+rx && find /shared -type f | xargs chmod a+r && touch /shared/status_configtxgen_complete && rm /shared/status_cryptogen_complete"]
     env:
@@ -213,7 +213,7 @@ Description goes here
 
 ```bash
 - name: bootstrap
-	image: ibmblockchain/fabric-tools:1.0.0
+	image: ibmblockchain/fabric-tools:1.0.1
 	imagePullPolicy: Always
 	command: ["sh", "-c", "sleep 1 && while [ ! -f /shared/status_configtxgen_complete ]; do echo Waiting for configtxgen; sleep 1; done; cp -r /sampleconfig/cas /shared; touch /shared/bootstrapped && rm /shared/status_configtxgen_complete && mkdir -p /shared/composer-credentials && chown 100 /shared/composer-credentials && echo 'Done with bootstrapping'" ]
 	volumeMounts:

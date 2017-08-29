@@ -91,7 +91,7 @@ For the external apps to connect to your blockchain network, just replace `INSER
 	"x-networkId": "not-important",
 	"x-type": "hlfv1",
 	"description": "Connection Profile for an IBM Blockchain Network on IBM CS",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"client": {
 		"organization": "PeerOrg1"
 	},
