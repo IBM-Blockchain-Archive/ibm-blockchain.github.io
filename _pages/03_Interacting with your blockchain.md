@@ -56,7 +56,7 @@ For more getting started information on this see the [Composer REST server docum
 
 Unless you've done something outside the scope of these instructions, the file `kube-configs/composer-rest-server.yaml` is already set up to work with the Business Network that you have deployed.
 
-Deploy the composer rest server
+Deploy the composer rest server:
 ```
 cd cs-offerings/free/scripts/
 ./create/create_composer-rest-server.sh
