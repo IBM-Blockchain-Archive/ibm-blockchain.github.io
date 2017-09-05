@@ -62,7 +62,7 @@ cd cs-offerings/free/scripts/
 ./create/create_composer-rest-server.sh
 ```
 
-Determine the public IP address of the cluster as in Step 1:
+Determine the public IP address of the cluster as in Step 1.
 
 Using the value of the `Public IP` (in this example 169.48.140.99) you can now access the Hyperledger Composer REST server at:
 ```
