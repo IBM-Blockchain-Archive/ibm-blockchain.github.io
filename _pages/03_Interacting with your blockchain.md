@@ -56,27 +56,14 @@ For more getting started information on this see the [Composer REST server docum
 
 Unless you've done something outside the scope of these instructions, the file `kube-configs/composer-rest-server.yaml` is already set up to work with the Business Network that you have deployed.
 
-Create the Composer REST server services:
+Deploy the composer rest server:
 ```
-kubectl create -f kube-configs/composer-rest-server-services.yaml
-```
-
-Create the Composer REST server:
-```
-kubectl create -f kube-configs/composer-rest-server.yaml
+cd cs-offerings/free/scripts/
+./create/create_composer-rest-server.sh
 ```
 
-Determine the public IP address of the cluster by running the following command:
-```
-bx cs workers blockchain
-```
-The output should be similiar to the following:
-```
-Listing cluster workers...
-OK
-ID                                                 Public IP      Private IP       Machine Type   State    Status
-kube-dal10-pabdda14edc4394b57bb08d53c149930d7-w1   169.48.140.99   10.171.239.186   free           normal   Ready
-```
+Determine the public IP address of the cluster as in Step 1.
+
 Using the value of the `Public IP` (in this example 169.48.140.99) you can now access the Hyperledger Composer REST server at:
 ```
 http://YOUR_PUBLIC_IP_HERE:31090/explorer/
