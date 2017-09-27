@@ -31,9 +31,16 @@ cd cs-offerings/free/scripts
 ```
 
 Now run the script:
-```bash
-./create_all.sh
-```
+
+* Option 1: To use __leveldb__ as worldstate db for peers:
+  ```bash
+  ./create_all.sh
+  ```
+
+* Option 2: To use __couchdb__ as worldstate db for peers:
+  ```bash
+  ./create_all.sh --with-couchdb
+  ```
 
 * * *
 
