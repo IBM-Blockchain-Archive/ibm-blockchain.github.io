@@ -31,9 +31,14 @@ cd cs-offerings/free/scripts/
 ### 2. Set up the Blockchain Network
 
 1. Create blockchain network
-```
-./create/create_blockchain.sh
-```
+  * Option 1: Using leveldb as worldstate db:
+  ```bash
+  /create/create_blockchain.sh
+  ```
+  * Option 2: Using couchdb as worldstate db:
+  ```bash
+  /create/create_blockchain.sh --with-couchdb
+  ```
 
 2. Create channel named `channel1`
 ```

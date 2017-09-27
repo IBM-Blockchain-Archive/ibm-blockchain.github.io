@@ -25,6 +25,7 @@ The **Simple Install** will bring up the following components:
   * Orderer node (running "solo")
   * 2 Fabric peer nodes (one apiece for each peer org - ``org1`` & ``org2``)
   * Some example installed and instantiated chaincode
+  * Optional Couchdb nodes for peer worldstate databases
 * Composer Playground (UI for creating and deploying Business Networks to Fabric)
 * The basic-sample-network deployed
 
