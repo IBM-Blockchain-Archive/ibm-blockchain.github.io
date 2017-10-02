@@ -25,7 +25,7 @@ You'll be using the config files and scripts from this repository, so start by c
 git clone https://github.com/IBM-Blockchain/ibm-container-service
 
 # change dir to use the scripts in the following sections
-cd cs-offerings/free/scripts/
+cd cs-offerings/scripts/
 ```
 
 Finally, you have the option of passing in each configuration file to manually accomplish each step.  If you choose to go this route, you should familiarize yourself with each individual yaml file.  Use the the subsequent section to explore the configs.

@@ -28,7 +28,7 @@ cryptogen generate --config /sampleconfig/crypto-config.yaml
 `cryptogen` is the tool that Hyperledger Fabric provides to generate crypto-material in a particular directory format that the components expect, for ease of setting up a basic network. More details can be found on [Hyperledger Fabric docs for crypto-gen](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html?highlight=cryptogen#crypto-generator).
 
 
-From kubernetes point of view, in the utils pod, a container named `cryptogen` is defined which uses the same command as described above to generate crypto-material. Here is the block from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/free/kube-configs/blockchain.yaml)
+From kubernetes point of view, in the utils pod, a container named `cryptogen` is defined which uses the same command as described above to generate crypto-material. Here is the block from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/kube-configs/blockchain.yaml)
 
 ```bash
 name: cryptogen
@@ -50,7 +50,7 @@ To get the genesis block for orderer we run the following command
 configtxgen -profile TwoOrgsOrdererGenesis -outputBlock orderer.block
 ```
 
-From kubernetes point of view, in the utils pods, a container named `configtxgen` is defined which uses the same command as described above to generate orderer genesis block. Here is the block from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/free/kube-configs/blockchain.yaml)
+From kubernetes point of view, in the utils pods, a container named `configtxgen` is defined which uses the same command as described above to generate orderer genesis block. Here is the block from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/kube-configs/blockchain.yaml)
 
 ```bash
 name: configtxgen
@@ -108,7 +108,7 @@ The following is the command used to generate the crypto-material:
 cryptogen generate --config /sampleconfig/crypto-config.yaml
 ```
 
-Within the kubernetes config, in the utils pod, a container defined as `cryptogen` exercises the above command to generate the requisite crypto material.  The following snippet from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/free/kube-configs/blockchain.yaml), shows the codeblock where the cryptogen container is defined and the `generate` command is passed:
+Within the kubernetes config, in the utils pod, a container defined as `cryptogen` exercises the above command to generate the requisite crypto material.  The following snippet from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/kube-configs/blockchain.yaml), shows the codeblock where the cryptogen container is defined and the `generate` command is passed:
 
 ```bash
   - name: cryptogen
@@ -153,7 +153,7 @@ configtxgen -profile TwoOrgsOrdererGenesis -outputBlock orderer.block
 
 Within the kubernetes config, in the utils pod, a container defined as `configtxgen`
 exercises the above command to generate the orderer genesis block.  The following
-snippet from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/free/kube-configs/blockchain.yaml), shows the
+snippet from [blockchain.yaml](https://github.com/IBM-Blockchain/ibm-container-service/blob/master/cs-offerings/kube-configs/blockchain.yaml), shows the
 codeblock:
 
 ```bash

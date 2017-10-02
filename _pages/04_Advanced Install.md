@@ -25,7 +25,7 @@ You'll be using the config files and scripts from this repository, so start by c
 git clone https://github.com/IBM-Blockchain/ibm-container-service
 
 # change dir to use the scripts in the following sections
-cd cs-offerings/free/scripts/
+cd cs-offerings/scripts/
 ```
 
 ### 2. Set up the Blockchain Network

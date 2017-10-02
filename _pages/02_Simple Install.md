@@ -27,7 +27,7 @@ git clone https://github.com/IBM-Blockchain/ibm-container-service
 
 Navigate to the ``scripts`` sub-directory:
 ```bash
-cd cs-offerings/free/scripts
+cd cs-offerings/scripts
 ```
 
 Now run the script:

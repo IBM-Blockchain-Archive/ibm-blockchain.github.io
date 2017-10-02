@@ -56,8 +56,10 @@ The Hyperledger Composer REST server allows you to expose your deployed Business
 
 1. Start the Hyperledger Composer REST server for a deployed Business Network by running the following commands. Replace `INSERT_BIZNET_NAME` with the name of the Business Network.
 
-		cd cs-offerings/free/scripts/
-		./create/create_composer-rest-server.sh INSERT_BIZNET_NAME
+    ```bash
+    cd cs-offerings/scripts/
+    ./create/create_composer-rest-server.sh --business-network-id INSERT_BIZNET_NAME 
+    ```
 
 2. Determine the public IP address of the cluster as in Step 1.
 
