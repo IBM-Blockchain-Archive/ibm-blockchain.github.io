@@ -146,6 +146,35 @@ Use the export command printed as output above to point your kubectl cli to the 
 $ export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal12-blockchain.yml
 ```
 
+### 10. Adding Public IP addresses for services to be exposed outside
+
+Order a new subnet using the following command:
+
+```bash
+# if not already initialized
+$ bx sl init
+
+# get list of public vlans in the datacenter that you created the cluster in
+$ bx sl vlan list | grep PUBLIC | grep <datacenter>
+
+# get detail about the vlan, vlan-id comes from previos command
+$ bx sl vlan detail <vlan-id>
+
+# find the vlan that the cluster was deployed in & order a new subnet on it
+$ bx sl subnet create public 8 <vlan-id>
+```
+
+Now, add the subnet to be used by the cluster that you have created
+
+```bash
+$ bx cs cluster-subnet-add blockchain <subnet-id>
+
+# if you forgot the subnet id
+$ bx sl subnet list
+````
+
+Why is this step needed? As we are using more than 4 services, we exhaust the 4 public IPs that are created for us when we create a new cluster. Thus, in order
+to expose all the services to the outside world, we need to add more public IPs. Note: Each public IP may incur cost, please refer to bluemix for prices.
 
 * * *
 
