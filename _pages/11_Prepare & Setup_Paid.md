@@ -1,7 +1,7 @@
 ---
 layout: default
 title:  1. Prepare & Setup
-permalink: "/setup/paid/"
+permalink: "/paid/setup/"
 category: paid
 order: 1
 ---
