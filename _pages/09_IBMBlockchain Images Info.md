@@ -1,7 +1,7 @@
 ---
 layout: default
-title:  Legal Notices
-permalink: "/notices/"
+title:  IBM Blockchain Images
+permalink: "/ibmblockchainimages/"
 category: advanced
 ---
 
