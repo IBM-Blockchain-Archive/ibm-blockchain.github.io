@@ -66,7 +66,7 @@ $ bx login -sso
 This will create a __paid cluster__ named _blockchain_ on the IBM Container Service. Please check the pricing details for more info.
 
 ```bash
-$ bx cs cluster-create --name blockchain --machine-type u1c.2x4 --location dal12 --workers 3 --public-vlan <vlan-id> --private-vlan <vlan-id>
+$ bx cs cluster-create --name blockchain --machine-type <type> --location <location> --workers <num-workers> --public-vlan <vlan-id> --private-vlan <vlan-id>
 
 # to get list of locations
 $ bx cs locations
