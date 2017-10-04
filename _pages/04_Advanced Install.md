@@ -29,8 +29,12 @@ cd cs-offerings/scripts/
 ```
 
 ### 2. Set up the Blockchain Network
+1. Create Storage (Persistent Volume and Persistant Volume Claim)
+```bash
+/create/create_storage.sh
+```
 
-1. Create blockchain network
+2. Create blockchain network
   * Option 1: Using leveldb as worldstate db:
   ```bash
   /create/create_blockchain.sh
@@ -40,30 +44,30 @@ cd cs-offerings/scripts/
   /create/create_blockchain.sh --with-couchdb
   ```
 
-2. Create channel named `channel1`
-```
+3. Create channel named `channel1`
+```bash
 CHANNEL_NAME="channel1" create/create_channel.sh
 ```
 
-3. Join Org1 peer to `channel1`
-```
+4. Join Org1 peer to `channel1`
+```bash
 CHANNEL_NAME="channel1" PEER_ADDRESS="blockchain-org1peer1:5010" MSP_CONFIGPATH="/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp" create/join_channel.sh
 ```
 
-4. Join Org2 peer to `channel1`
-```
+5. Join Org2 peer to `channel1`
+```bash
 CHANNEL_NAME="channel1" PEER_ADDRESS="blockchain-org2peer1:5010" MSP_CONFIGPATH="/shared/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp" create/join_channel.sh
 ```
 
 ### 3. Set up Composer Playground
 
 1. Launch the Playground - this is a UI for creating and deploying Business Networks to your Blockchain runtime.
-```
+```bash
 ./create/create_composer-playground.sh
 ```
 
 2. Create and start the REST server
-```
+```bash
 ./create/create_composer-rest-server.sh
 ```
 
