@@ -1,9 +1,9 @@
 ---
 layout: default
 title:  3. Interacting with your Blockchain
-permalink: "/interacting/"
-category: tutorial
-order: 4
+permalink: "/paid/interacting/"
+category: paid
+order: 3
 ---
 
 # Interacting with your Blockchain
@@ -12,30 +12,28 @@ order: 4
 ## Before you start
 Make sure you have installed the IBM Blockchain Platform for Developers on IBM Container Service.  The easiest way to achieve this is by following the  **Prepare & Setup** steps, and then followed the **Simple Install** instructions.  Note that if you followed the Advanced Install instructions or ran through command-by-command using the Script Reference Docs, you may not have everything set up fully - if you have any trouble with these steps, try setting up an environment using the Simple Install.
 
-### 1. Get the IP Address of your cluster
+### 1. Get the list of services for your network
 
-Determine the public IP address of your cluster by running the following command:
-```
-bx cs workers blockchain
-```
+Determine the public IP address of each service by running the following command:
 
-The output should be similar to the following:
+```bash
+$ kubectl get svc
+NAME                   CLUSTER-IP       EXTERNAL-IP     PORT(S)                           AGE
+blockchain-ca          172.21.19.128    169.48.207.86   30000:30000/TCP                   4m
+blockchain-orderer     172.21.194.183   169.47.102.85   31010:31010/TCP                   4m
+blockchain-org1peer1   172.21.165.205   169.48.207.83   30110:30110/TCP,30111:30111/TCP   4m
+blockchain-org2peer1   172.21.174.181   169.48.207.84   30210:30210/TCP,30211:30211/TCP   4m
+composer-playground    172.21.185.47    169.47.102.83   8080:31080/TCP                    2m
+kubernetes             172.21.0.1       <none>          443/TCP                           3d
 ```
-Listing cluster workers...
-OK
-ID                                                 Public IP      Private IP       Machine Type   State    Status
-kube-dal10-pabdda14edc4394b57bb08d53c149930d7-w1   169.48.140.99   10.171.239.186   free           normal   Ready
-```
-
-The value you need is `Public IP` (in this example 169.48.140.99).
 
 ### 2. Access Composer Playground
 
-Using your cluster's `Public IP` you can now access the Hyperledger Composer Playground:
+Using your cluster's `External-IP` for `composer-playground` service you can now access the Hyperledger Composer Playground:
 
 **Composer Playground** is a UI that can be used to create and deploy business networks to your blockchain runtime.  To access it, go to:
 ```
-http://YOUR_PUBLIC_IP_HERE:31080
+http://EXTERNAL_IP_FOR_COMPOSER_PLAYGROUND:31080
 ```
 
 ### 3. Develop And Deploy Your Business Network
@@ -58,14 +56,27 @@ The Hyperledger Composer REST server allows you to expose your deployed Business
 
     ```bash
     cd cs-offerings/scripts/
-    ./create/create_composer-rest-server.sh --business-network-id INSERT_BIZNET_NAME 
+    ./create/create_composer-rest-server.sh --paid --business-network-id INSERT_BIZNET_NAME
     ```
 
-2. Determine the public IP address of the cluster as in Step 1.
+2. Determine the public IP address of the `composer-rest-server` service similar to Step 1.
+
+    ```bash
+    $ kubectl get svc
+    NAME                   CLUSTER-IP       EXTERNAL-IP     PORT(S)                           AGE
+    blockchain-ca          172.21.19.128    169.48.207.86   30000:30000/TCP                   16m
+    blockchain-orderer     172.21.194.183   169.47.102.85   31010:31010/TCP                   16m
+    blockchain-org1peer1   172.21.165.205   169.48.207.83   30110:30110/TCP,30111:30111/TCP   16m
+    blockchain-org2peer1   172.21.174.181   169.48.207.84   30210:30210/TCP,30211:30211/TCP   16m
+    composer-playground    172.21.185.47    169.47.102.83   8080:31080/TCP                    14m
+    composer-rest-server   172.21.61.175    169.47.102.82   3000:31090/TCP                    4m
+    kubernetes             172.21.0.1       <none>          443/TCP                           3d
+    ```
+    From the example here, `composer-rest-server` service has an external endpoint of `169.47.102.83`.
 
 3. Using the value of the `Public IP` (in this example 169.48.140.99) you can now access the Hyperledger Composer REST server at:
 
-		http://YOUR_PUBLIC_IP_HERE:31090/explorer/
+		http://EXTERNAL_ENDPOINT_FOR_REST_SERVER:31090/explorer/
 
 ### 5. Build A Connection Profile For Your Deployed Business Network
 
@@ -103,17 +114,17 @@ The Hyperledger Fabric network created by these scripts defines two organisation
 			"type": "hlfv1",
 			"orderers": [
 				{
-					"url": "grpc://INSERT_PUBLIC_IP:31010"
+					"url": "grpc://EXTERNAL_IP_ORDERER:31010"
 				}
 			],
 			"ca": {
-				"url": "http://INSERT_PUBLIC_IP:30000",
+				"url": "http://EXTERNAL_IP_CA:30000",
 				"name": "CA1"
 			},
 			"peers": [
 				{
-					"requestURL": "grpc://INSERT_PUBLIC_IP:30110",
-					"eventURL": "grpc://INSERT_PUBLIC_IP:30111"
+					"requestURL": "grpc://EXTERNAL_IP_PEER:30110",
+					"eventURL": "grpc://EXTERNAL_IP_PEER:30111"
 				}
 			],
 			"keyValStore": "INSERT_CREDENTIALS_PATH",

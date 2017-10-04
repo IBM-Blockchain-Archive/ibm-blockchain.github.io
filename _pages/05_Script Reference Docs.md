@@ -25,7 +25,7 @@ You'll be using the config files and scripts from this repository, so start by c
 git clone https://github.com/IBM-Blockchain/ibm-container-service
 
 # change dir to use the scripts in the following sections
-cd cs-offerings/free/scripts/
+cd cs-offerings/scripts/
 ```
 
 Finally, you have the option of passing in each configuration file to manually accomplish each step.  If you choose to go this route, you should familiarize yourself with each individual yaml file.  Use the the subsequent section to explore the configs.
@@ -35,13 +35,13 @@ Finally, you have the option of passing in each configuration file to manually a
 Below are the config files used during this install process, to learn more about these see the [config reference.](/configreference)
 
 * blockchain.yaml
-* blockchain-services.yaml
+* blockchain-services-free.yaml
 * create_channel.yaml
 * join_channel.yaml
 * composer-playground.yaml
-* composer-playground-services.yaml
+* composer-playground-services-free.yaml
 * composer-rest-server.yaml
-* composer-rest-server-services.yaml
+* composer-rest-server-services-free.yaml
 * wipe_shared.yaml
 
 Now that you are familiar with the configurations above, use the following instructions to stand up a network with an orderer, two peer nodes (one per org), hyperledger-composer and a proxy that allows for network accessibility from the internet.  Once the network is properly bootstrapped, you will create a channel - ``channel1`` - and join both peers to the channel.  
@@ -53,7 +53,7 @@ Ensure you are in the ``cs-offerings/free`` sub-directory when executing the fol
 First, create the blockchain-services.  This provides the containers with the relevant DNS setup info, in turn allowing them to communicate amongst one another:
 
 ```bash
-kubectl create -f kube-configs/blockchain-services.yaml
+kubectl create -f kube-configs/blockchain-services-free.yaml
 ```
 
 Now create the blockchain network components:
@@ -186,9 +186,9 @@ The `joinchannel2` container fetches the channel genesis block from the orderer 
 Below are the config files used during this install process, to learn more about these see the [config reference.](/configreference)
 
 * composer-playground.yaml
-* composer-playground-services.yaml
+* composer-playground-services-free.yaml
 * composer-rest-server.yaml
-* composer-rest-server-services.yaml
+* composer-rest-server-services-free.yaml
 
 Now that you are familiar with the configurations above, use the following instructions to stand up a Hyperledger Composer playground and REST server.
 
@@ -198,7 +198,7 @@ Ensure you are in the `cs-offerings/free` sub-directory when executing the follo
 
 First, create the Composer playground services. This provides the containers with the relevant DNS setup info, in turn allowing them to communicate amongst one another:
 ```bash
-kubectl create -f kube-configs/composer-playground-services.yaml
+kubectl create -f kube-configs/composer-playground-services-free.yaml
 ```
 
 ### 9. Create Hyperledger Composer playground
@@ -236,7 +236,7 @@ The file `kube-configs/composer-rest-server.yaml` is already set up to reflect t
 
 Create the Composer REST server services:
 ```bash
-kubectl create -f kube-configs/composer-rest-server-services.yaml
+kubectl create -f kube-configs/composer-rest-server-services-free.yaml
 ```
 
 Create the Composer REST server:

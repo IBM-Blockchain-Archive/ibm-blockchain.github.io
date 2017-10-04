@@ -1,9 +1,9 @@
 ---
 layout: default
 title:  2. Simple Install
-permalink: "/simple/"
-category: tutorial
-order: 3
+permalink: "/paid/simple/"
+category: paid
+order: 2
 ---
 
 # Simple Install
@@ -34,12 +34,12 @@ Now run the script:
 
 * Option 1: To use __leveldb__ as worldstate db for peers:
   ```bash
-  ./create_all.sh
+  ./create_all.sh --paid
   ```
 
 * Option 2: To use __couchdb__ as worldstate db for peers:
   ```bash
-  ./create_all.sh --with-couchdb
+  ./create_all.sh --paid --with-couchdb
   ```
 
 * * *
