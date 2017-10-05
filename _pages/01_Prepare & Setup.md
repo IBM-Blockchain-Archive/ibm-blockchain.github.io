@@ -22,7 +22,7 @@ First, we will download and add the CLIs and plugins that we need to interact wi
 
 ### 2. Download and install the Bluemix CLI
 
-[http://clis.ng.bluemix.net/ui/home.html](http://clis.ng.bluemix.net/ui/home.html)
+[https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html#download_install](https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html#download_install)
 
 ### 3. Add the bluemix plugins repo
 
