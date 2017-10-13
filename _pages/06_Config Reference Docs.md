@@ -61,11 +61,11 @@ name: configtxgen
 	- name: PEERHOST1
 	value: blockchain-org1peer1
 	- name: PEERPORT1
-	value: "5010"
+	value: "30110"
 	- name: PEERHOST2
 	value: blockchain-org2peer1
 	- name: PEERPORT2
-	value: "5010"
+	value: "30210"
 	- name: ORDERER_URL
 	value: blockchain-orderer:31010
 	- name: FABRIC_CFG_PATH
@@ -165,11 +165,11 @@ codeblock:
      - name: PEERHOST1
        value: blockchain-org1peer1
      - name: PEERPORT1
-       value: "5010"
+       value: "30110"
      - name: PEERHOST2
        value: blockchain-org2peer1
      - name: PEERPORT2
-       value: "5010"
+       value: "30210"
      - name: ORDERER_URL
        value: blockchain-orderer:31010
      - name: FABRIC_CFG_PATH

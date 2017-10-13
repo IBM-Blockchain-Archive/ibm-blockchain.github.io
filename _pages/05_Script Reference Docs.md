@@ -106,7 +106,7 @@ The `createchanneltx` container reads in the `TwoOrgsChannel` profile to generat
 
 Use an editor to open the ``join_channel.yaml.base`` file (located in the ``kube-configs`` sub-directory).
 * Under the `joinchannel1` container remove the `%CHANNEL_NAME%` placeholder values for the `CHANNEL_NAME` variable and replace them with `channel1`.
-* Ensure that the `PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org1peer1:5010`).
+* Ensure that the `PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org1peer1:30110`).
 * Ensure that the `CORE_PEER_LOCALMSPID` is properly set with `Org1MSP`
 * Ensure that `MSP_CONFIGPATH` is properly set to MSP folder of the admin user for Org1 as `/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp` 
 Save the file as `join_channel.yaml` in the same sub-directory .  **Note**: you are removing the `base` suffix with this renaming.
@@ -144,7 +144,7 @@ The `joinchannel1` container fetches the channel genesis block from the orderer 
 
 Use an editor to open the ``join_channel.yaml.base`` file (located in the ``kube-configs`` sub-directory).
 * Under the `joinchannel2` container remove the `%CHANNEL_NAME%` placeholder values for the `CHANNEL_NAME` variable and replace them with `channel1`.
-* Ensure that the `PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org2peer1:5010`).
+* Ensure that the `PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org2peer1:30210`).
 * Ensure that the `CORE_PEER_LOCALMSPID` is properly set with `Org2MSP`
 * Ensure that `MSP_CONFIGPATH` is properly set to MSP folder of the admin user for Org2 as `/shared/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp`
 
@@ -272,7 +272,7 @@ You have successfully created the Hyperledger Composer playground and Hyperledge
 Use an editor to open the ``chaincode_install.yaml.base`` file (located in the ``kube-configs`` sub-directory).
 * Under the `chaincodeinstall` container remove the `%CHAINCODE_NAME%` placeholder values for the `CHAINCODE_NAME` variable and replace them with `example02`.
 * Under the `chaincodeinstall` container remove the `%CHAINCODE_VERSION%` placeholder values for the `CHAINCODE_VERSION` variable and replace them with `v1`.
-* Ensure that the `CORE_PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org1peer1:5010`).
+* Ensure that the `CORE_PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org1peer1:30110`).
 * Ensure that the `CORE_PEER_LOCALMSPID` is properly set with `Org1MSP`
 * Ensure that `CORE_PEER_MSPCONFIGPATH` is properly set to MSP folder of the admin user for Org1 as `/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp`
 
@@ -314,7 +314,7 @@ The `chaincodeinstall` container clones the example02 chaincode from the fabric 
 Use an editor to open the ``chaincode_install.yaml.base`` file (located in the ``kube-configs`` sub-directory).
 * Under the `chaincodeinstall` container remove the `%CHAINCODE_NAME%` placeholder values for the `CHAINCODE_NAME` variable and replace them with `example02`.
 * Under the `chaincodeinstall` container remove the `%CHAINCODE_VERSION%` placeholder values for the `CHAINCODE_VERSION` variable and replace them with `v1`.
-* Ensure that the `CORE_PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org2peer1:5010`).
+* Ensure that the `CORE_PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org2peer1:30210`).
 * Ensure that the `CORE_PEER_LOCALMSPID` is properly set with `Org2MSP`
 * Ensure that `CORE_PEER_MSPCONFIGPATH` is properly set to MSP folder of the admin user for Org2 as `/shared/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp`
 
@@ -357,7 +357,7 @@ Use an editor to open the ``chaincode_instantiate.yaml.base`` file (located in t
 * Under the `chaincodeinstantiate` container remove the `%CHANNEL_NAME%` placeholder values for the `CHANNEL_NAME` variable and replace them with `channel1`.
 * Under the `chaincodeinstantiate` container remove the `%CHAINCODE_NAME%` placeholder values for the `CHAINCODE_NAME` variable and replace them with `example02`.
 * Under the `chaincodeinstantiate` container remove the `%CHAINCODE_VERSION%` placeholder values for the `CHAINCODE_VERSION` variable and replace them with `v1`.
-* Ensure that the `CORE_PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org1peer1:5010`).
+* Ensure that the `CORE_PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org1peer1:30110`).
 * Ensure that the `CORE_PEER_LOCALMSPID` is properly set with `Org1MSP`
 * Ensure that `CORE_PEER_MSPCONFIGPATH` is properly set to MSP folder of the admin user for Org1 as `/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp`
 
