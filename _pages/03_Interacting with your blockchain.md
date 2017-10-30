@@ -107,7 +107,7 @@ The Hyperledger Fabric network created by these scripts defines two organisation
 				}
 			],
 			"ca": {
-				"url": "http://INSERT_PUBLIC_IP:30000",
+				"url": "http://INSERT_PUBLIC_IP:30054",
 				"name": "CA1"
 			},
 			"peers": [
