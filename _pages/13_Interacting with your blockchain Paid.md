@@ -19,7 +19,7 @@ Determine the public IP address of each service by running the following command
 ```bash
 $ kubectl get svc
 NAME                   CLUSTER-IP       EXTERNAL-IP     PORT(S)                           AGE
-blockchain-ca          172.21.19.128    169.48.207.86   30000:30000/TCP                   4m
+blockchain-ca          172.21.19.128    169.48.207.86   30054:30054/TCP                   4m
 blockchain-orderer     172.21.194.183   169.47.102.85   31010:31010/TCP                   4m
 blockchain-org1peer1   172.21.165.205   169.48.207.83   30110:30110/TCP,30111:30111/TCP   4m
 blockchain-org2peer1   172.21.174.181   169.48.207.84   30210:30210/TCP,30211:30211/TCP   4m
@@ -64,7 +64,7 @@ The Hyperledger Composer REST server allows you to expose your deployed Business
     ```bash
     $ kubectl get svc
     NAME                   CLUSTER-IP       EXTERNAL-IP     PORT(S)                           AGE
-    blockchain-ca          172.21.19.128    169.48.207.86   30000:30000/TCP                   16m
+    blockchain-ca          172.21.19.128    169.48.207.86   30054:30054/TCP                   16m
     blockchain-orderer     172.21.194.183   169.47.102.85   31010:31010/TCP                   16m
     blockchain-org1peer1   172.21.165.205   169.48.207.83   30110:30110/TCP,30111:30111/TCP   16m
     blockchain-org2peer1   172.21.174.181   169.48.207.84   30210:30210/TCP,30211:30211/TCP   16m
@@ -118,7 +118,7 @@ The Hyperledger Fabric network created by these scripts defines two organisation
 				}
 			],
 			"ca": {
-				"url": "http://EXTERNAL_IP_CA:30000",
+				"url": "http://EXTERNAL_IP_CA:30054",
 				"name": "CA1"
 			},
 			"peers": [
