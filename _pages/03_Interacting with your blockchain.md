@@ -137,15 +137,15 @@ In order to deploy chaincode locally you will need the admin certs on your local
         
 An example output would be the following:
 
-    NAME                                    READY     STATUS    RESTARTS   AGE
-    blockchain-ca-1371795182-1q8dh          1/1       Running   0          1h
-    blockchain-couchdb1-840355601-28t5c     1/1       Running   0          1h
-    blockchain-couchdb2-4040418521-pvwnd    1/1       Running   0          1h
-    blockchain-orderer-4113934196-xc7gf     1/1       Running   0          1h
-    blockchain-org1peer1-243328489-dts6g    1/1       Running   0          1h
-    blockchain-org2peer1-137434385-137rm    1/1       Running   0          1h
-    composer-playground-206560760-rbnjt     1/1       Running   0          35m
-    composer-rest-server-3789975091-gx4nv   1/1       Running   0          33m
+        NAME                                    READY     STATUS    RESTARTS   AGE
+        blockchain-ca-1371795182-1q8dh          1/1       Running   0          1h
+        blockchain-couchdb1-840355601-28t5c     1/1       Running   0          1h
+        blockchain-couchdb2-4040418521-pvwnd    1/1       Running   0          1h
+        blockchain-orderer-4113934196-xc7gf     1/1       Running   0          1h
+        blockchain-org1peer1-243328489-dts6g    1/1       Running   0          1h
+        blockchain-org2peer1-137434385-137rm    1/1       Running   0          1h
+        composer-playground-206560760-rbnjt     1/1       Running   0          35m
+        composer-rest-server-3789975091-gx4nv   1/1       Running   0          33m
     
 2. For each org pod (in this example blockchain-org1peer1-243328489-dts6g and blockchain-org2peer1-137434385-137rm) run the command:
 
@@ -153,7 +153,7 @@ An example output would be the following:
 
 For example:
 
-    kubectl cp blockchain-org1peer1-243328489-dts6g:/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp /home/testuser/org1-admin-certs
+        kubectl cp blockchain-org1peer1-243328489-dts6g:/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp /home/testuser/org1-admin-certs
     
 3. To confirm the copy was a success run:
 
