@@ -125,6 +125,44 @@ The Hyperledger Fabric network created by these scripts defines two organisation
 5. You can now use the Hyperledger Composer connection profile `ibm-bc-org1` with the Hyperledger Composer CLI application `composer`, or the Hyperledger Composer Node.js APIs. You can test this by using the `composer network ping` command to ping a deployed Business Network. Replace `INSERT_BIZNET_NAME` with the name of the Business Network.
 
 		composer network ping -p ibm-bc-org1 -n INSERT_BIZNET_NAME -i admin -s adminpw
+        
+        
+### 6. Copy admin certs to local machine to be used for instantiating chaincode
+
+In order to deploy chaincode locally you will need the admin certs on your local machine for each org. They are initially stored inside the kubernete pods for their respective orgs. To copy them to your local machine complete the following steps:
+
+1. You will need the names of the kubernete pods for each org. To retrieve them run the following command:
+
+        kubectl get pods
+        
+An example output would be the following:
+
+        NAME                                    READY     STATUS    RESTARTS   AGE
+        blockchain-ca-1371795182-1q8dh          1/1       Running   0          1h
+        blockchain-couchdb1-840355601-28t5c     1/1       Running   0          1h
+        blockchain-couchdb2-4040418521-pvwnd    1/1       Running   0          1h
+        blockchain-orderer-4113934196-xc7gf     1/1       Running   0          1h
+        blockchain-org1peer1-243328489-dts6g    1/1       Running   0          1h
+        blockchain-org2peer1-137434385-137rm    1/1       Running   0          1h
+        composer-playground-206560760-rbnjt     1/1       Running   0          35m
+        composer-rest-server-3789975091-gx4nv   1/1       Running   0          33m
+    
+2. For each org pod (in this example blockchain-org1peer1-243328489-dts6g and blockchain-org2peer1-137434385-137rm) run the command:
+
+        kubectl cp <pod-name>:/shared/crypto-config/peerOrganizations/<org1|org2>.example.com/users/Admin@<org1|org2>.example.com/msp <local-destination>
+
+For example:
+
+        kubectl cp blockchain-org1peer1-243328489-dts6g:/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp /home/testuser/org1-admin-certs
+    
+3. To confirm the copy was a success run:
+
+        ls <local-destination>
+        
+You should see the following output:
+
+        admincerts    cacerts        keystore    signcerts    tlscacerts
+        
 
 ## Congratulations!
 You've got a full development environment up and running!  Go create something exciting with IBM Blockchain!
