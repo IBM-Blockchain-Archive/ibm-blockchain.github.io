@@ -136,14 +136,14 @@ Downloading cluster config for blockchain
 OK
 The configuration for blockchain was downloaded successfully. Export environment variables to start using Kubernetes.
 
-export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal12-blockchain.yml
+export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
 ```
 
-Use the export command printed as output above to point your kubectl cli to the cluster.  For example:
+The `export` command in the output must be run as a separate command along with the `KUBECONFIG` information that followed it.
 
-(Replace this example with the output from the step above!)
+(Replace this example with the output from running the step above!)
 ```bash
-$ export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal12-blockchain.yml
+$ export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
 ```
 
 ### 10. Adding Public IP addresses for services to be exposed outside
@@ -202,4 +202,4 @@ kubectl proxy
 ## Congratulations!
 You have successfully created the blockchain cluster on IBM Container Service.  Next, you will deploy the Developer Environment.  Most users will want to follow the **Simple Install** instructions (Advanced and Reference are there for those who want to e.g. only set up part of the environment).
 
-<a href="/simple" class="button" >Next: Install</a>
+<a href="../simple" class="button" >Next: Install</a>

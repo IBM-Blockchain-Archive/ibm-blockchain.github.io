@@ -130,9 +130,9 @@ The configuration for blockchain was downloaded successfully. Export environment
 export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
 ```
 
-Use the export command printed as output above to point your kubectl cli to the cluster.  For example:
+The `export` command in the output must be run as a separate command along with the `KUBECONFIG` information that followed it.
 
-(Replace this example with the output from the step above!)
+(Replace this example with the output from running the step above!)
 ```bash
 $ export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
 ```
