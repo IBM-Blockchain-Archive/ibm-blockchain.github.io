@@ -26,9 +26,9 @@ You will need to create a channel and at least one peer.
 Create a directory to store your Bluemix connection details e.g. ``/Users/myUserId/.composer-connection-profiles/bmx-hlfv1``
 
 > When you set up the Local Development Environment (see [Installing a development environment](https://hyperledger.github.io/composer/installing/development-tools.html) if you have yet to do this)  you should already have created part of this directory structure.  If you are developing on a Mac, for example, you will already have a directory structure like
- ``/Users/myUserId/.composer-connection-profiles/hlfv1``.
+ `/Users/myUserId/.composer-connection-profiles/hlfv1`.
 
-Each connection profile should contain a ``connection.json`` file. For the IBM Cloud Service instance, create a new directory under the ``.composer-connection-profiles``, e.g. (bmx-hlfv1). This will be the name of the profile that you will use when working with Hyperledger composer and your IBM Blockchain Platform service.
+Each connection profile should contain a `connection.json` file. For the IBM Cloud Service instance, create a new directory under the `.composer-connection-profiles`, e.g. (bmx-hlfv1). This will be the name of the profile that you will use when working with Hyperledger composer and your IBM Blockchain Platform service.
 ```bash
 mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
 cd ~/.composer-connection-profiles/bmx-hlfv1
@@ -61,30 +61,33 @@ You can use the following as a code template for your ``connection.json`` file:
     "channel": "mychannel",
     "mspID": "PeerOrg1",
     "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
-    "timeout: 300
+    "timeout": 300
 }
 ```
-You will populate the newly created connection.json file with attributes that are provided via your IBM Blockchain Platform dashboard. From your Platform dashboard on IBM Cloud, select **Overview** from the navigation menu on the left panel. Then click on the **Service Credentials** button to display the endpoint and certificate information for the members of the channel where you want to deploy your business network archive.
+You will populate the newly created `connection.json` file with attributes that are provided via your IBM Blockchain Platform dashboard. From your Platform dashboard on IBM Cloud, select **Overview** from the navigation menu on the left panel. Then click on the **Service Credentials** button to display the endpoint and certificate information for the members of the channel where you want to deploy your business network archive.
 
 ### Orderers
-Now we can start to modify the template with the information provided by the Service Credentials, starting with the orderers. While you have multiple orderers in your Service Credentials only one is required for your ``connection.json`` file replace the orderer url values in the template:
+Now we can start to modify the template with the information provided by the Service Credentials, starting with the orderers. While you have multiple orderers in your Service Credentials only one is required for your `connection.json` file replace the orderer url values in the template:
 ```
 “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
 ```
 With the “url” value for the first orderer found in your service credentials. Modify this value with your information.
 
 ### CA (Certificate Authority)
-Modify the ca value in your ``connection.json`` with both the **url** and the **caName** from either of the entries in the **certificateAuthorities** section.
+Modify the ca value in your `connection.json` with both the **url** and the **caName** from either of the entries in the **certificateAuthorities** section.
 
 ### Peers
 Now we need to set the url for each Peer **requestURL** and **eventURL**. Modify the ``connection.json`` file and replace the **url** attribute with the **url** value found in your Service Credentials. Replace the **eventURL** attribute with the **eventUrl** found in your Service Credentials. After making the changes it should look similar to this, although your ports and host address should be different:
-```bash
+
+```
 "peers": [
   {
       "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
       "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
 ```
+
 ### keyValStore
+
 Next we need to set the keyValStore attribute to point to the appropriate directory. This directory should be different than the ``.composer-credentials`` directory that was set up for a local composer-connection profile. For example you could create a new directory under your home directory called ``.composer-credentials-mychannel-hsbn``. Make sure the KeyValStore attribute points to your newly created directory.
 ```bash
 "keyValStore": "/Users/myUserId/.composer-credentials-mychannel-hsbn",

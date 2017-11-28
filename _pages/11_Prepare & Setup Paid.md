@@ -14,17 +14,25 @@ Before deploying the IBM Blockchain Developer Environment, you must first prepar
 
 ## Prepare required CLIs and plugins
 
-First, we will download and add the CLIs and plugins that we need to interact with the IBM Container Service.
+First, we will download and add the CLIs and plugins that we need to interact with the IBM Container Service. If you do not already have `zip` and `unzip`, install them now.
 
-### 1. Download and install kubectl CLI
+### 1. Download and install Hyperledger Composer CLI
+
+Download and install the Hyperledger Composer CLI using the following command:
+
+```bash
+npm install -g composer-cli
+```
+
+### 2. Download and install kubectl CLI
 
 [https://kubernetes.io/docs/tasks/kubectl/install/](https://kubernetes.io/docs/tasks/kubectl/install/)
 
-### 2. Download and install the Bluemix CLI
+### 3. Download and install the Bluemix CLI
 
 [http://clis.ng.bluemix.net/ui/home.html](http://clis.ng.bluemix.net/ui/home.html)
 
-### 3. Add the bluemix plugins repo
+### 4. Add the bluemix plugins repo
 
 ```bash
 $ bx plugin repo-add bluemix https://plugins.ng.bluemix.net
@@ -34,7 +42,7 @@ Note: If you get the following error, it means that the repository bluemix alrea
 
 `Plug-in repo named ‘bluemix’ already exists. Try a different name.`
 
-### 4. Add the container service plugin
+### 5. Add the container service plugin
 
 ```bash
 $ bx plugin install container-service -r bluemix
@@ -44,13 +52,13 @@ $ bx plugin install container-service -r bluemix
 
 Now, we will use those CLIs and plugins to create a cluster on the IBM Container Service.  Use these steps to setup a cluster named ___blockchain___ on IBM Container Service. For more information about how to use the [bluemix cli](https://console.bluemix.net/docs/cli/reference/bluemix_cli/bx_cli.html#bluemix_cli).
 
-### 5. Point Bluemix CLI to production API
+### 6. Point Bluemix CLI to production API
 
 ```bash
 $ bx api api.ng.bluemix.net
 ```
 
-### 6. Login to bluemix
+### 7. Login to bluemix
 
 ```bash
 $ bx login
@@ -61,7 +69,7 @@ If your id is federated in an SSO, you will have to run the following command to
 $ bx login -sso
 ```
 
-### 7. Create a cluster on IBM Container Service
+### 8. Create a cluster on IBM Container Service
 
 This will create a __paid cluster__ named _blockchain_ on the IBM Container Service. Please check the pricing details for more info.
 
@@ -78,7 +86,7 @@ $ bx cs machine-types <location>
 $ bx cs vlans
 ```
 
-### 8. Wait for the cluster to be ready
+### 9. Wait for the cluster to be ready
 
 Issue the following command to ascertain the status of your cluster:
 ```bash
@@ -122,7 +130,7 @@ kube-dal12-cra7b094596db34facb8587d256dc54cee-w2   169.47.67.162   10.184.9.173 
 kube-dal12-cra7b094596db34facb8587d256dc54cee-w3   169.47.67.178   10.184.9.161   u1c.2x4        normal   Ready    1.7.4_1502
 ```
 
-### 9. Configure kubectl to use the cluster
+### 10. Configure kubectl to use the cluster
 
 Issue the following command to download the configuration for your cluster:
 ```bash
@@ -136,17 +144,17 @@ Downloading cluster config for blockchain
 OK
 The configuration for blockchain was downloaded successfully. Export environment variables to start using Kubernetes.
 
-export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal12-blockchain.yml
+export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
 ```
 
-Use the export command printed as output above to point your kubectl cli to the cluster.  For example:
+The `export` command in the output must be run as a separate command along with the `KUBECONFIG` information that followed it.
 
-(Replace this example with the output from the step above!)
+(Replace this example with the output from running the step above!)
 ```bash
-$ export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal12-blockchain.yml
+$ export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
 ```
 
-### 10. Adding Public IP addresses for services to be exposed outside
+### 11. Adding Public IP addresses for services to be exposed outside
 
 Order a new subnet using the following command:
 
@@ -202,4 +210,4 @@ kubectl proxy
 ## Congratulations!
 You have successfully created the blockchain cluster on IBM Container Service.  Next, you will deploy the Developer Environment.  Most users will want to follow the **Simple Install** instructions (Advanced and Reference are there for those who want to e.g. only set up part of the environment).
 
-<a href="/simple" class="button" >Next: Install</a>
+<a href="../simple" class="button" >Next: Install</a>

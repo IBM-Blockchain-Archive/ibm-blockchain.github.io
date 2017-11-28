@@ -48,4 +48,4 @@ Now run the script:
 
 You have completed the install steps.  Next, refer to **Interacting with your Blockchain** to learn how development is done with IBM Blockchain Platform for Developers on IBM Container Service.
 
-<a href="/interacting" class="button">Next: Develop</a>
+<a href="../interacting" class="button">Next: Develop</a>

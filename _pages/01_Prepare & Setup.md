@@ -14,17 +14,25 @@ Before deploying the IBM Blockchain Developer Environment, you must first prepar
 
 ## Prepare required CLIs and plugins
 
-First, we will download and add the CLIs and plugins that we need to interact with the IBM Container Service.
+First, we will download and add the CLIs and plugins that we need to interact with the IBM Container Service. If you do not already have `zip` and `unzip`, install them now.
 
-### 1. Download and install kubectl CLI
+### 1. Download and install Hyperledger Composer CLI
+
+Download and install the Hyperledger Composer CLI using the following command:
+
+```bash
+npm install -g composer-cli
+```
+
+### 2. Download and install kubectl CLI
 
 [https://kubernetes.io/docs/tasks/kubectl/install/](https://kubernetes.io/docs/tasks/kubectl/install/)
 
-### 2. Download and install the Bluemix CLI
+### 3. Download and install the Bluemix CLI
 
 [https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html#download_install](https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html#download_install)
 
-### 3. Add the bluemix plugins repo
+### 4. Add the bluemix plugins repo
 
 ```bash
 $ bx plugin repo-add bluemix https://plugins.ng.bluemix.net
@@ -34,7 +42,7 @@ Note: If you get the following error, it means that the repository bluemix alrea
 
 `Plug-in repo named ‘bluemix’ already exists. Try a different name.`
 
-### 4. Add the container service plugin
+### 5. Add the container service plugin
 
 ```bash
 $ bx plugin install container-service -r bluemix
@@ -44,13 +52,13 @@ $ bx plugin install container-service -r bluemix
 
 Now, we will use those CLIs and plugins to create a cluster on the IBM Container Service.  Use these steps to setup a cluster named ___blockchain___ on IBM Container Service. For more information about how to use the [bluemix cli](https://console.bluemix.net/docs/cli/reference/bluemix_cli/bx_cli.html#bluemix_cli).
 
-### 5. Point Bluemix CLI to production API
+### 6. Point Bluemix CLI to production API
 
 ```bash
 $ bx api api.ng.bluemix.net
 ```
 
-### 6. Login to bluemix
+### 7. Login to bluemix
 
 ```bash
 $ bx login
@@ -61,14 +69,14 @@ If your id is federated in an SSO, you will have to run the following command to
 $ bx login -sso
 ```
 
-### 7. Create a cluster on IBM Container Service
+### 8. Create a cluster on IBM Container Service
 
 This will create a __free cluster__ named _blockchain_ on the IBM Container Service.
 ```bash
 $ bx cs cluster-create --name blockchain
 ```
 
-### 8. Wait for the cluster to be ready
+### 9. Wait for the cluster to be ready
 
 Issue the following command to ascertain the status of your cluster:
 ```bash
@@ -113,7 +121,7 @@ ID                                                 Public IP       Private IP   
 kube-dal10-pa0783c15e421749a59e2f5b7efdd351d1-w1   169.48.140.48   10.176.190.176   free           normal   Ready
 ```
 
-### 9. Configure kubectl to use the cluster
+### 10. Configure kubectl to use the cluster
 
 Issue the following command to download the configuration for your cluster:
 ```bash
@@ -130,9 +138,9 @@ The configuration for blockchain was downloaded successfully. Export environment
 export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
 ```
 
-Use the export command printed as output above to point your kubectl cli to the cluster.  For example:
+The `export` command in the output must be run as a separate command along with the `KUBECONFIG` information that followed it.
 
-(Replace this example with the output from the step above!)
+(Replace this example with the output from running the step above!)
 ```bash
 $ export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
 ```
