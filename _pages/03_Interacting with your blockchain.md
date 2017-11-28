@@ -52,13 +52,15 @@ Once you've deployed a Business Network Definition that you're happy to start wr
 
 Before performing this step, you must first have deployed a Business Network. You can use the Hyperledger Composer Playground, command line (CLI), or Node.js APIs to deploy a Business Network. For more information on deploying Business Networks, see the Hyperledger Composer documentation.
 
+On the **My Business Networks** screen in the Hyperledger Composer Playground, you should see two _business network cards_. The first business network card is called _PeerAdmin@hlfv1_ and was automatically created by the `create_all.sh` script above. The second business network card is the network administrator card which was generated and used to deploy your business network in the previous step, the name of this card will likely be _admin@BIZNET_ where `BIZNET` is the name of the business network you deployed in the previous step. The _name_ of a business network card is both the identity name and the network which is belongs to in the following format: _admin@BIZNET_
+
 The Hyperledger Composer REST server allows you to expose your deployed Business Network via a REST API. Client applications, such as web or mobile applications, can interact with your deployed Business Network by using a REST or HTTP client. For more information on the Hyperledger Composer REST server and integrating existing systems with your deployed Business Network, see the [Integrating existing systems documentation](https://hyperledger.github.io/composer/integrating/integrating-index.html).
 
-1. Start the Hyperledger Composer REST server for a deployed Business Network by running the following commands. Replace `INSERT_BIZNET_CARD` with the name of the business network card created in Playground.
+1. Start the Hyperledger Composer REST server for a deployed Business Network by running the following commands. Replace `INSERT_BIZNET_CARD_NAME` with the name of the network administrator card created in the previous step.
 
     ```bash
     cd cs-offerings/scripts/
-    ./create/create_composer-rest-server.sh --business-network-card INSERT_BIZNET_CARD
+    ./create/create_composer-rest-server.sh --business-network-card INSERT_BIZNET_CARD_NAME
     ```
 
 2. Determine the public IP address of the cluster as in Step 1.
@@ -71,22 +73,22 @@ The Hyperledger Composer REST server allows you to expose your deployed Business
 
 In order to interact with your deployed Business Network using the Hyperledger Composer command line (CLI) you must export a business network card.
 
-1. In the Hyperledger Composer Playground, at the **My Business Networks** screen, click the **Export** button underneath the business network card created for a network.
+1. In the Hyperledger Composer Playground, at the **My Business Networks** screen, click the ![Export](../assets/Export-Button.png) **Export** button underneath the business network card created for a network.
 
-2. Now that the business network card has been downloaded, the connection profile must be reconfigured to connect to the kubernetes containers using the following script.
+2. Now that the business network card has been downloaded, the card's connection profile must be reconfigured to connect to the kubernetes containers using the following script.
 
     ```bash
     cd cs-offerings/scripts/
-    ./connection-profile/update_card.sh -c /path/to/local/card/admin.card -a public.ip.here
+    ./connection-profile/update_card.sh -c PATH_TO_EXPORTED_CARD -a YOUR_PUBLIC_IP_HERE
     ```
 
-3. After the card has been reconfigured, import the card using the following command. In the `--name` argument, replace `admin` with the card name and `BIZNET` with the business network name.
+3. After the card has been reconfigured, import the card using the following command.
 
     ```bash
-    composer card import -f /path/to/local/card/admin.card --name admin@BIZNET
+    composer card import -f PATH_TO_EXPORTED_CARD
     ```
 
-4. Check the current list of imported cards by running the following command. There should be a `PeerAdmin@hlfv1` card, which is a Peer Administrator identity for installing chaincode, and the card created in Playground and imported in the previous step.
+4. Check the current list of imported cards by running the following command. There should be a `PeerAdmin@hlfv1` card and the card configured in the previous step.
 
     ```bash
     composer card list
@@ -95,9 +97,8 @@ In order to interact with your deployed Business Network using the Hyperledger C
 5. You can now ping your business network using the imported business network card.
 
     ```bash
-		composer network ping -c admin@biznet
+		composer network ping -c CARD_NAME
     ```
-
 
 ## Congratulations!
 You've got a full development environment up and running!  Go create something exciting with IBM Blockchain!
