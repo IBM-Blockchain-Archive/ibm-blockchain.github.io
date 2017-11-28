@@ -84,7 +84,7 @@ The Hyperledger Composer REST server allows you to expose your deployed Business
 
 In order to interact with your deployed Business Network using the Hyperledger Composer command line (CLI) you must export a business network card.
 
-1. In the Hyperledger Composer Playground, at the **My Business Networks** screen, click the ![Export](../assets/Export-Button.png) **Export** button underneath the business network card created for a network.
+1. In the Hyperledger Composer Playground, at the **My Business Networks** screen, click the ![Export](../assets/Export-button.png) **Export** button underneath the business network card created for a network.
 
 2. Now that the business network card has been downloaded, the card's connection profile must be reconfigured to connect to the kubernetes containers using the following script.
 
