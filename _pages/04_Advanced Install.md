@@ -69,7 +69,7 @@ CHANNEL_NAME="channel1" PEER_MSPID="Org2MSP" PEER_ADDRESS="blockchain-org2peer1:
 2. Create a Basic Business Network 
 Hyperledger Composer provides a tutorial for using Playground to create a basic Business Network.  We recommend you follow this to get to grips with the programming model:
 
-[Hyperledger Composer playground guide](https://hyperledger.github.io/composer/tutorials/playground-guide.html)
+[Hyperledger Composer Playground tutorial](https://hyperledger.github.io/composer/tutorials/playground-tutorial.html)
 
 3. Create and start the REST server
 ```bash
