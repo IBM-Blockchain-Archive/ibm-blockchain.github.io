@@ -12,29 +12,18 @@ IBM Blockchain Platform's developer tools help you create a **Business Network D
 This guide deals with the next step in a pilot or production use case: activating your business network by deploying the .bna to a production environment - the IBM Blockchain Platform Service on IBM Cloud.
 
 > ### Warning!
-> These directions are applicable for the current version the IBM Blockchain Platform Enterprise Plan and Hyperledger Composer. This guide uses a pre-release version of Hyperledger Composer which could be updated, without notice, to include breaking changes. The guide should be treated as guidance only.<br><br>
-> When you start this guide, you should already have your .bna file ready. For a guide to  developing your business network archive please refer to the [Developing Business Networks](https://hyperledger.github.io/composer/business-network/business-network-index.html) documentation provided for Hyperledger Composer.
+> These directions are applicable for the current version the IBM Blockchain Platform Enterprise Plan and Hyperledger Composer v0.16 release. This guide uses a pre-release version of Hyperledger Composer which could be updated, without notice, to include breaking changes. The guide should be treated as guidance only.<br><br>
+> When you start this guide, you should already have your .bna file ready. For a guide to  developing your business network archive please refer to the [Developing Business Networks](https://hyperledger.github.io/composer/stable/business-network/business-network-index.html) documentation provided for Hyperledger Composer.
 
 ## Before You Start
-1. You will need to install the Composer Development Environment to create the required business network archive (.bna) file. You can read about installation here: [Installing Hyperledger Composer](https://hyperledger.github.io/composer/installing/development-tools.html).  Guidance on writing your business network is also available in the Hyperledger documentation.
+1. You will need to install the Composer Development Environment to create the required business network archive (.bna) file. You can read about installation here: [Installing Hyperledger Composer](https://hyperledger.github.io/composer/stable/installing/development-tools.html).  Guidance on writing your business network is also available in the Hyperledger documentation.
 2. You will also need access to an Enterprise Service instance on IBM Cloud. You can register for an account at [Bluemix.net](https://console.bluemix.net/registration/) and you can create a service via the [IBM Blockchain Service](https://console.ng.bluemix.net/catalog/services/blockchain).
 You will need to create a channel and at least one peer.
 
 ---
 
 ## Creating a connection.json file for your IBM Cloud Blockchain Service instance
-Create a directory to store your Bluemix connection details e.g. ``/Users/myUserId/.composer-connection-profiles/bmx-hlfv1``
-
-> When you set up the Local Development Environment (see [Installing a development environment](https://hyperledger.github.io/composer/installing/development-tools.html) if you have yet to do this)  you should already have created part of this directory structure.  If you are developing on a Mac, for example, you will already have a directory structure like
- `/Users/myUserId/.composer-connection-profiles/hlfv1`.
-
-Each connection profile should contain a `connection.json` file. For the IBM Cloud Service instance, create a new directory under the `.composer-connection-profiles`, e.g. (bmx-hlfv1). This will be the name of the profile that you will use when working with Hyperledger composer and your IBM Blockchain Platform service.
-```bash
-mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
-cd ~/.composer-connection-profiles/bmx-hlfv1
-```
-You should now have a directory structure which looks like ``/Users/myUserId/.composer-connection-profiles/bmx-hlfv1``
-Create a file in the newly created directory using your favorite editor and name it connection.json.
+Create a file in the using your favorite editor and name it `connection.json`.
 You can use the following as a code template for your ``connection.json`` file:
 
 ```json
@@ -57,13 +46,14 @@ You can use the following as a code template for your ``connection.json`` file:
             "eventURL": "grpcs://abcd.4.secure.blockchain.ibm.com:33333"
         }
     ],
-    "keyValStore": "/Users/jeff/.composer-credentials-mychannel-hsbn",
     "channel": "mychannel",
     "mspID": "PeerOrg1",
     "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
     "timeout": 300
 }
 ```
+We will refer to this `connection.json` file as `<YOUR_CONNECTION_PROFILE_FILE>` in various commands later.
+
 You will populate the newly created `connection.json` file with attributes that are provided via your IBM Blockchain Platform dashboard. From your Platform dashboard on IBM Cloud, select **Overview** from the navigation menu on the left panel. Then click on the **Service Credentials** button to display the endpoint and certificate information for the members of the channel where you want to deploy your business network archive.
 
 ### Orderers
@@ -86,12 +76,6 @@ Now we need to set the url for each Peer **requestURL** and **eventURL**. Modify
       "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
 ```
 
-### keyValStore
-
-Next we need to set the keyValStore attribute to point to the appropriate directory. This directory should be different than the ``.composer-credentials`` directory that was set up for a local composer-connection profile. For example you could create a new directory under your home directory called ``.composer-credentials-mychannel-hsbn``. Make sure the KeyValStore attribute points to your newly created directory.
-```bash
-"keyValStore": "/Users/myUserId/.composer-credentials-mychannel-hsbn",
-```
 ### Channel
 Modify the channel value in the ``connection.json`` to match the name of the channel which you plan to create and deploy your business network to.
 
@@ -111,23 +95,31 @@ Currently IBM Blockchain Platform uses a common TLS certificate for the orderers
 > ### Important
 > You **must** perform this step first before creating your channel. Failure to do so will mean you won’t be able to start the business network.
 >
-> If you have been working with a local instance of HLFV1, then you may have existing credentials for users like admin or PeerAdmin in your ``homedir/.composer-credentials`` directory. It is highly recommend to point to a different directory for your IBM Blockchain Platform credentials (e.g. ``.composer-credentials-hsbn-mychannel``) to ensure that you are using the IBM Blockchain Platform credentials versus your local credentials later.
 
 1. The first step is to request certificates for an identity that is a member of your Membership Service Provider (msp). in your service credentials document under **certificateAuthorities** should be an attribute **registrar** containing attributes for **enrollId** and **enrollSecret**. For example:
 ```
 "registrar": [
     {
-        "affiliation": "org1",
         "enrollId": "admin",
         "enrollSecret": "PA55W0RD12"
     }
 ],
 ```
-2. To request the certificates you would issue the following command
-```
-composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
-```
+2. To request the certificates you would issue the following commands
+- `composer card create -f ca.card -p <YOUR_CONNECTION_PROFILE_FILE> -u admin -s <YOUR_ADMIN_ENROLLSECRET>`
+- `composer card import -f ca.card`
+- `rm ca.card`
+The previous 3 commands create a temporary card which you will use to request the admin identity certificates,
+import that card into the Hyperledger Composer card store and then remove the used card file.
+Note the name of the card when it was imported. If you specified the name `bmx-hlfv1` as the name of your connection profile as shown in the template previously then the card name would be `admin@bmx-hlfv1`. We
+will refer to this card name as `<CARD_NAME>` in subsequent commands
+
+- `composer identity request -c <CARD_NAME>`
 This will download 3 files into the ``.identityCredentials`` directory under your home directory. The 2 files of interest are based on the enrollId. So in the above example there will be 2 files called **admin-pub.pem** and **admin-priv.pem**
+
+- `composer card delete -n <CARD_NAME>`
+We now delete that card from the card store as it will no longer be used.
+
 3. Select **Members** from the navigation menu on the left panel, then select the **Certificates** menu option and click on the **Add Certificate** button.
 4. Enter a unique name for this certificate (don’t use dashes in the name) in the **Name** field.
 5. Open the file ``admin-pub.pem`` created earlier in your favourite editor and copy the contents of this file into the **Key** field and press the **Submit** button (note: you may have to move the cursor in order for the dialogue to recognise the certificate you have pasted in).
@@ -151,25 +143,49 @@ This will download 3 files into the ``.identityCredentials`` directory under you
 
 ## Importing a new identity to administer your Business Network Archive
 
-Next we are going to create an identity in Composer using the certificates requested previously. This new identity will have the authority to install chaincode onto the peers that have your uploaded public certificate and will be an issuer for the certificate authorities.
+Next we are going to create a card in Composer using the certificates requested previously. This new card will have the authority to install chaincode onto the peers that have your uploaded public certificate and will be an issuer for the certificate authorities.
 
-To create the new id, run the following command:
+To create and import the new card into the Composer card store, run the following commands:
 
 ```bash
-composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+composer card create -p <YOUR_CONNECTION_PROFILE_FILE> -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
 ```
-Where ``bmx-hlfv1`` is the name of the composer connection profile that you previously created. Now we are ready to deploy your .bna file to the IBM Blockchain Platform.
+Note the name of the card file created, it should be something like `admin@bmx-hlfv1.card` and we will refer to this file as `<HLFV1_CARD_FILE>`
+```bash
+composer card import -f <HLFV1_CARD_FILE>
+```
+Note the card name. It should be something like `admin@bmx-hlfv1` and we refer to this later with `<HLFV1_CARD_NAME>
+Now we are ready to deploy your .bna file to the IBM Blockchain Platform.
 
 ---
 
 ## Deploying the Business Network Archive
 
-Now you can deploy your .bna file to your IBM Blockchain Platform instance. Simply point to the appropriate connection profile using the newly created admin ID (e.g. ``testAdmin``)
+Now you can deploy your .bna file to your IBM Blockchain Platform instance. An example of how to deploy is shown below. Replace `myNetwork.bna` with the name (and if necessary fully qualify it with a path) with your bna file you want to deploy.
 ```bash
-composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+composer network deploy -c <HLFV1_CARD_NAME> -a myNetwork.bna -A admin -C ~/.identityCredentials/admin-pub.pem -f delete_me.card
 ```
+The command creates a card file called `delete_me.card`. This card is of no use so just delete it.
 
 ---
+
+## Create a Business network card which can interaction on the deployed network
+
+Now you need a Business network card that will allow you to interact on the deployed business network which can perform actions such as issue identities. To create the card issue the following command
+```bash
+composer card create -p <YOUR_CONNECTION_PROFILE_FILE> -u admin@<YOUR_BUSINESS_NETWORK_NAME> -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem -n <YOUR_BUSINESS_NETWORK_NAME>
+```
+where <YOUR_BUSINESS_NETWORK_NAME> is the name of the business network you have just deployed. It should create a card file `admin@<YOUR_BUSINESS_NETWORK_NAME>@bmx-hlfv1.card` for example and we will refer to this as 
+`<BN_CARD_FILE>`
+You can then import this card into the card store
+```bash
+composer card import -f <BN_CARD_FILE>
+```
+Note the name of the card it should be something like `admin@<YOUR_BUSINESS_NETWORK_NAME>@bmx-hlfv1` and we will refer to it as `<BN_CARD_NAME>`
+You can then test this card by doing
+```bash
+composer network ping -c <BN_CARD_NAME>
+```
 
 ## Congratulations!
 
