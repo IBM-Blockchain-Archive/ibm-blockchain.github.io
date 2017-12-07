@@ -42,7 +42,7 @@ http://YOUR_PUBLIC_IP_HERE:31080
 
 Hyperledger Composer provides a tutorial for using Playground to create a basic Business Network.  We recommend you follow this to get to grips with the programming model:
 
-[Hyperledger Composer playground guide](https://hyperledger.github.io/composer/tutorials/playground-guide.html)
+[Hyperledger Composer playground guide](https://hyperledger.github.io/composer/stable/tutorials/playground-guide.html)
 
 **Note:** If you'd prefer to develop your applications locally, we recommend spending some more time on the Hyperledger Composer documentation, and exploring the Development Environment install instructions.  You can install a VSCode Extension for Composer, and use CLI commands to package up what you create into a .BNA file (Business Network Archive file).  These files can be imported into Playground to easily deploy them to your cloud environment.
 
@@ -54,7 +54,7 @@ Before performing this step, you must first have deployed a Business Network. Yo
 
 On the **My Business Networks** screen in the Hyperledger Composer Playground, you should see two _business network cards_. The first business network card is called _PeerAdmin@hlfv1_ and was automatically created by the `create_all.sh` script above. The second business network card is the network administrator card which was generated and used to deploy your business network in the previous step, the name of this card will likely be _admin@BIZNET_ where `BIZNET` is the name of the business network you deployed in the previous step. The _name_ of a business network card is both the identity name and the network which is belongs to in the following format: _admin@BIZNET_
 
-The Hyperledger Composer REST server allows you to expose your deployed Business Network via a REST API. Client applications, such as web or mobile applications, can interact with your deployed Business Network by using a REST or HTTP client. For more information on the Hyperledger Composer REST server and integrating existing systems with your deployed Business Network, see the [Integrating existing systems documentation](https://hyperledger.github.io/composer/integrating/integrating-index.html).
+The Hyperledger Composer REST server allows you to expose your deployed Business Network via a REST API. Client applications, such as web or mobile applications, can interact with your deployed Business Network by using a REST or HTTP client. For more information on the Hyperledger Composer REST server and integrating existing systems with your deployed Business Network, see the [Integrating existing systems documentation](https://hyperledger.github.io/composer/stable/integrating/integrating-index.html).
 
 1. Start the Hyperledger Composer REST server for a deployed Business Network by running the following commands. Replace `INSERT_BIZNET_CARD_NAME` with the name of the network administrator card created in the previous step.
 
