@@ -178,15 +178,14 @@ The command creates a card file called `delete_me.card`. This card is of no use 
 
 Now you need a Business network card that will allow you to interact on the deployed business network which can perform actions such as issue identities. To create the card issue the following command (note that it differs from the previous command used to create a card by the presence of the `-n` option flag)
 ```bash
-composer card create -n <YOUR_BUSINESS_NETWORK_NAME> -p <YOUR_CONNECTION_PROFILE_FILE> -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem 
+composer card create -n <YOUR_BUSINESS_NETWORK_NAME> -p <YOUR_CONNECTION_PROFILE_FILE> -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
 ```
-where <YOUR_BUSINESS_NETWORK_NAME> is the name of the business network you have just deployed. It should create a card file `admin@<YOUR_BUSINESS_NETWORK_NAME>.card` for example and we will refer to this as 
-`<BN_CARD_FILE>`
+where `<YOUR_BUSINESS_NETWORK_NAME>` is the name of the business network you have just deployed. It should create a card file `admin@<YOUR_BUSINESS_NETWORK_NAME>.card` for example and we will refer to this as `<BN_CARD_FILE>`
 You can then import this card into the card store
 ```bash
 composer card import -f <BN_CARD_FILE>
 ```
-Note the name of the card it should be something like `admin@<YOUR_BUSINESS_NETWORK_NAME>@bmx-hlfv1` and we will refer to it as `<BN_CARD_NAME>`
+Note the name of the card it should be something like `admin@<YOUR_BUSINESS_NETWORK_NAME>` and we will refer to it as `<BN_CARD_NAME>`
 You can then test this card by doing
 ```bash
 composer network ping -c <BN_CARD_NAME>
