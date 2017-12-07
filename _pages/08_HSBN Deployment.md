@@ -106,19 +106,24 @@ Currently IBM Blockchain Platform uses a common TLS certificate for the orderers
 ],
 ```
 2. To request the certificates you would issue the following commands
-- `composer card create -f ca.card -p <YOUR_CONNECTION_PROFILE_FILE> -u admin -s <YOUR_ADMIN_ENROLLSECRET>`
-- `composer card import -f ca.card`
-- `rm ca.card`
-The previous 3 commands create a temporary card which you will use to request the admin identity certificates,
-import that card into the Hyperledger Composer card store and then remove the used card file.
+```bash
+composer card create -f ca.card -p <YOUR_CONNECTION_PROFILE_FILE> -u admin -s <YOUR_ADMIN_ENROLLSECRET>
+composer card import -f ca.card
+rm ca.card
+```
+These 3 commands create a temporary card which you will use to request the admin identity certificates, import that card into the Hyperledger Composer card store and then remove the used card file.
 Note the name of the card when it was imported. If you specified the name `bmx-hlfv1` as the name of your connection profile as shown in the template previously then the card name would be `admin@bmx-hlfv1`. We
-will refer to this card name as `<CARD_NAME>` in subsequent commands
+will refer to this card name as `<TEMP_CARD_NAME>` in subsequent commands
 
-- `composer identity request -c <CARD_NAME>`
+```bash
+composer identity request -c <TEMP_CARD_NAME>
+```
 This will download 3 files into the ``.identityCredentials`` directory under your home directory. The 2 files of interest are based on the enrollId. So in the above example there will be 2 files called **admin-pub.pem** and **admin-priv.pem**
 
-- `composer card delete -n <CARD_NAME>`
 We now delete that card from the card store as it will no longer be used.
+```bash
+composer card delete -n <TEMP_CARD_NAME>
+```
 
 3. Select **Members** from the navigation menu on the left panel, then select the **Certificates** menu option and click on the **Add Certificate** button.
 4. Enter a unique name for this certificate (don’t use dashes in the name) in the **Name** field.
@@ -171,11 +176,11 @@ The command creates a card file called `delete_me.card`. This card is of no use 
 
 ## Create a Business network card which can interaction on the deployed network
 
-Now you need a Business network card that will allow you to interact on the deployed business network which can perform actions such as issue identities. To create the card issue the following command
+Now you need a Business network card that will allow you to interact on the deployed business network which can perform actions such as issue identities. To create the card issue the following command (note that it differs from the previous command used to create a card by the presence of the `-n` option flag)
 ```bash
-composer card create -p <YOUR_CONNECTION_PROFILE_FILE> -u admin@<YOUR_BUSINESS_NETWORK_NAME> -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem -n <YOUR_BUSINESS_NETWORK_NAME>
+composer card create -n <YOUR_BUSINESS_NETWORK_NAME> -p <YOUR_CONNECTION_PROFILE_FILE> -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem 
 ```
-where <YOUR_BUSINESS_NETWORK_NAME> is the name of the business network you have just deployed. It should create a card file `admin@<YOUR_BUSINESS_NETWORK_NAME>@bmx-hlfv1.card` for example and we will refer to this as 
+where <YOUR_BUSINESS_NETWORK_NAME> is the name of the business network you have just deployed. It should create a card file `admin@<YOUR_BUSINESS_NETWORK_NAME>.card` for example and we will refer to this as 
 `<BN_CARD_FILE>`
 You can then import this card into the card store
 ```bash
