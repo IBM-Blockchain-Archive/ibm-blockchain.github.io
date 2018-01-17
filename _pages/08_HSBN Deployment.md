@@ -13,10 +13,10 @@ This guide deals with the next step in a pilot or production use case: activatin
 
 > ### Warning!
 > These directions are applicable for the current version the IBM Blockchain Platform Enterprise Plan and Hyperledger Composer v0.16 release. This guide uses a pre-release version of Hyperledger Composer which could be updated, without notice, to include breaking changes. The guide should be treated as guidance only.<br><br>
-> When you start this guide, you should already have your .bna file ready. For a guide to  developing your business network archive please refer to the [Developing Business Networks](https://hyperledger.github.io/composer/stable/business-network/business-network-index.html) documentation provided for Hyperledger Composer.
+> When you start this guide, you should already have your .bna file ready. For a guide to  developing your business network archive please refer to the [Developing Business Networks](https://ibm-blockchain.github.io/develop/business-network/business-network-index) documentation provided for Hyperledger Composer.
 
 ## Before You Start
-1. You will need to install the Composer Development Environment to create the required business network archive (.bna) file. You can read about installation here: [Installing Hyperledger Composer](https://hyperledger.github.io/composer/stable/installing/development-tools.html).  Guidance on writing your business network is also available in the Hyperledger documentation.
+1. You will need to install the Composer Development Environment to create the required business network archive (.bna) file. You can read about installation here: [Installing Hyperledger Composer](https://ibm-blockchain.github.io/develop/installing/development-tools).  Guidance on writing your business network is also available in the Hyperledger documentation.
 2. You will also need access to an Enterprise Service instance on IBM Cloud. You can register for an account at [Bluemix.net](https://console.bluemix.net/registration/) and you can create a service via the [IBM Blockchain Service](https://console.ng.bluemix.net/catalog/services/blockchain).
 You will need to create a channel and at least one peer.
 
