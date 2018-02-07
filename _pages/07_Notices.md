@@ -2,7 +2,7 @@
 layout: default
 title:  Legal Notices
 permalink: "/notices/"
-category: advanced
+category: legal
 ---
 
 **************************  NOTICE FILE STARTS HERE ****************
@@ -181,7 +181,7 @@ Any litigation relating to this License may be brought only in the courts of a j
 This License represents the complete agreement concerning the subject matter hereof. If any provision of this License is held to be unenforceable, such provision shall be reformed only to the extent necessary to make it enforceable. Any law or regulation which provides that the language of a contract shall be construed against the drafter shall not be used to construe this License against a Contributor.
 10. Versions of the License
 10.1. New Versions
-Mozilla Foundation is the license steward. Except as provided in Section㺊.3, no one other than the license steward has the right to modify or publish new versions of this License. Each version will be given a distinguishing version number.
+Mozilla Foundation is the license steward. Except as provided in Section.3, no one other than the license steward has the right to modify or publish new versions of this License. Each version will be given a distinguishing version number.
 10.2. Effect of New Versions
 You may distribute the Covered Software under the terms of the version of the License under which You originally received the Covered Software, or under the terms of any subsequent version published by the license steward.
 10.3. Modified Versions

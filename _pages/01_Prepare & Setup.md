@@ -30,7 +30,7 @@ npm install -g composer-cli
 
 ### 3. Download and install the Bluemix CLI
 
-[https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html#download_install](https://console.bluemix.net/docs/cli/reference/bluemix_cli/download_cli.html#download_install)
+[http://clis.ng.bluemix.net/ui/home.html](http://clis.ng.bluemix.net/ui/home.html)
 
 ### 4. Add the bluemix plugins repo
 
