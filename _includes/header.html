@@ -1,22 +1,25 @@
 <div class="nav">
         <a class="top-link" href="/">IBM <b>Blockchain</b></a>
-        <hr>
+      <hr>
       <ul>
         <li><a href="/">Overview</a></li>
-        {% for page in site.pages %}
-        {% if page.category == "tutorial" | sort:"order" %}
+      </ul>
+      <hr>
+        <ul>
+        <li><h3 class="side-nav-title">Free Cluster</h3></li>
+        {% for page in site.pages %} {% if page.category == "tutorial" | sort:"order" %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
         {% endif %}
         {% endfor %}
       </ul>
-      <hr>
+    <hr>
       <ul>
-        <li><a href="">Paid Cluster</a></li>
+        <li><h3 class="side-nav-title">Paid Cluster</h3></li>
         {% for page in site.pages %} {% if page.category == "paid" | sort:"order" %}
         <li><a href="{{ page.url }}">{{ page.title }}</a></li>
         {% endif %} {% endfor %}
       </ul>
-      <hr>
+    <hr>
       <ul>
         {% for page in site.pages %}
         {% if page.category == "hsbn" | sort:"order" %}
@@ -24,14 +27,22 @@
         {% endif %}
         {% endfor %}
       </ul>
-      <hr>
-    <ul>
-      {% for page in site.pages %}
-      {% if page.category == "advanced" | sort: "order" %}
-      <li><a href="{{ page.url }}">{{ page.title }}</a></li>
-      {% endif %}
-      {% endfor %}
-    </ul>
+    <hr>
+      <ul>
+        {% for page in site.pages %}
+        {% if page.category == "advanced" | sort: "order" %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    <hr>
+      <ul>
+        {% for page in site.pages %}
+        {% if page.category == "legal" | sort: "order" %}
+        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+        {% endif %}
+        {% endfor %}
+      </ul>
 
 
 </div>

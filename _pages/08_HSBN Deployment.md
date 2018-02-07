@@ -1,6 +1,6 @@
 ---
 layout: default
-title:  IBM Blockchain Production Deployment
+title: Deploying Composer Business Networks to IBM Blockchain Platform
 permalink: "/platform-deployment/"
 category: hsbn
 order: 1

@@ -2,7 +2,7 @@
 layout: default
 title:  Advanced Install
 permalink: "/advanced/"
-category: advanced
+category: tutorial
 order: 1
 ---
 
@@ -66,7 +66,7 @@ CHANNEL_NAME="channel1" PEER_MSPID="Org2MSP" PEER_ADDRESS="blockchain-org2peer1:
 ./create/create_composer-playground.sh
 ```
 
-2. Create a Basic Business Network 
+2. Create a Basic Business Network
 Hyperledger Composer provides a tutorial for using Playground to create a basic Business Network.  We recommend you follow this to get to grips with the programming model:
 
 [Playground Tutorial](https://ibm-blockchain.github.io/develop/tutorials/playground-tutorial)
@@ -92,4 +92,3 @@ CHAINCODE_NAME="example02" CHAINCODE_VERSION="v1" MSP_CONFIGPATH="/shared/crypto
 ```bash
 CHANNEL_NAME="channel1" CHAINCODE_NAME="example02" CHAINCODE_VERSION="v1" MSP_CONFIGPATH="/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp"  PEER_MSPID="Org1MSP" PEER_ADDRESS="blockchain-org1peer1:30110" create/chaincode_instantiate.sh
 ```
-
