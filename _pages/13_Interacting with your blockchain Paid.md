@@ -100,9 +100,9 @@ Client applications, such as web or mobile applications, can interact with your 
     composer-rest-server   172.21.61.175    169.47.102.82   3000:31090/TCP                    4m
     kubernetes             172.21.0.1       <none>          443/TCP                           3d
     ```
-    From the example here, `composer-rest-server` service has an external endpoint of `169.47.102.83`.
+    From the example here, `composer-rest-server` service has an external endpoint of `169.47.102.82`.
 
-3. Using the value of the `Public IP` (in this example 169.48.140.99) you can now access the Hyperledger Composer REST server at:
+3. Using the value of the `Public IP` (in this example 169.47.102.82) you can now access the Hyperledger Composer REST server at:
 
 		http://EXTERNAL_ENDPOINT_FOR_REST_SERVER:31090/explorer/
 
