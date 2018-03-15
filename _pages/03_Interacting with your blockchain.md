@@ -86,7 +86,7 @@ Client applications, such as web or mobile applications, can interact with your 
 
     ```bash
     cd cs-offerings/scripts/
-    ./create/create_composer-rest-server.sh --paid --business-network-card INSERT_BIZCARD_NAME
+    ./create/create_composer-rest-server.sh --business-network-card INSERT_BIZCARD_NAME
     ```
 
 2. Determine the public IP address of the cluster as in Step 1.
