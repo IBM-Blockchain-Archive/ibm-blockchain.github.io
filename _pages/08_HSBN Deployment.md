@@ -53,7 +53,7 @@ npm install -g connection-profile-converter
 Once that is installed, run the following to create a connection profile.
 
 ```
-connection-profile-converter --input <Your Downloaded Service Credentials.json> --output connection.json --channel <Your Channel Name> 
+connection-profile-converter --input <YOUR_DOWNLOADED_CONNECTION_PROFILE_AS_.json> --output connection.json --channel <YOUR_CHANNEL_NAME> 
 ```
 
 ## Preparing a local Business Network card for Network Administration
@@ -61,8 +61,8 @@ connection-profile-converter --input <Your Downloaded Service Credentials.json> 
 1. You need to create a Composer business network card and import it using the following commands
 
 ```
-composer card create -p connection.json -u <Your enrollId> -s <Your enrollSecret> -r PeerAdmin -r ChannelAdmin
-composer card import -f admin@fabric.card
+composer card create -p connection.json -u <YOUR_enrollId> -s <YOUR_enrollSecret> -r PeerAdmin -r ChannelAdmin
+composer card import -f admin@fabric-network.card
 ```
 
 2. Check that the card imported succesfully with 
@@ -73,7 +73,7 @@ This will show you the card name that you will need in the following steps.
 
 3. Now request an identity for the admin user from the fabric Certificate Authority using
 ```
-composer identity request --card <Your Card Name> --path <Path to store Identity Credentials in>
+composer identity request --card admin@fabric-network
 ```
 
 Now that we have an identity issued by the certificate authority for this participant, it is good practice to start using the credentials that were issued rather than the default enrolling id and secret that was created when the service was started.
@@ -81,7 +81,7 @@ This means deleting the card file that you just created and imported, from the c
 
 4. To delete the card run 
 ```
-composer card delete --card <Your Card Name>
+composer card delete --name admin@fabric-network
 ```
 
 5. We now need to create a new business network card containing the credentials issued from the identity request that we just performed
@@ -89,7 +89,7 @@ To do this and then import the new card into the card store, issue the following
 
 ```
 composer card create -p connection.json -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
-composer card import -f admin@fabric.card
+composer card import -f admin@fabric-network.card
 composer card list
 ```
 
@@ -111,9 +111,9 @@ We have not specified anything about a business network or application yet. This
 
 ## Deploying the Business Network Archive
 
-Now you can deploy your .bna file to your IBM Blockchain Platform instance. An example of how to deploy is shown below. Replace `myNetwork.bna` with the name (and if necessary fully qualify it with a path) with your bna file you want to deploy.
+Now you can deploy your .bna file to your IBM Blockchain Platform instance. An example of how to deploy is shown below.
 ```bash
-composer network deploy -c <HLFV1_CARD_NAME> -a myNetwork.bna -A admin -C ~/.identityCredentials/admin-pub.pem -f delete_me.card
+composer network deploy -c admin@fabric-network -a <PATH_TO_.bna_FILE> -A admin -C ~/.identityCredentials/admin-pub.pem -f delete_me.card
 ```
 The command creates a card file called `delete_me.card`. This card is of no use so just delete it.
 
