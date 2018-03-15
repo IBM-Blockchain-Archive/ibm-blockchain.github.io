@@ -113,7 +113,8 @@ We have not specified anything about a business network or application yet. This
 
 Now you can deploy your .bna file to your IBM Blockchain Platform instance. An example of how to deploy is shown below.
 ```bash
-composer network deploy -c admin@fabric-network -a <PATH_TO_.bna_FILE> -A admin -C ~/.identityCredentials/admin-pub.pem -f delete_me.card
+composer runtime install --card admin@fabric-network --businessNetworkName <NAME_OF_BUSINESS_NETWORK_USED_IN_.bna_FILE>
+composer network start -c admin@fabric-network -a <PATH_TO_.bna_FILE> -A admin -C ~/.identityCredentials/admin-pub.pem -f delete_me.card
 ```
 The command creates a card file called `delete_me.card`. This card is of no use so just delete it.
 
