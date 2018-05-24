@@ -16,7 +16,7 @@ Once testing is complete, IBM signs the images and places them on the IBM Blockc
 
 Technical support may be purchased only when using the IBM Blockchain images available from the [IBM Blockchain Docker Hub repo](https://hub.docker.com/u/ibmblockchain/). Support will not be provided for images that have been altered. Please see the Getting Support section below for more information.   
 
-Samples provided for blockchain network setup are intended only as examples, and should not be used as a prescription for setting up, administering, and operating an individual blockchain network or solution. For additional help setting up and operating a blockchain network, IBM recommends use of IBM Lab Services. 
+Samples provided for blockchain network setup are intended only as examples, and should not be used as a prescription for setting up, administering, and operating an individual blockchain network or solution. For additional help setting up and operating a blockchain network, IBM recommends use of IBM Lab Services.
 
 Additional information can be found below under the heading Documentation Links.
 
@@ -70,6 +70,23 @@ services:
 ```
 
 Once you have made these alterations, you can proceed with customizing and running your Fabric instance.  
+
+## Setting Users and Groups in the containers
+
+By default, Hyperledger Peer Docker containers use the docker.sock file for communications to create chaincode containers via the /host/var/run mount. Non-root users running inside Hyperledger Peer Docker containers MUST be a member of the docker group defined in the native OS (/etc/group). If the non-root user running inside a Hyperledger Peer Docker container does not have the same group id as the docker group id contained in the native OS /etc/group file then an error will occur.
+
+Processes can be started with the user of choice by passing the following variables:
+
+USERNAME=<username of choice>
+GROUP_ID=<guid of choice>
+USER_ID=<uuid of choice>
+
+Otherwise, all processes will start with the following default user:
+USERNAME=fabric
+GROUP_ID=198
+USER_ID=199
+
+Note: if you are mounting the docker socket inside the peer container, the docker socket will need to have enough permissions for the user to be able to use it. We suggest to pass the docker group's guid to the peer's GROUP_ID environment variable.
 
 ## Documentation links
 
