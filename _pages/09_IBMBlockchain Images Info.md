@@ -77,14 +77,18 @@ By default, Hyperledger Peer Docker containers use the docker.sock file for comm
 
 Processes can be started with the user of choice by passing the following variables:
 
+```
 USERNAME=<username of choice>
 GROUP_ID=<guid of choice>
 USER_ID=<uuid of choice>
+```
 
 Otherwise, all processes will start with the following default user:
+```
 USERNAME=fabric
 GROUP_ID=198
 USER_ID=199
+```
 
 Note: if you are mounting the docker socket inside the peer container, the docker socket will need to have enough permissions for the user to be able to use it. We suggest to pass the docker group's guid to the peer's GROUP_ID environment variable.
 
