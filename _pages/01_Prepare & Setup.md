@@ -24,63 +24,43 @@ Download and install the Hyperledger Composer CLI using the following command:
 npm install -g composer-cli
 ```
 
-### 2. Download and install kubectl CLI
+### 2. Download and install the IBM Cloud CLI
 
-[https://kubernetes.io/docs/tasks/kubectl/install/](https://kubernetes.io/docs/tasks/kubectl/install/)
-
-### 3. Download and install the Bluemix CLI
-
-[http://clis.ng.bluemix.net/ui/home.html](http://clis.ng.bluemix.net/ui/home.html)
-
-### 4. Add the bluemix plugins repo
-
-```bash
-$ bx plugin repo-add bluemix https://plugins.ng.bluemix.net
-```
-
-Note: If you get the following error, it means that the repository bluemix already exists on your computer. Thus, you can ignore the error and move to the next step.
-
-`Plug-in repo named ‘bluemix’ already exists. Try a different name.`
-
-### 5. Add the container service plugin
-
-```bash
-$ bx plugin install container-service -r bluemix
-```
+[https://console.bluemix.net/docs/cli/](https://console.bluemix.net/docs/cli/)
 
 ## Setup a cluster
 
-Now, we will use those CLIs and plugins to create a cluster on the IBM Container Service.  Use these steps to setup a cluster named ___blockchain___ on IBM Container Service. For more information about how to use the [bluemix cli](https://console.bluemix.net/docs/cli/reference/bluemix_cli/bx_cli.html#bluemix_cli).
+Now, we will use those CLIs and plugins to create a cluster on the IBM Container Service.  Use these steps to setup a cluster named ___blockchain___ on IBM Container Service. For more information about how to use the [ibmcloud cli](https://console.bluemix.net/docs/cli/reference/bluemix_cli/bx_cli.html#bluemix_cli).
 
-### 6. Point Bluemix CLI to production API
+### 3. Point IBM Cloud CLI to production API
 
 ```bash
-$ bx api api.ng.bluemix.net
+$ ibmcloud api api.ng.bluemix.net
 ```
 
-### 7. Login to bluemix
+### 4. Login to IBM Cloud
 
 ```bash
-$ bx login
+$ ibmcloud login
 ```
 
 If your id is federated in an SSO, you will have to run the following command to login:
 ```bash
-$ bx login -sso
+$ ibmcloud login -sso
 ```
 
-### 8. Create a cluster on IBM Container Service
+### 5. Create a cluster on IBM Container Service
 
 This will create a __free cluster__ named _blockchain_ on the IBM Container Service.
 ```bash
-$ bx cs cluster-create --name blockchain
+$ ibmcloud cs cluster-create --name blockchain
 ```
 
-### 9. Wait for the cluster to be ready
+### 6. Wait for the cluster to be ready
 
 Issue the following command to ascertain the status of your cluster:
 ```bash
-$ bx cs clusters
+$ ibmcloud cs clusters
 ```
 
 The process goes through the following lifecycle - ``requesting`` --> ``pending`` --> ``deploying`` --> ``normal``.  Initially you will see something similar to the following:
@@ -93,7 +73,7 @@ Wait for the State to change to _normal_. Note that this can take upwards of 15-
 
 You should see the following output when the cluster is ready:
 ```bash
-$ bx cs clusters
+$ ibmcloud cs clusters
 Listing clusters...
 OK
 Name         ID                                 State    Created                    Workers
@@ -104,28 +84,28 @@ blockchain   0783c15e421749a59e2f5b7efdd351d1   normal   2017-05-09T16:13:11+000
 Use the following syntax to inspect on the status of the workers:
 Command:
 ```bash
-$ bx cs workers <cluster-name>
+$ ibmcloud cs workers <cluster-name>
 ```
 
 For example:
 ```bash
-$ bx cs workers blockchain
+$ ibmcloud cs workers blockchain
 ```
 
 The expected response is as follows:
 ```bash
-$ bx cs workers blockchain
+$ ibmcloud cs workers blockchain
 Listing cluster workers...
 OK
 ID                                                 Public IP       Private IP       Machine Type   State    Status
 kube-dal10-pa0783c15e421749a59e2f5b7efdd351d1-w1   169.48.140.48   10.176.190.176   free           normal   Ready
 ```
 
-### 10. Configure kubectl to use the cluster
+### 7. Configure kubectl to use the cluster
 
 Issue the following command to download the configuration for your cluster:
 ```bash
-$ bx cs cluster-config blockchain
+$ ibmcloud cs cluster-config blockchain
 ```
 
 Expected output:
