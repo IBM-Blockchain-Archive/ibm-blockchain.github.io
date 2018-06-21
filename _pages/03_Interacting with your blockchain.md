@@ -16,12 +16,11 @@ Make sure you have installed the IBM Blockchain Platform for Developers on IBM C
 
 Determine the public IP address of your cluster by running the following command:
 ```
-bx cs workers blockchain
+ibmcloud cs workers blockchain
 ```
 
 The output should be similar to the following:
 ```
-Listing cluster workers...
 OK
 ID                                                 Public IP      Private IP       Machine Type   State    Status
 kube-dal10-pabdda14edc4394b57bb08d53c149930d7-w1   169.48.140.99   10.171.239.186   free           normal   Ready
@@ -46,7 +45,7 @@ Hyperledger Composer provides a tutorial for using Playground to create a basic 
 
 **Note:** If you are familiar with Hyperledger Composer and do not want to use Playground to develop a Business Network at this time, jump to section 6.
 
-1. Underneath the section **Connection: hlfv1**  (NOT Connection: Web Browser) - click **Deploy New Business Network** 
+1. Underneath the section **Connection: hlfv1**  (NOT Connection: Web Browser) - click **Deploy New Business Network**
 2. Use an _empty-business-network_ if you have a model already to paste in, otherwise select a template and complete details e.g.
 
     Name: **perishable-network**
@@ -68,7 +67,7 @@ Hyperledger Composer provides a tutorial for using Playground to create a basic 
 
 ### 4. Understanding Business Network Cards
 
-On the **My Business Networks** screen in the Hyperledger Composer Playground, you should see two _business network cards_. The first Business Network Card is called _PeerAdmin@hlfv1_ and was automatically created by the `create_all.sh` script. The second Business Network Card is the network administrator card which was generated, the name of this card will likely be _admin@BIZNET_ where `BIZNET` is the name of the Business Network you deployed in the previous step. The _name_ of a business network card is both the identity name and the network which is belongs to in the following format: _admin@BIZNET_ 
+On the **My Business Networks** screen in the Hyperledger Composer Playground, you should see two _business network cards_. The first Business Network Card is called _PeerAdmin@hlfv1_ and was automatically created by the `create_all.sh` script. The second Business Network Card is the network administrator card which was generated, the name of this card will likely be _admin@BIZNET_ where `BIZNET` is the name of the Business Network you deployed in the previous step. The _name_ of a business network card is both the identity name and the network which is belongs to in the following format: _admin@BIZNET_
 
 The PeerAdmin card has 2 roles in our dev fabric server setup. It has the authority to install the Composer Runtime (chaincode) onto the peer, and to start the Business Network (chaincode) on the channel. Importantly, once the PeerAdmin has started the Business Network it has no access to the Business Network!
 
@@ -76,7 +75,7 @@ The Network Admin card is a card that provides access to the deployed Business N
 
 ### 5. Expose Your Business Network As A REST API
 
-Once you've deployed a Business Network Definition that you're happy to start writing some applications against, you can expose it as a REST API. 
+Once you've deployed a Business Network Definition that you're happy to start writing some applications against, you can expose it as a REST API.
 
 Client applications, such as web or mobile applications, can interact with your deployed Business Network by using a REST or HTTP client. For more information on the Hyperledger Composer REST server and integrating existing systems with your deployed Business Network, see the [Integrating existing systems documentation](https://ibm-blockchain.github.io/develop/integrating/integrating-index).
 
@@ -114,7 +113,7 @@ In order to interact with your deployed Business Network using the Hyperledger C
     composer card import -f PATH_TO_EXPORTED_CARD
     ```
 
-4. Check the current list of imported cards by running the following command. 
+4. Check the current list of imported cards by running the following command.
 
     ```bash
     composer card list

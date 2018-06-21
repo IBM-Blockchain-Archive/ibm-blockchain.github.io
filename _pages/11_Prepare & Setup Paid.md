@@ -24,73 +24,53 @@ Download and install the Hyperledger Composer CLI using the following command:
 npm install -g composer-cli
 ```
 
-### 2. Download and install kubectl CLI
+### 2. Download and install the IBM Cloud CLI
 
-[https://kubernetes.io/docs/tasks/kubectl/install/](https://kubernetes.io/docs/tasks/kubectl/install/)
-
-### 3. Download and install the Bluemix CLI
-
-[http://clis.ng.bluemix.net/ui/home.html](http://clis.ng.bluemix.net/ui/home.html)
-
-### 4. Add the bluemix plugins repo
-
-```bash
-$ bx plugin repo-add bluemix https://plugins.ng.bluemix.net
-```
-
-Note: If you get the following error, it means that the repository bluemix already exists on your computer. Thus, you can ignore the error and move to the next step.
-
-`Plug-in repo named ‘bluemix’ already exists. Try a different name.`
-
-### 5. Add the container service plugin
-
-```bash
-$ bx plugin install container-service -r bluemix
-```
+[https://console.bluemix.net/docs/cli/](https://console.bluemix.net/docs/cli/)
 
 ## Setup a cluster
 
-Now, we will use those CLIs and plugins to create a cluster on the IBM Container Service.  Use these steps to setup a cluster named ___blockchain___ on IBM Container Service. For more information about how to use the [bluemix cli](https://console.bluemix.net/docs/cli/reference/bluemix_cli/bx_cli.html#bluemix_cli).
+Now, we will use those CLIs and plugins to create a cluster on the IBM Container Service.  Use these steps to setup a cluster named ___blockchain___ on IBM Container Service. For more information about how to use the [ibmcloud cli](https://console.bluemix.net/docs/cli/reference/bluemix_cli/bx_cli.html#bluemix_cli).
 
-### 6. Point Bluemix CLI to production API
+### 3. Point IBM Cloud CLI to production API
 
 ```bash
-$ bx api api.ng.bluemix.net
+$ ibmcloud api api.ng.bluemix.net
 ```
 
-### 7. Login to bluemix
+### 4. Login to IBM Cloud
 
 ```bash
-$ bx login
+$ ibmcloud login
 ```
 
 If your id is federated in an SSO, you will have to run the following command to login:
 ```bash
-$ bx login -sso
+$ ibmcloud login -sso
 ```
 
-### 8. Create a cluster on IBM Container Service
+### 5. Create a cluster on IBM Container Service
 
 This will create a __paid cluster__ named _blockchain_ on the IBM Container Service. Please check the pricing details for more info.
 
 ```bash
-$ bx cs cluster-create --name blockchain --machine-type <type> --location <location> --workers <num-workers> --public-vlan <vlan-id> --private-vlan <vlan-id>
+$ ibmcloud cs cluster-create --name blockchain --machine-type <type> --location <location> --workers <num-workers> --public-vlan <vlan-id> --private-vlan <vlan-id>
 
 # to get list of locations
-$ bx cs locations
+$ ibmcloud cs locations
 
 # to get list of machine-types
-$ bx cs machine-types <location>
+$ ibmcloud cs machine-types <location>
 
 # to get list of vlans in your account
-$ bx cs vlans
+$ ibmcloud cs vlans <location>
 ```
 
-### 9. Wait for the cluster to be ready
+### 6. Wait for the cluster to be ready
 
 Issue the following command to ascertain the status of your cluster:
 ```bash
-$ bx cs clusters
+$ ibmcloud cs clusters
 ```
 
 The process goes through the following lifecycle - ``requesting`` --> ``pending`` --> ``deploying`` --> ``normal``.  Initially you will see something similar to the following:
@@ -103,7 +83,7 @@ Wait for the State to change to _normal_. Note that this can take upwards of 15-
 
 You should see the following output when the cluster is ready:
 ```bash
-$ bx cs clusters
+$ ibmcloud cs clusters
 OK
 Name         ID                                 State    Created      Workers   Datacenter   Version
 blockchain   a7b094596db34facb8587d256dc54cee   normal   3 days ago   3         dal12        1.7.4_1502
@@ -112,17 +92,17 @@ blockchain   a7b094596db34facb8587d256dc54cee   normal   3 days ago   3         
 Use the following syntax to inspect on the status of the workers:
 Command:
 ```bash
-$ bx cs workers <cluster-name>
+$ ibmcloud cs workers <cluster-name>
 ```
 
 For example:
 ```bash
-$ bx cs workers blockchain
+$ ibmcloud cs workers blockchain
 ```
 
 The expected response is as follows:
 ```bash
-$ bx cs workers blockchain
+$ ibmcloud cs workers blockchain
 OK
 ID                                                 Public IP       Private IP     Machine Type   State    Status   Version
 kube-dal12-cra7b094596db34facb8587d256dc54cee-w1   169.47.67.177   10.184.9.157   u1c.2x4        normal   Ready    1.7.4_1502
@@ -130,11 +110,11 @@ kube-dal12-cra7b094596db34facb8587d256dc54cee-w2   169.47.67.162   10.184.9.173 
 kube-dal12-cra7b094596db34facb8587d256dc54cee-w3   169.47.67.178   10.184.9.161   u1c.2x4        normal   Ready    1.7.4_1502
 ```
 
-### 10. Configure kubectl to use the cluster
+### 7. Configure kubectl to use the cluster
 
 Issue the following command to download the configuration for your cluster:
 ```bash
-$ bx cs cluster-config blockchain
+$ ibmcloud cs cluster-config blockchain
 ```
 
 Expected output:
@@ -154,31 +134,31 @@ The `export` command in the output must be run as a separate command along with 
 $ export KUBECONFIG=/home/*****/.bluemix/plugins/container-service/clusters/blockchain/kube-config-prod-dal10-blockchain.yml
 ```
 
-### 11. Adding Public IP addresses for services to be exposed outside
+### 8. Adding Public IP addresses for services to be exposed outside
 
 Order a new subnet using the following command:
 
 ```bash
 # if not already initialized
-$ bx sl init
+$ ibmcloud sl init
 
 # get list of public vlans in the datacenter that you created the cluster in
-$ bx sl vlan list | grep PUBLIC | grep <datacenter>
+$ ibmcloud sl vlan list | grep PUBLIC | grep <datacenter>
 
 # get detail about the vlan, vlan-id comes from previos command
-$ bx sl vlan detail <vlan-id>
+$ ibmcloud sl vlan detail <vlan-id>
 
 # find the vlan that the cluster was deployed in & order a new subnet on it
-$ bx sl subnet create public 8 <vlan-id>
+$ ibmcloud sl subnet create public 8 <vlan-id>
 ```
 
 Now, add the subnet to be used by the cluster that you have created
 
 ```bash
-$ bx cs cluster-subnet-add blockchain <subnet-id>
+$ ibmcloud cs cluster-subnet-add blockchain <subnet-id>
 
 # if you forgot the subnet id
-$ bx sl subnet list
+$ ibmcloud sl subnet list
 ````
 
 Why is this step needed? As we are using more than 4 services, we exhaust the 4 public IPs that are created for us when we create a new cluster. Thus, in order

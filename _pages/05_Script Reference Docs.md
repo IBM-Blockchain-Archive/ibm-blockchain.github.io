@@ -108,7 +108,7 @@ Use an editor to open the ``join_channel.yaml.base`` file (located in the ``kube
 * Under the `joinchannel1` container remove the `%CHANNEL_NAME%` placeholder values for the `CHANNEL_NAME` variable and replace them with `channel1`.
 * Ensure that the `PEER_ADDRESS` address variable is properly set with the peer's URL (`blockchain-org1peer1:30110`).
 * Ensure that the `CORE_PEER_LOCALMSPID` is properly set with `Org1MSP`
-* Ensure that `MSP_CONFIGPATH` is properly set to MSP folder of the admin user for Org1 as `/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp` 
+* Ensure that `MSP_CONFIGPATH` is properly set to MSP folder of the admin user for Org1 as `/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp`
 Save the file as `join_channel.yaml` in the same sub-directory .  **Note**: you are removing the `base` suffix with this renaming.
 
 First, make sure any old `joinchannel` containers are removed:
@@ -212,12 +212,11 @@ kubectl create -f kube-configs/composer-playground.yaml
 
 Determine the public IP address of the cluster by running the following command:
 ```bash
-bx cs workers blockchain
+ibmcloud cs workers blockchain
 ```
 
 The output should be similiar to the following:
 ```bash
-Listing cluster workers...
 OK
 ID                                                 Public IP      Private IP       Machine Type   State    Status
 kube-dal10-pabdda14edc4394b57bb08d53c149930d7-w1   169.48.140.99   10.171.239.186   free           normal   Ready
@@ -248,11 +247,10 @@ kubectl create -f kube-configs/composer-rest-server.yaml
 
 Determine the public IP address of the cluster by running the following command:
 ```bash
-bx cs workers blockchain
+ibmcloud cs workers blockchain
 ```
 The output should be similiar to the following:
 ```bash
-Listing cluster workers...
 OK
 ID                                                 Public IP      Private IP       Machine Type   State    Status
 kube-dal10-pabdda14edc4394b57bb08d53c149930d7-w1   169.48.140.99   10.171.239.186   free           normal   Ready
@@ -393,4 +391,3 @@ The following output in the logs indicates a successful install:
 ### What's happening here?
 
 The `chaincodeinstantiate` container instantiates the example02 chaincode, it then uses the admin user creds for Org1's peer. Instainate transaction happens on the channel and all the peers that have joined the channel now will get a block that has the instantiate transacation from the orderer.
-

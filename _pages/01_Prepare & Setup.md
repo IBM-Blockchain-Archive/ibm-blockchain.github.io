@@ -74,7 +74,6 @@ Wait for the State to change to _normal_. Note that this can take upwards of 15-
 You should see the following output when the cluster is ready:
 ```bash
 $ ibmcloud cs clusters
-Listing clusters...
 OK
 Name         ID                                 State    Created                    Workers
 blockchain   0783c15e421749a59e2f5b7efdd351d1   normal   2017-05-09T16:13:11+0000   1
@@ -95,7 +94,6 @@ $ ibmcloud cs workers blockchain
 The expected response is as follows:
 ```bash
 $ ibmcloud cs workers blockchain
-Listing cluster workers...
 OK
 ID                                                 Public IP       Private IP       Machine Type   State    Status
 kube-dal10-pa0783c15e421749a59e2f5b7efdd351d1-w1   169.48.140.48   10.176.190.176   free           normal   Ready
