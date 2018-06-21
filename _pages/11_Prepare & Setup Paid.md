@@ -162,7 +162,7 @@ $ ibmcloud sl subnet list
 ````
 
 Why is this step needed? As we are using more than 4 services, we exhaust the 4 public IPs that are created for us when we create a new cluster. Thus, in order
-to expose all the services to the outside world, we need to add more public IPs. Note: Each public IP may incur cost, please refer to bluemix for prices.
+to expose all the services to the outside world, we need to add more public IPs. Note: Each public IP may incur cost, please refer to IBM Cloud for prices.
 
 * * *
 
